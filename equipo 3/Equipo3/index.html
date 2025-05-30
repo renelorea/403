@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Juegos</title>
+  <link rel="icon" href="Img.png" type="image/png">
+  <link rel="stylesheet" href="Style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Mini Juegos</h1>
+    <nav id="game-nav">
+      <button class="nav-btn active" data-game="memorama">Memorama</button>
+      <button class="nav-btn" data-game="hangman">Ahorcado</button>
+      <button class="nav-btn" data-game="mental">Acertijos</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Game container -->
+    <div id="game-container">
+      <!-- Timer and score display -->
+      <div id="game-stats">
+        <div id="timer">
+          <span id="timer-icon">⏱️</span>
+          <span id="time-left">01:00</span>
+        </div>
+        <div id="score-container">
+          <span id="score-label">Score:</span>
+          <span id="score">0</span>
+        </div>
+        <button id="pause-btn" class="rules-btn" onclick="togglePause()">⏸️ Pausar</button>
+      </div>
+
+      <!-- Memory Game -->
+      <div id="memorama" class="game-section active">
+        <h2>Memorama</h2>
+        <p class="game-instructions">¡Combina todos los pares en 1 minuto!</p>
+        <button class="rules-btn" onclick="openRules('memorama')">Ver reglas</button>
+        <div id="memory-board"></div>
+        <button id="restart-memorama" class="restart-btn">Reiniciar juego</button>
+      </div>
+
+      <!-- Hangman Game -->
+      <div id="hangman" class="game-section">
+        <h2>Ahorcado</h2>
+        <p class="game-instructions">¡Adivina la palabra en 1 minuto!</p>
+        <button class="rules-btn" onclick="openRules('hangman')">Ver reglas</button>
+        <div id="hangman-container">
+          <div id="hangman-drawing">
+            <svg width="200" height="250" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+              <!-- Base -->
+              <line id="hang-base" x1="20" y1="230" x2="100" y2="230" stroke="#333" stroke-width="4" />
+              <!-- Pole -->
+              <line id="hang-pole" x1="60" y1="20" x2="60" y2="230" stroke="#333" stroke-width="4" />
+              <!-- Top -->
+              <line id="hang-top" x1="60" y1="20" x2="150" y2="20" stroke="#333" stroke-width="4" />
+              <!-- Rope -->
+              <line id="hang-rope" x1="150" y1="20" x2="150" y2="50" stroke="#333" stroke-width="4" />
+              <!-- Head - initially hidden -->
+              <circle id="hang-head" cx="150" cy="70" r="20" stroke="#333" stroke-width="4" fill="none" class="hang-part hidden" />
+              <!-- Body - initially hidden -->
+              <line id="hang-body" x1="150" y1="90" x2="150" y2="150" stroke="#333" stroke-width="4" class="hang-part hidden" />
+              <!-- Left Arm - initially hidden -->
+              <line id="hang-left-arm" x1="150" y1="110" x2="120" y2="100" stroke="#333" stroke-width="4" class="hang-part hidden" />
+              <!-- Right Arm - initially hidden -->
+              <line id="hang-right-arm" x1="150" y1="110" x2="180" y2="100" stroke="#333" stroke-width="4" class="hang-part hidden" />
+              <!-- Left Leg - initially hidden -->
+              <line id="hang-left-leg" x1="150" y1="150" x2="130" y2="190" stroke="#333" stroke-width="4" class="hang-part hidden" />
+              <!-- Right Leg - initially hidden -->
+              <line id="hang-right-leg" x1="150" y1="150" x2="170" y2="190" stroke="#333" stroke-width="4" class="hang-part hidden" />
+            </svg>
+          </div>
+          <div id="word-display"></div>
+          <div id="hint-section">
+            <button id="hint-btn" class="action-btn">Usar Pista (<span id="hints-left"></span>)</button>
+            <p id="hint-text" class="hidden"></p>
+          </div>
+          <div id="keyboard"></div>
+        </div>
+        <button id="restart-hangman" class="restart-btn">Reiniciar juego</button>
+      </div>
+
+      <!-- Mental Game -->
+      <div id="mental" class="game-section">
+        <h2>Acertijos</h2>
+        <p class="game-instructions">¡Resuelve tantos rompecabezas como puedas en 1 minuto!</p>
+        <button class="rules-btn" onclick="openRules('mental')">Ver reglas</button>
+        <div id="mental-container">
+          <div id="question-container">
+            <p id="question"></p>
+          </div>
+          <div id="options-container"></div>
+        </div>
+        <button id="restart-mental" class="restart-btn">Reiniciar juego</button>
+      </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="game-over-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2 id="modal-title">¡Se acabó el tiempo!</h2>
+        <p id="modal-message">Tu puntuación:<span id="final-score">0</span></p>
+        <button id="play-again-btn" class="action-btn">Jugar de nuevo</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rules Modal -->
+<div id="rules-modal" class="modal hidden">
+  <div class="modal-content">
+    <h2 id="rules-title">Reglas del juego</h2>
+    <p id="rules-text"></p>
+    <button class="action-btn" onclick="closeRules()">Cerrar</button>
+  </div>
+</div>
+
+  <footer>
+    <p>&copy; Mini Juegos Equipo 3 403</p>
+  </footer>
+
+  <script src="Java.js"></script>
+</body>
+</html>
