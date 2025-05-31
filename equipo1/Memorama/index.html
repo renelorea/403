@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memorama Educativo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Pantalla de Bienvenida -->
+  <div id="welcome-screen" class="screen active">
+    <div class="container">
+      <h1>Memorama <span>Educativo</span></h1>
+      <div class="logo-container">
+        <img src="https://images.seeklogo.com/logo-png/20/2/cecytem-logo-png_seeklogo-201352.png" alt="CECYTEM" class="cecytem-logo">
+        <p>Equipo 1</p>
+      </div>
+      <p>¡Pon a prueba tu memoria mientras aprendes!</p>
+      
+      <div class="player-setup">
+        <h2>Elige el Modo de Juego</h2>
+        <div class="mode-selector">
+          <button id="single-player-btn" class="mode-btn active">1 Jugador</button>
+          <button id="two-player-btn" class="mode-btn">2 Jugadores</button>
+        </div>
+        
+        <div class="theme-selector">
+          <h3>Selecciona un Tema</h3>
+          <select id="theme-selector">
+            <option value="paises">Países y Capitales</option>
+            <option value="animales" selected>Animales y Hábitats</option>
+            <option value="instrumentos">Instrumentos Musicales</option>
+            <option value="quimica">Símbolos Químicos</option>
+            <option value="cuerpo">Partes del Cuerpo</option>
+            <option value="historia">Personajes Históricos</option>
+            <option value="banderas">Banderas del Mundo</option>
+          </select>
+        </div>
+        
+        <div id="player-forms">
+          <div class="player-form">
+            <h3>Jugador 1</h3>
+            <input type="text" id="player1-name" placeholder="Ingresa tu nombre" value="Jugador 1">
+            <div class="avatar-selector">
+              <h4>Elige un avatar</h4>
+              <div class="avatars">
+                <div class="avatar active" data-avatar="fox">🦊</div>
+                <div class="avatar" data-avatar="bear">🐻</div>
+                <div class="avatar" data-avatar="tiger">🐯</div>
+                <div class="avatar" data-avatar="panda">🐼</div>
+                <div class="avatar" data-avatar="rabbit">🐰</div>
+                <div class="avatar" data-avatar="unicorn">🦄</div>
+                <div class="avatar" data-avatar="dragon">🐲</div>
+                <div class="avatar" data-avatar="lion">🦁</div>
+                <div class="avatar" data-avatar="penguin">🐧</div>
+                <div class="avatar" data-avatar="owl">🦉</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="player-form" id="player2-form" style="display: none;">
+            <h3>Jugador 2</h3>
+            <input type="text" id="player2-name" placeholder="Ingresa tu nombre" value="Jugador 2">
+            <div class="avatar-selector">
+              <h4>Elige un avatar</h4>
+              <div class="avatars">
+                <div class="avatar active" data-avatar="koala">🐨</div>
+                <div class="avatar" data-avatar="cat">🐱</div>
+                <div class="avatar" data-avatar="dog">🐶</div>
+                <div class="avatar" data-avatar="monkey">🐵</div>
+                <div class="avatar" data-avatar="frog">🐸</div>
+                <div class="avatar" data-avatar="butterfly">🦋</div>
+                <div class="avatar" data-avatar="dolphin">🐬</div>
+                <div class="avatar" data-avatar="elephant">🐘</div>
+                <div class="avatar" data-avatar="octopus">🐙</div>
+                <div class="avatar" data-avatar="phoenix">🦚</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="difficulty">
+          <h3>Selecciona la Dificultad</h3>
+          <div class="difficulty-buttons">
+            <button class="difficulty-btn active" data-pairs="6">Fácil (6 pares)</button>
+            <button class="difficulty-btn" data-pairs="8">Medio (8 pares)</button>
+            <button class="difficulty-btn" data-pairs="12">Difícil (12 pares)</button>
+          </div>
+        </div>
+        
+        <button id="start-game" class="btn">¡Comenzar Juego!</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Pantalla de Juego -->
+  <div id="game-screen" class="screen">
+    <div class="game-header">
+      <div class="stats">
+        <div id="timer">Tiempo: 0s</div>
+        <div id="attempts">Intentos: 0</div>
+      </div>
+      
+      <div class="player-info">
+        <div id="current-player" class="current-player">
+          <span id="player-avatar" class="player-avatar">🦊</span>
+          <span id="player-name">Jugador 1</span>
+        </div>
+      </div>
+      
+      <div class="game-controls">
+        <button id="restart-btn" class="btn small">Reiniciar</button>
+        <button id="new-game-btn" class="btn small">Nuevo Juego</button>
+      </div>
+    </div>
+    
+    <div id="game-board" class="game-board">
+      <!-- Las cartas se generarán aquí con JavaScript -->
+    </div>
+  </div>
+  
+  <!-- Pantalla de Victoria -->
+  <div id="victory-screen" class="screen">
+    <div class="victory-container">
+      <div class="confetti"></div>
+      <h1>¡Felicitaciones!</h1>
+      <div id="winner-display">
+        <span id="winner-avatar" class="winner-avatar">🦊</span>
+        <span id="winner-name">Jugador 1</span> ¡gana!
+      </div>
+      
+      <div class="game-stats">
+        <div id="final-time">Tiempo: 0s</div>
+        <div id="final-attempts">Intentos: 0</div>
+        <div id="final-score">Puntaje: 0</div>
+      </div>
+      
+      <div class="victory-buttons">
+        <button id="play-again" class="btn">Jugar de Nuevo</button>
+        <button id="back-to-menu" class="btn">Volver al Menú</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
