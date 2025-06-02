@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ChatBot Multitema</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e0f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .chat-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 600px;
+      max-width: 90%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    #chat-box {
+      height: 350px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #fafafa;
+    }
+
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 70%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <h2>ChatBot Multitema</h2>
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Haz una pregunta...">
+    <button id="send-btn">Enviar</button>
+  </div>
+
+  <script>
+    const respuestas = {
+      // Fútbol
+      "¿qué es el fútbol?": "Es un deporte donde dos equipos intentan meter un balón en la portería rival.",
+      "¿cuántos jugadores hay en un equipo de fútbol?": "11 jugadores por equipo.",
+      "¿qué es la fifa?": "La FIFA es la organización que regula el fútbol mundial.",
+      "¿cuánto dura un partido de fútbol?": "90 minutos, divididos en dos tiempos de 45.",
+      "¿qué es un fuera de lugar?": "Es una infracción por recibir el balón en posición adelantada.",
+      "¿quién es messi?": "Un famoso futbolista argentino considerado uno de los mejores del mundo.",
+      "¿qué es una tarjeta roja?": "Una sanción que expulsa a un jugador del partido.",
+      "¿qué es un penalti?": "Un tiro directo desde el punto de penal tras una falta.",
+      "¿qué significa hat-trick?": "Cuando un jugador anota 3 goles en un partido.",
+      "¿quién ganó el último mundial?": "Argentina ganó el Mundial de 2022.",
+
+      // Redes sociales
+      "¿qué es una red social?": "Plataforma donde las personas interactúan digitalmente.",
+      "¿qué es facebook?": "Una de las redes sociales más populares para compartir contenido.",
+      "¿qué es instagram?": "Red social centrada en fotos y videos cortos.",
+      "¿qué es tiktok?": "Aplicación para compartir videos cortos y virales.",
+      "¿qué es un influencer?": "Persona con gran presencia en redes y capacidad de influenciar.",
+      "¿qué es un reel?": "Video corto en formato vertical, popular en Instagram.",
+      "¿qué es un hashtag?": "Palabra clave que categoriza publicaciones.",
+      "¿qué es un algoritmo en redes?": "Sistema que decide qué contenido mostrarte.",
+      "¿qué es viralizarse?": "Cuando un contenido se difunde masivamente.",
+      "¿qué es un seguidor?": "Persona que sigue tus publicaciones en una red social.",
+
+      // Álgebra
+      "¿qué es el álgebra?": "Rama de las matemáticas que usa letras y símbolos para representar números.",
+      "¿qué es una ecuación?": "Expresión que muestra igualdad entre dos cantidades.",
+      "¿qué es una incógnita?": "Valor desconocido representado con una letra.",
+      "¿cómo se resuelve una ecuación?": "Despejando la incógnita paso a paso.",
+      "¿qué es una variable?": "Símbolo que representa un número desconocido.",
+      "¿qué es un polinomio?": "Expresión algebraica con varios términos.",
+      "¿qué es una raíz cuadrada?": "Número que al multiplicarse por sí mismo da el valor original.",
+      "¿qué es un binomio?": "Expresión algebraica con dos términos.",
+      "¿qué es el mínimo común múltiplo?": "El menor número que es múltiplo común de otros.",
+      "¿qué es una expresión algebraica?": "Combinación de letras, números y signos matemáticos.",
+
+      // Maquillaje
+      "¿qué es el maquillaje?": "Uso de productos para realzar el rostro.",
+      "¿qué es una base?": "Producto que unifica el tono de piel.",
+      "¿qué es un corrector?": "Sirve para cubrir ojeras y manchas.",
+      "¿qué es el contour?": "Técnica para definir el rostro con sombras.",
+      "¿qué es un iluminador?": "Producto que resalta ciertas zonas del rostro.",
+      "¿qué es el rubor?": "Da color a las mejillas.",
+      "¿qué es un delineador?": "Define el contorno de ojos o labios.",
+      "¿qué es una brocha?": "Herramienta para aplicar maquillaje.",
+      "¿qué es un primer?": "Prepara la piel para aplicar maquillaje.",
+      "¿qué es maquillaje waterproof?": "Maquillaje resistente al agua.",
+
+      // Alimentación
+      "¿qué es una dieta balanceada?": "Aquella que incluye todos los grupos alimenticios en proporciones adecuadas.",
+      "¿qué es una proteína?": "Nutriente esencial para el crecimiento y reparación celular.",
+      "¿qué es un carbohidrato?": "Fuente principal de energía para el cuerpo.",
+      "¿qué es una grasa saludable?": "Grasas buenas como las del aguacate o aceite de oliva.",
+      "¿qué es la fibra?": "Ayuda a la digestión y salud intestinal.",
+      "¿qué es el ayuno intermitente?": "Patrón de alimentación que alterna períodos de ayuno y comida.",
+      "¿qué es una caloría?": "Unidad de medida de la energía de los alimentos.",
+      "¿qué es un superalimento?": "Alimentos con alto valor nutricional.",
+      "¿qué es la deshidratación?": "Falta de agua en el cuerpo.",
+      "¿qué es el metabolismo?": "Proceso por el cual el cuerpo convierte alimentos en energía.",
+
+      // GYM
+      "¿qué es el gym?": "Lugar para ejercitar el cuerpo con rutinas físicas.",
+      "¿qué es una rutina?": "Conjunto de ejercicios programados.",
+      "¿qué es cardio?": "Ejercicios que aumentan la frecuencia cardíaca.",
+      "¿qué es fuerza?": "Capacidad muscular para levantar o mover peso.",
+      "¿qué es hipertrofia?": "Aumento del tamaño muscular.",
+      "¿qué es una repetición?": "Ejecutar un ejercicio una vez.",
+      "¿qué es una serie?": "Conjunto de repeticiones de un ejercicio.",
+      "¿qué es una pesa?": "Objeto que se usa para ejercicios de fuerza.",
+      "¿qué es un entrenador personal?": "Persona capacitada para diseñar rutinas de ejercicio.",
+      "¿qué es estiramiento?": "Ejercicios para mejorar la flexibilidad y evitar lesiones."
+    };
+
+    function enviarPregunta() {
+      const input = document.getElementById("user-input");
+      const chatBox = document.getElementById("chat-box");
+      const pregunta = input.value.toLowerCase().trim();
+
+      if (pregunta === "") return;
+
+      chatBox.innerHTML += `<p><strong>Tú:</strong> ${pregunta}</p>`;
+
+      const respuesta = respuestas[pregunta] || "No tengo una respuesta para esa pregunta aún.";
+      chatBox.innerHTML += `<p><strong>Bot:</strong> ${respuesta}</p>`;
+
+      input.value = "";
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    document.getElementById("send-btn").addEventListener("click", enviarPregunta);
+    document.getElementById("user-input").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        enviarPregunta();
+      }
+    });
+  </script>
+</body>
+</html>
