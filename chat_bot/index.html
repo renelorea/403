@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>ChatBot Personalizado</title>
+</head>
+<body>
+  <div id="welcome-screen">
+    <div class="welcome-container">
+      <h1>Bienvenido a ChatBot Temático</h1>
+      <p>Ingresa tu nombre y elige un tema para comenzar</p>
+      <div class="input-group">
+        <input type="text" id="user-name" placeholder="Tu nombre">
+      </div>
+      <h3>Selecciona un tema:</h3>
+      <div class="topic-grid">
+        <div class="topic-card" data-topic="futbol">
+          <div class="topic-icon">⚽</div>
+          <div class="topic-name">Fútbol</div>
+        </div>
+        <div class="topic-card" data-topic="redes">
+          <div class="topic-icon">📱</div>
+          <div class="topic-name">Redes Sociales</div>
+        </div>
+        <div class="topic-card" data-topic="algebra">
+          <div class="topic-icon">📐</div>
+          <div class="topic-name">Álgebra</div>
+        </div>
+        <div class="topic-card" data-topic="maquillaje">
+          <div class="topic-icon">💄</div>
+          <div class="topic-name">Maquillaje</div>
+        </div>
+        <div class="topic-card" data-topic="alimentacion">
+          <div class="topic-icon">🥗</div>
+          <div class="topic-name">Alimentación</div>
+        </div>
+        <div class="topic-card" data-topic="gym">
+          <div class="topic-icon">💪</div>
+          <div class="topic-name">Gym</div>
+        </div>
+      </div>
+      <button id="start-chat" disabled>Comenzar Chat</button>
+    </div>
+  </div>
+
+  <div id="chat-container" class="hidden">
+    <div class="chat-header">
+      <div class="chat-title">
+        <span id="chat-topic-icon"></span>
+        <span id="chat-topic-name"></span>
+      </div>
+      <div class="user-info">
+        <span id="header-user-name"></span>
+      </div>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="typing-indicator hidden" id="typing-indicator">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="message-input" placeholder="Escribe tu pregunta aquí...">
+      <button id="send-button">Enviar</button>
+    </div>
+  </div>
+
+  <script src="chatData.js"></script>
+  <script src="chatUI.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
