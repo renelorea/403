@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ChatBot por Tema</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .chat-container {
+      width: 420px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background: #222;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #eee;
+      padding: 10px;
+    }
+    .profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .chat {
+      height: 400px;
+      overflow-y: auto;
+      padding: 15px;
+    }
+    .chat p {
+      margin: 10px 0;
+    }
+    .bot {
+      background: #e0e0e0;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 80%;
+    }
+    .user {
+      text-align: right;
+    }
+    .user .message {
+      background: #4caf50;
+      color: white;
+      display: inline-block;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 80%;
+    }
+    .input-container {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+    .input-container input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .input-container button {
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-left: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="header">ChatBot Temático</div>
+    <div class="profile">
+      <strong id="studentName">Alumno: Nombre</strong>
+    </div>
+    <div class="chat" id="chatBox"></div>
+    <div class="input-container">
+      <input type="text" id="userInput" placeholder="Haz tu pregunta...">
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    const temas = {
+      futbol: {
+        "¿quién ganó el último mundial?": "Argentina ganó el Mundial 2022.",
+        "¿cuántos jugadores hay en un equipo?": "Cada equipo tiene 11 jugadores en el campo.",
+        "¿qué es el fuera de juego?": "Es una posición ilegal cuando un jugador está más cerca del arco rival que el penúltimo defensor.",
+        "¿quién es el mejor jugador del mundo?": "Eso es debatible, pero muchos consideran a Messi o Mbappé actualmente.",
+        "¿qué es la champions league?": "Es el torneo de clubes más prestigioso de Europa.",
+        "¿cuánto dura un partido?": "90 minutos más tiempo agregado.",
+        "¿qué hace un árbitro?": "Aplica el reglamento, sanciona faltas y controla el juego.",
+        "¿cuántas copas del mundo tiene brasil?": "Brasil ha ganado 5 Copas del Mundo.",
+        "¿qué es una tarjeta roja?": "Es una expulsión directa del partido.",
+        "¿qué es un penalti?": "Es un tiro directo desde el punto penal por falta dentro del área."
+      },
+      redes: {
+        "¿qué es una red social?": "Es una plataforma digital para conectar personas y compartir contenido.",
+        "¿cuál es la más usada?": "Actualmente, TikTok e Instagram son muy populares.",
+        "¿qué es un influencer?": "Persona con gran alcance en redes que puede influir en decisiones de otros.",
+        "¿qué es un algoritmo?": "Es el sistema que decide qué contenido mostrarte.",
+        "¿puedo ganar dinero en redes?": "Sí, a través de patrocinios, ventas, publicidad, etc.",
+        "¿qué es viralizar?": "Es cuando un contenido se comparte masivamente.",
+        "¿qué son los reels?": "Videos cortos en Instagram para contenido dinámico.",
+        "¿para qué sirve un hashtag?": "Para categorizar contenido y llegar a más gente.",
+        "¿es segura una red social?": "Depende del uso y configuración de privacidad.",
+        "¿cómo puedo crecer mi cuenta?": "Publica seguido, usa tendencias y ofrece valor real."
+      },
+      algebra: {
+        "¿qué es el álgebra?": "Es una rama de las matemáticas que usa letras para representar números.",
+        "¿qué es una ecuación?": "Es una igualdad con una o más incógnitas.",
+        "¿cómo se resuelve una ecuación?": "Despejando la incógnita paso a paso.",
+        "¿qué es una incógnita?": "Es el valor desconocido que queremos encontrar.",
+        "¿qué es una variable?": "Símbolo que representa un número en una expresión.",
+        "¿qué es una expresión algebraica?": "Combinación de números, variables y operaciones.",
+        "¿qué es el binomio al cuadrado?": "Es (a + b)² = a² + 2ab + b².",
+        "¿qué es el factoreo?": "Es escribir una expresión como producto de factores.",
+        "¿qué es una función lineal?": "Es una función con ecuación de la forma y = mx + b.",
+        "¿qué significa simplificar?": "Reducir una expresión a su forma más simple."
+      },
+      maquillaje: {
+        "¿qué es el maquillaje?": "Es el uso de productos para embellecer el rostro.",
+        "¿para qué sirve el primer?": "Prepara la piel y mejora la duración del maquillaje.",
+        "¿qué es el contouring?": "Técnica para definir y esculpir el rostro.",
+        "¿qué brocha usar para base?": "Una plana o kabuki es ideal.",
+        "¿qué es el iluminador?": "Producto que da brillo en zonas clave del rostro.",
+        "¿qué es el delineado?": "Técnica para definir los ojos con lápiz o gel.",
+        "¿qué es el maquillaje natural?": "Un look suave y discreto.",
+        "¿qué es el setting spray?": "Fijador en spray que sella el maquillaje.",
+        "¿cómo tapar ojeras?": "Con corrector de tono adecuado y técnica suave.",
+        "¿qué son sombras?": "Polvos pigmentados que se aplican en los párpados."
+      },
+      alimentacion: {
+        "¿qué es una dieta balanceada?": "Incluye todos los grupos de alimentos en proporciones adecuadas.",
+        "¿qué es una caloría?": "Unidad de energía que aporta un alimento.",
+        "¿cuántas comidas debo hacer?": "Generalmente 3 principales y 2 colaciones.",
+        "¿qué alimentos son saludables?": "Frutas, verduras, legumbres, granos integrales y proteínas magras.",
+        "¿qué es el ayuno intermitente?": "Método de alimentación que alterna periodos de ayuno y comida.",
+        "¿qué evitar para bajar de peso?": "Azúcares añadidos, comida ultra procesada y exceso de grasas.",
+        "¿qué es el gluten?": "Proteína del trigo que algunas personas no toleran.",
+        "¿por qué tomar agua?": "Hidrata, regula funciones y mejora el metabolismo.",
+        "¿qué es una proteína?": "Nutriente esencial para tejidos y músculos.",
+        "¿es bueno comer frutas de noche?": "Sí, no hay problema mientras sea moderado."
+      },
+      gym: {
+        "¿qué es el gym?": "Es un lugar equipado para ejercitar el cuerpo y mejorar la condición física.",
+        "¿cuántos días debo entrenar a la semana?": "Lo ideal son entre 3 y 6 días según tus objetivos y nivel.",
+        "¿debo hacer cardio todos los días?": "No es necesario hacerlo diario, con 3 a 4 veces por semana es suficiente.",
+        "¿cómo ganar masa muscular?": "Entrena con peso progresivo, come suficiente proteína y duerme bien.",
+        "¿puedo bajar grasa sin perder músculo?": "Sí, combinando déficit calórico moderado con entrenamiento de fuerza.",
+        "¿qué suplementos son recomendables?": "Los más comunes son proteína, creatina y multivitamínicos.",
+        "¿cuánto debo descansar entre series?": "Entre 30 y 90 segundos para hipertrofia, más si haces fuerza máxima.",
+        "¿puedo entrenar si estoy cansado?": "Depende. Si es fatiga leve, puedes hacer algo suave. Si es intensa, mejor descansa.",
+        "¿qué ejercicios son mejores para abdomen?": "Plancha, elevaciones de piernas y crunches son efectivos.",
+        "¿cuándo veré resultados?": "Con constancia, puedes notar cambios en 4 a 8 semanas."
+      }
+    };
+
+    const chatBox = document.getElementById("chatBox");
+    const input = document.getElementById("userInput");
+    const studentName = document.getElementById("studentName");
+    studentName.textContent = "Alumno: Alejandro Cruz Chávez";
+
+    function sendMessage() {
+      const pregunta = input.value.trim().toLowerCase();
+      if (!pregunta) return;
+      appendMessage("user", pregunta);
+
+      let respuesta = "Lo siento, no tengo respuesta para esa pregunta.";
+      for (const tema in temas) {
+        if (temas[tema][pregunta]) {
+          respuesta = temas[tema][pregunta];
+          break;
+        }
+      }
+
+      setTimeout(() => appendMessage("bot", respuesta), 500);
+      input.value = "";
+    }
+
+    function appendMessage(sender, text) {
+      const p = document.createElement("p");
+      p.className = sender;
+      const span = document.createElement("span");
+      span.className = sender === "user" ? "message" : "bot";
+      span.textContent = text;
+      p.appendChild(span);
+      chatBox.appendChild(p);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+</body>
+</html>
