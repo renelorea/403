@@ -1,332 +1,275 @@
-// Wait for the DOM to be fully loaded
+// Initialize particles.js for background animation
 document.addEventListener('DOMContentLoaded', function() {
-  // Loader
-  const loader = document.querySelector('.loader');
-  
-  // Hide loader after 2 seconds
-  setTimeout(() => {
-    loader.classList.add('hidden');
-  }, 2000);
-  
-  // Navigation
-  const navLinks = document.querySelectorAll('.nav-links a, .footer-links a');
-  const pages = document.querySelectorAll('.page');
-  const burger = document.querySelector('.burger');
-  const nav = document.querySelector('.nav-links');
-  const header = document.querySelector('header');
-  
-  // Toggle mobile menu
-  burger.addEventListener('click', () => {
-    nav.classList.toggle('active');
-    burger.classList.toggle('toggle');
-  });
-  
-  // Handle page navigation
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      
-      // Remove active class from all links
-      navLinks.forEach(item => item.classList.remove('active'));
-      
-      // Add active class to clicked link
-      link.classList.add('active');
-      
-      // Get the page id
-      const pageId = link.getAttribute('data-page');
-      
-      // Hide all pages
-      pages.forEach(page => page.classList.remove('active'));
-      
-      // Show the selected page
-      document.getElementById(pageId).classList.add('active');
-      
-      // Close mobile menu if open
-      nav.classList.remove('active');
-      burger.classList.remove('toggle');
-      
-      // Scroll to top
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  });
-  
-  // CTA button navigation
-  const ctaBtn = document.querySelector('.cta-btn');
-  if (ctaBtn) {
-    ctaBtn.addEventListener('click', () => {
-      const pageId = ctaBtn.getAttribute('data-page');
-      
-      // Remove active class from all links and add to the target link
-      navLinks.forEach(item => {
-        if (item.getAttribute('data-page') === pageId) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
+  // Particles.js configuration
+  particlesJS('particles-js', {
+    "particles": {
+      "number": {
+        "value": 50,
+        "density": {
+          "enable": true,
+          "value_area": 800
         }
-      });
-      
-      // Hide all pages and show the target page
-      pages.forEach(page => page.classList.remove('active'));
-      document.getElementById(pageId).classList.add('active');
-      
-      // Scroll to top
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  }
-  
-  // Header scroll effect
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-    
-    // Reveal elements on scroll
-    revealElements();
-  });
-  
-  // Function to reveal elements on scroll
-  function revealElements() {
-    const revealCards = document.querySelectorAll('.reveal-card');
-    const windowHeight = window.innerHeight;
-    const revealPoint = 150;
-    
-    revealCards.forEach(card => {
-      const cardTop = card.getBoundingClientRect().top;
-      
-      if (cardTop < windowHeight - revealPoint) {
-        card.classList.add('show');
-      }
-    });
-  }
-  
-  // Initially reveal elements that are already in view
-  revealElements();
-  
-  // Add mouse hover effects to cards
-  const infoCards = document.querySelectorAll('.info-card, .training-card, .category-card, .legend-card');
-  
-  infoCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.style.transform = 'translateY(-10px)';
-      card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'translateY(0)';
-      card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-    });
-  });
-  
-  // Add parallax effect to hero and page header sections
-  const hero = document.querySelector('.hero');
-  const pageHeaders = document.querySelectorAll('.page-header');
-  
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    
-    // Parallax for hero section
-    if (hero) {
-      const heroContent = hero.querySelector('.hero-content');
-      heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
-      hero.style.backgroundPositionY = `${scrollY * 0.5}px`;
-    }
-    
-    // Parallax for page headers
-    pageHeaders.forEach(header => {
-      const headerContent = header.querySelector('.page-header-content');
-      if (headerContent && isElementInViewport(header)) {
-        headerContent.style.transform = `translateY(${scrollY * 0.2}px)`;
-        header.style.backgroundPositionY = `${scrollY * 0.3}px`;
-      }
-    });
-  });
-  
-  // Helper function to check if element is in viewport
-  function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    return (
-      rect.top < window.innerHeight &&
-      rect.bottom > 0
-    );
-  }
-  
-  // Add 3D tilt effect to legend cards
-  const legendCards = document.querySelectorAll('.legend-card');
-  
-  legendCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const cardRect = card.getBoundingClientRect();
-      const cardCenterX = cardRect.left + cardRect.width / 2;
-      const cardCenterY = cardRect.top + cardRect.height / 2;
-      const mouseX = e.clientX - cardCenterX;
-      const mouseY = e.clientY - cardCenterY;
-      
-      const rotateX = (mouseY / (cardRect.height / 2)) * -5;
-      const rotateY = (mouseX / (cardRect.width / 2)) * 5;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-    });
-  });
-  
-  // Update page title based on active page
-  function updatePageTitle() {
-    const activePage = document.querySelector('.page.active');
-    const defaultTitle = document.title;
-    
-    if (activePage) {
-      const pageId = activePage.id;
-      let pageTitle;
-      
-      switch (pageId) {
-        case 'home':
-          pageTitle = 'GYM - Mundo del Culturismo';
-          break;
-        case 'olympia':
-          pageTitle = 'Mr. Olympia - Historia y Campeones';
-          break;
-        case 'legends':
-          pageTitle = 'Leyendas del Culturismo';
-          break;
-        default:
-          pageTitle = defaultTitle;
-      }
-      
-      document.title = pageTitle;
-    }
-  }
-  
-  // Update title when page changes
-  navLinks.forEach(link => {
-    link.addEventListener('click', updatePageTitle);
-  });
-  
-  // Update title initially
-  updatePageTitle();
-  
-  // Add smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      
-      if (targetId !== '#') {
-        e.preventDefault();
-        
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
+      },
+      "color": {
+        "value": ["#3a86ff", "#8338ec", "#3ce29f"]
+      },
+      "shape": {
+        "type": "circle",
+        "stroke": {
+          "width": 0,
+          "color": "#000000"
+        },
+        "polygon": {
+          "nb_sides": 5
+        }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": true,
+        "anim": {
+          "enable": true,
+          "speed": 1,
+          "opacity_min": 0.1,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": 3,
+        "random": true,
+        "anim": {
+          "enable": true,
+          "speed": 2,
+          "size_min": 0.1,
+          "sync": false
+        }
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#3a86ff",
+        "opacity": 0.2,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 1,
+        "direction": "none",
+        "random": true,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false,
+        "attract": {
+          "enable": true,
+          "rotateX": 600,
+          "rotateY": 1200
         }
       }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": true,
+          "mode": "grab"
+        },
+        "onclick": {
+          "enable": true,
+          "mode": "push"
+        },
+        "resize": true
+      },
+      "modes": {
+        "grab": {
+          "distance": 140,
+          "line_linked": {
+            "opacity": 0.5
+          }
+        },
+        "push": {
+          "particles_nb": 3
+        }
+      }
+    },
+    "retina_detect": true
+  });
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('nav a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Update active navigation link
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    this.classList.add('active');
+    
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    
+    window.scrollTo({
+      top: targetElement.offsetTop,
+      behavior: 'smooth'
     });
   });
+});
+
+// Scroll indicator click event
+document.querySelector('.scroll-indicator').addEventListener('click', function() {
+  const historySection = document.querySelector('#history');
+  window.scrollTo({
+    top: historySection.offsetTop,
+    behavior: 'smooth'
+  });
+});
+
+// Animated title effect
+function animateTitle() {
+  const title = document.querySelector('.animated-title');
+  if (!title) return;
   
-  // Add image preview on click for training and legend cards
-  const cardImages = document.querySelectorAll('.training-card img, .legend-card .legend-image img');
+  title.innerHTML = title.textContent.split('').map(
+    char => char === ' ' ? ' ' : `<span>${char}</span>`
+  ).join('');
   
-  cardImages.forEach(img => {
-    img.addEventListener('click', () => {
-      // Create overlay
-      const overlay = document.createElement('div');
-      overlay.classList.add('image-preview-overlay');
-      overlay.style.position = 'fixed';
-      overlay.style.top = '0';
-      overlay.style.left = '0';
-      overlay.style.width = '100%';
-      overlay.style.height = '100%';
-      overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-      overlay.style.zIndex = '1000';
-      overlay.style.display = 'flex';
-      overlay.style.justifyContent = 'center';
-      overlay.style.alignItems = 'center';
-      
-      // Create image
-      const previewImg = document.createElement('img');
-      previewImg.src = img.src;
-      previewImg.style.maxWidth = '90%';
-      previewImg.style.maxHeight = '90%';
-      previewImg.style.borderRadius = '5px';
-      previewImg.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
-      previewImg.style.transform = 'scale(0.9)';
-      previewImg.style.transition = 'transform 0.3s ease';
-      
-      // Add close button
-      const closeBtn = document.createElement('button');
-      closeBtn.textContent = '×';
-      closeBtn.style.position = 'absolute';
-      closeBtn.style.top = '20px';
-      closeBtn.style.right = '20px';
-      closeBtn.style.fontSize = '2rem';
-      closeBtn.style.color = 'white';
-      closeBtn.style.background = 'none';
-      closeBtn.style.border = 'none';
-      closeBtn.style.cursor = 'pointer';
-      
-      // Append elements
-      overlay.appendChild(previewImg);
-      overlay.appendChild(closeBtn);
-      document.body.appendChild(overlay);
-      
-      // Animate image
+  Array.from(title.querySelectorAll('span')).forEach((span, index) => {
+    span.style.animationDelay = `${0.1 * index}s`;
+    span.style.animation = 'fadeIn 0.5s forwards';
+  });
+}
+
+// Coin interaction
+document.querySelectorAll('.coin').forEach(coin => {
+  coin.addEventListener('click', function() {
+    this.style.animation = 'spin 1s ease';
+    setTimeout(() => {
+      this.style.animation = 'float 3s ease-in-out infinite';
+    }, 1000);
+  });
+});
+
+// Intersection Observer for scroll-based animations
+const animateOnScroll = function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  // Observe timeline items
+  document.querySelectorAll('.timeline-item').forEach(item => {
+    observer.observe(item);
+  });
+  
+  // Observe tech cards
+  document.querySelectorAll('.tech-card').forEach(card => {
+    observer.observe(card);
+  });
+};
+
+// Track scroll position for navigation highlighting
+function updateNavigation() {
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    const scrollPosition = window.scrollY;
+    
+    if (scrollPosition >= sectionTop - 200 && scrollPosition < sectionTop + sectionHeight - 200) {
+      const id = section.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${id}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}
+
+// Animate blockchain blocks
+function animateBlockchain() {
+  const blocks = document.querySelectorAll('.block');
+  blocks.forEach((block, index) => {
+    setTimeout(() => {
+      block.style.transform = 'translateY(-5px)';
       setTimeout(() => {
-        previewImg.style.transform = 'scale(1)';
-      }, 10);
-      
-      // Close on button click
-      closeBtn.addEventListener('click', () => {
-        previewImg.style.transform = 'scale(0.9)';
-        setTimeout(() => {
-          document.body.removeChild(overlay);
-        }, 300);
-      });
-      
-      // Close on overlay click
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) {
-          previewImg.style.transform = 'scale(0.9)';
-          setTimeout(() => {
-            document.body.removeChild(overlay);
-          }, 300);
-        }
-      });
-    });
+        block.style.transform = 'translateY(0)';
+      }, 500);
+    }, index * 800);
   });
+}
+
+// Initialize animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  animateTitle();
+  animateOnScroll();
   
-  // Add pulse effect to hero CTA button
-  if (ctaBtn) {
-    setInterval(() => {
-      ctaBtn.classList.add('pulse');
-      setTimeout(() => {
-        ctaBtn.classList.remove('pulse');
-      }, 1000);
-    }, 3000);
-  }
-  
-  // Add CSS for pulse animation
+  // Add CSS animation keyframes programmatically
   const style = document.createElement('style');
   style.textContent = `
-    .pulse {
-      animation: pulse-animation 1s ease;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
-    @keyframes pulse-animation {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
-      50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(230, 57, 70, 0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
+    @keyframes spin {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
     }
   `;
   document.head.appendChild(style);
+  
+  // Set interval for blockchain animation
+  setInterval(animateBlockchain, 5000);
+  
+  // Update navigation based on scroll position
+  window.addEventListener('scroll', updateNavigation);
+  
+  // Initialize navigation highlight
+  updateNavigation();
+});
+
+// Add click events to tech cards
+document.addEventListener('DOMContentLoaded', function() {
+  // Mining animation interaction
+  const miningVisual = document.querySelector('.mining-visual');
+  if (miningVisual) {
+    miningVisual.addEventListener('click', function() {
+      const animation = this.querySelector('.mining-animation');
+      animation.style.animationDuration = '1s';
+      setTimeout(() => {
+        animation.style.animationDuration = '4s';
+      }, 1000);
+    });
+  }
+  
+  // Transaction animation interaction
+  const transactionVisual = document.querySelector('.transaction-visual');
+  if (transactionVisual) {
+    transactionVisual.addEventListener('click', function() {
+      const animation = this.querySelector('.transaction-animation');
+      animation.style.animationDuration = '1s';
+      setTimeout(() => {
+        animation.style.animationDuration = '3s';
+      }, 1000);
+    });
+  }
+  
+  // Keys visual interaction
+  const keysVisual = document.querySelector('.keys-visual');
+  if (keysVisual) {
+    const privateKey = keysVisual.querySelector('.private-key');
+    if (privateKey) {
+      privateKey.addEventListener('mouseenter', function() {
+        this.querySelector('.key-value').textContent = '••••••••••••••••••••';
+      });
+      privateKey.addEventListener('mouseleave', function() {
+        this.querySelector('.key-value').textContent = 'X9y8Z7w6V5u4T3s...';
+      });
+    }
+  }
 });
