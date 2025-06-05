@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GYM - Mundo del Culturismo</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader">
+    <div class="loader-content">
+      <div class="barbell">
+        <div class="plate left"></div>
+        <div class="bar"></div>
+        <div class="plate right"></div>
+      </div>
+      <p>Cargando...</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <div class="logo">
+        <i class="fas fa-dumbbell"></i>
+        <span>GYM</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" data-page="home" class="active">Inicio</a></li>
+          <li><a href="#" data-page="olympia">Mr. Olympia</a></li>
+          <li><a href="#" data-page="legends">Leyendas</a></li>
+        </ul>
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Home Page -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+          <h1 class="reveal-text">EL MUNDO DEL GIMNASIO</h1>
+          <p class="reveal-text">Descubre la historia, las leyendas y la cultura del culturismo</p>
+          <button class="cta-btn" data-page="olympia">EXPLORAR</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <section class="info-section">
+          <h2 class="section-title">¿Qué es un Gimnasio?</h2>
+          <div class="info-grid">
+            <div class="info-card reveal-card">
+              <div class="info-icon">
+                <i class="fas fa-building"></i>
+              </div>
+              <h3>Definición</h3>
+              <p>Un gimnasio es un espacio dedicado a la práctica de ejercicio físico y entrenamiento con pesas. Proviene del griego "gymnasion", que significa "lugar donde se va desnudo", ya que en la antigua Grecia se practicaba deporte sin ropa.</p>
+            </div>
+            <div class="info-card reveal-card">
+              <div class="info-icon">
+                <i class="fas fa-history"></i>
+              </div>
+              <h3>Historia</h3>
+              <p>Los gimnasios modernos tienen su origen en la década de 1930 con la popularización del culturismo. Figuras como Eugen Sandow impulsaron la creación de espacios dedicados al entrenamiento físico con pesas y equipamiento especializado.</p>
+            </div>
+            <div class="info-card reveal-card">
+              <div class="info-icon">
+                <i class="fas fa-dumbbell"></i>
+              </div>
+              <h3>Entrenamiento</h3>
+              <p>El entrenamiento en el gimnasio se basa en principios de sobrecarga progresiva, especificidad y periodización. El objetivo es estimular el crecimiento muscular y mejorar la fuerza a través de ejercicios con pesas y máquinas.</p>
+            </div>
+            <div class="info-card reveal-card">
+              <div class="info-icon">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <h3>Beneficios</h3>
+              <p>El entrenamiento regular en el gimnasio mejora la composición corporal, aumenta la masa muscular, fortalece los huesos, mejora la salud cardiovascular y tiene efectos positivos sobre la salud mental y el bienestar general.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="culture-section">
+          <h2 class="section-title">Cultura del Gimnasio</h2>
+          <div class="culture-content">
+            <div class="culture-text">
+              <p>La cultura del gimnasio ha evolucionado significativamente a lo largo de las décadas. Lo que comenzó como un nicho ha crecido hasta convertirse en un fenómeno global con millones de participantes.</p>
+              <p>El culturismo competitivo surgió en la década de 1940 con concursos como Mr. America, pero fue el nacimiento de Mr. Olympia en 1965 lo que realmente estableció el culturismo como un deporte reconocido internacionalmente.</p>
+              <p>Hoy en día, la cultura del gimnasio abarca mucho más que solo culturismo. Incluye fitness funcional, entrenamiento de fuerza, powerlifting, crossfit y muchas otras disciplinas que comparten el objetivo común de mejorar el físico y la salud.</p>
+            </div>
+            <div class="culture-image">
+              <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg" alt="Cultura del gimnasio">
+            </div>
+          </div>
+        </section>
+
+        <section class="training-section">
+          <h2 class="section-title">Tipos de Entrenamiento</h2>
+          <div class="training-grid">
+            <div class="training-card reveal-card">
+              <img src="https://images.pexels.com/photos/136404/pexels-photo-136404.jpeg" alt="Culturismo">
+              <div class="training-info">
+                <h3>Culturismo</h3>
+                <p>Enfocado en el desarrollo de la masa muscular y la estética corporal. Utiliza series, repeticiones y ejercicios específicos para cada grupo muscular.</p>
+              </div>
+            </div>
+            <div class="training-card reveal-card">
+              <img src="https://images.pexels.com/photos/4164766/pexels-photo-4164766.jpeg" alt="Powerlifting">
+              <div class="training-info">
+                <h3>Powerlifting</h3>
+                <p>Centrado en la fuerza máxima en tres levantamientos: sentadilla, press de banca y peso muerto. Prioriza la carga sobre la estética.</p>
+              </div>
+            </div>
+            <div class="training-card reveal-card">
+              <img src="https://images.pexels.com/photos/2261485/pexels-photo-2261485.jpeg" alt="Crossfit">
+              <div class="training-info">
+                <h3>CrossFit</h3>
+                <p>Combina movimientos funcionales de alta intensidad con elementos de diferentes disciplinas como gimnasia, halterofilia y cardio.</p>
+              </div>
+            </div>
+            <div class="training-card reveal-card">
+              <img src="https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg" alt="Calistenia">
+              <div class="training-info">
+                <h3>Calistenia</h3>
+                <p>Utiliza el peso corporal como resistencia. Incluye ejercicios como dominadas, fondos, flexiones y movimientos gimnásticos avanzados.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Mr. Olympia Page -->
+    <section id="olympia" class="page">
+      <div class="page-header">
+        <div class="overlay"></div>
+        <div class="page-header-content">
+          <h1>MR. OLYMPIA</h1>
+          <p>La competición más prestigiosa del culturismo profesional</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <section class="olympia-intro">
+          <h2 class="section-title">Historia de Mr. Olympia</h2>
+          <div class="olympia-content">
+            <div class="olympia-text">
+              <p>Mr. Olympia es la competición más prestigiosa en el mundo del culturismo profesional. Fue creada por Joe Weider en 1965 para permitir a los ganadores de Mr. Universo competir entre sí y determinar quién era el mejor culturista del mundo.</p>
+              <p>El primer Mr. Olympia fue Larry Scott, quien ganó el título en 1965 y 1966. Desde entonces, la competición ha crecido en tamaño, premios y reconocimiento internacional.</p>
+              <p>A lo largo de su historia, Mr. Olympia ha visto a leyendas como Arnold Schwarzenegger, Ronnie Coleman y Phil Heath dominar el escenario, estableciendo nuevos estándares de desarrollo muscular y definición.</p>
+            </div>
+            <div class="olympia-image">
+              <img src="https://estoteinteresa.es/wp-content/uploads/2018/10/Mr-Olympia-1980-Bodybuilding-history-Awesome-body.jpg" alt="Mr. Olympia">
+            </div>
+          </div>
+        </section>
+
+        <section class="timeline-section">
+          <h2 class="section-title">Campeones de Mr. Olympia (1965-2025)</h2>
+          <div class="timeline">
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">1965-1966</div>
+              <div class="timeline-content">
+                <h3>Larry Scott</h3>
+                <p>El primer Mr. Olympia de la historia. Conocido por su desarrollo excepcional de bíceps y hombros.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">1967-1969</div>
+              <div class="timeline-content">
+                <h3>Sergio Oliva</h3>
+                <p>"El Mito". Poseía una de las estructuras más impresionantes con una cintura diminuta y hombros enormes.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">1970-1975, 1980</div>
+              <div class="timeline-content">
+                <h3>Arnold Schwarzenegger</h3>
+                <p>Siete veces Mr. Olympia. Revolucionó el deporte con su carisma y físico impresionante.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">1976-1979</div>
+              <div class="timeline-content">
+                <h3>Franco Columbu</h3>
+                <p>Dos veces Mr. Olympia. Conocido por su fuerza sobrehumana y densidad muscular.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">1981-1983</div>
+              <div class="timeline-content">
+                <h3>Chris Dickerson</h3>
+                <p>Primer Mr. Olympia afroamericano. Conocido por su simetría y poses artísticas.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">1984-1991</div>
+              <div class="timeline-content">
+                <h3>Lee Haney</h3>
+                <p>Ocho veces consecutivas Mr. Olympia, récord igualado solo por Ronnie Coleman.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">1992-1997</div>
+              <div class="timeline-content">
+                <h3>Dorian Yates</h3>
+                <p>Seis veces Mr. Olympia. Introdujo la era de la "masa monstruosa" en el culturismo.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">1998-2005</div>
+              <div class="timeline-content">
+                <h3>Ronnie Coleman</h3>
+                <p>Ocho veces Mr. Olympia. Combinación única de tamaño extremo y definición.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">2006-2007</div>
+              <div class="timeline-content">
+                <h3>Jay Cutler</h3>
+                <p>Cuatro veces Mr. Olympia. Conocido por su espalda masiva y simetría.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">2008</div>
+              <div class="timeline-content">
+                <h3>Dexter Jackson</h3>
+                <p>Conocido como "La Cuchilla" por su definición extrema y longevidad en el deporte.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">2009-2010</div>
+              <div class="timeline-content">
+                <h3>Jay Cutler</h3>
+                <p>Regresó para ganar dos títulos más, demostrando su dedicación y perseverancia.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">2011-2017</div>
+              <div class="timeline-content">
+                <h3>Phil Heath</h3>
+                <p>Siete veces Mr. Olympia. Conocido como "El Regalo" por su genética excepcional.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">2018</div>
+              <div class="timeline-content">
+                <h3>Shawn Rhoden</h3>
+                <p>Venció a Phil Heath con un físico más estético y una cintura más pequeña.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">2019</div>
+              <div class="timeline-content">
+                <h3>Brandon Curry</h3>
+                <p>Conocido por su físico estético y poses fluidas.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">2020-2021</div>
+              <div class="timeline-content">
+                <h3>Mamdouh "Big Ramy" Elssbiay</h3>
+                <p>Llevó el tamaño a nuevos niveles con una masa muscular impresionante.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">2022</div>
+              <div class="timeline-content">
+                <h3>Hadi Choopan</h3>
+                <p>Primer iraní en ganar Mr. Olympia, conocido por su condición extrema.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal-card">
+              <div class="timeline-year">2023-2025</div>
+              <div class="timeline-content">
+                <h3>Chris Bumstead</h3>
+                <p>Después de dominar la categoría Classic Physique, hizo historia al ganar en la categoría Open.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="categories-section">
+          <h2 class="section-title">Categorías de Mr. Olympia</h2>
+          <div class="categories-grid">
+            <div class="category-card reveal-card">
+              <h3>Open Bodybuilding</h3>
+              <p>La categoría principal sin límites de peso. Premia el tamaño muscular, definición, simetría y proporciones.</p>
+            </div>
+            <div class="category-card reveal-card">
+              <h3>212 Olympia</h3>
+              <p>Para culturistas con un peso máximo de 212 libras (96 kg). Enfatiza la calidad muscular.</p>
+            </div>
+            <div class="category-card reveal-card">
+              <h3>Classic Physique</h3>
+              <p>Busca recrear la estética de la "era dorada" del culturismo con límites de peso basados en la altura.</p>
+            </div>
+            <div class="category-card reveal-card">
+              <h3>Men's Physique</h3>
+              <p>Enfocada en un físico atlético y estético con énfasis en abdominales, hombros y espalda.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Legends Page -->
+    <section id="legends" class="page">
+      <div class="page-header">
+        <div class="overlay"></div>
+        <div class="page-header-content">
+          <h1>LEYENDAS DEL CULTURISMO</h1>
+          <p>Figuras que transformaron el mundo del fitness para siempre</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <section class="legends-intro">
+          <h2 class="section-title">El Impacto de las Leyendas</h2>
+          <p class="intro-text">El mundo del culturismo y el fitness ha sido moldeado por individuos excepcionales que no solo transformaron sus cuerpos, sino que inspiraron a millones y cambiaron la percepción cultural del entrenamiento con pesas. Estas leyendas dejaron un legado que trasciende las competiciones y se extiende a la cultura popular, la motivación personal y la ciencia del entrenamiento.</p>
+        </section>
+
+        <section class="legends-grid">
+          <div class="legend-card reveal-card">
+            <div class="legend-image">
+              <img src="https://hips.hearstapps.com/vidthumb/images/arnold-1640253694.jpg?resize=980:*" alt="Arnold Schwarzenegger">
+            </div>
+            <div class="legend-info">
+              <h3>Arnold Schwarzenegger</h3>
+              <p class="legend-title">El Roble Austriaco</p>
+              <p class="legend-description">Siete veces Mr. Olympia (1970-1975, 1980), Arnold revolucionó el culturismo y lo llevó al mainstream. Su carisma, físico impresionante y posterior carrera en Hollywood y la política expandieron enormemente la popularidad del deporte. Su filosofía de entrenamiento, detallada en "La Enciclopedia del Culturismo Moderno", sigue siendo referencia para culturistas de todo el mundo.</p>
+            </div>
+          </div>
+
+          <div class="legend-card reveal-card">
+            <div class="legend-image">
+              <img src="https://media.gq.com.mx/photos/605fb98e40c44aa45469e1c7/master/w_1600%2Cc_limit/ronnie%2520concurso.jpg" alt="Ronnie Coleman">
+            </div>
+            <div class="legend-info">
+              <h3>Ronnie Coleman</h3>
+              <p class="legend-title">El Rey</p>
+              <p class="legend-description">Ocho veces Mr. Olympia (1998-2005), Ronnie redefinió los límites del desarrollo muscular humano. Ex oficial de policía, combinaba rutinas de entrenamiento brutalmente intensas con pesos extremadamente pesados. Su frase "¡Ligero, baby!" mientras levantaba pesos enormes se convirtió en un meme del fitness. A pesar de múltiples cirugías por lesiones, su ética de trabajo y positividad siguen inspirando a millones.</p>
+            </div>
+          </div>
+
+          <div class="legend-card reveal-card">
+            <div class="legend-image">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0STPMMXsPI17740hyIQyTYPCIkLOP6b_0LQ&s" alt="Zyzz">
+            </div>
+            <div class="legend-info">
+              <h3>Aziz "Zyzz" Shavershian</h3>
+              <p class="legend-title">El Dios Estético</p>
+              <p class="legend-description">Aunque nunca compitió profesionalmente, Zyzz revolucionó la cultura fitness en internet a principios de la década de 2010. Pasó de ser un adolescente delgado a un ícono de la estética, inspirando a toda una generación con su transformación y personalidad carismática. Su prematura muerte a los 22 años solidificó su estatus de leyenda de culto en la comunidad del fitness.</p>
+            </div>
+          </div>
+
+          <div class="legend-card reveal-card">
+            <div class="legend-image">
+              <img src="https://images.squarespace-cdn.com/content/v1/659d79bfcbafbe5e3269d464/3e8744cf-cda6-4fc1-8007-4cf97457d96f/mike-Mentzer-heavy-duty-entrenamientos.jpg" alt="Mike Mentzer">
+            </div>
+            <div class="legend-info">
+              <h3>Mike Mentzer</h3>
+              <p class="legend-title">El Intelectual del Hierro</p>
+              <p class="legend-description">Mr. Universo 1979 y culturista profesional, Mentzer revolucionó las metodologías de entrenamiento con su sistema "Heavy Duty". Basado en principios de alta intensidad y recuperación extendida, desafió las prácticas convencionales de alto volumen. Filósofo del culturismo, sus teorías sobre el entrenamiento de alta intensidad siguen influyendo en los métodos modernos.</p>
+            </div>
+          </div>
+
+          <div class="legend-card reveal-card">
+            <div class="legend-image">
+              <img src="data:image/jpeg;base64,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" alt="Kevin Levrone">
+            </div>
+            <div class="legend-info">
+              <h3>Kevin Levrone</h3>
+              <p class="legend-title">El Maryland Muscle Machine</p>
+              <p class="legend-description">Uno de los culturistas más talentosos de los años 90, Levrone se ubicó segundo en Mr. Olympia cuatro veces. Conocido por su genética excepcional y capacidad para construir músculos rápidamente, sorprendió al mundo del fitness con su regreso a la competición a los 51 años. Su capacidad para combinar el culturismo con una carrera musical y actoral demostró la versatilidad de los atletas de élite.</p>
+            </div>
+          </div>
+
+          <div class="legend-card reveal-card">
+            <div class="legend-image">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy61LTLFyr9Yi0s9j4jGFCns4eHJ5i4udrO0GN6j1cYQjYjUlj8vWM5FoffBbAdcI0hOM&usqp=CAU" alt="David Laid">
+            </div>
+            <div class="legend-info">
+              <h3>David Laid</h3>
+              <p class="legend-title">El Prodigio de Internet</p>
+              <p class="legend-description">Representante de la nueva generación de influencers del fitness, Laid ganó popularidad documentando su transformación de adolescente delgado e inseguro a modelo fitness. Sus videos de transformación han inspirado a millones de jóvenes a comenzar su viaje en el fitness. Con un enfoque en la estética y la fuerza funcional, representa la evolución moderna del fitness en la era digital.</p>
+            </div>
+          </div>
+
+          <div class="legend-card reveal-card">
+            <div class="legend-image">
+              <img src="data:image/jpeg;base64,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" alt="Frank Zane">
+            </div>
+            <div class="legend-info">
+              <h3>Frank Zane</h3>
+              <p class="legend-title">El Químico</p>
+              <p class="legend-description">Tres veces Mr. Olympia (1977-1979), Zane personificó la perfección estética en el culturismo. Con un físico extraordinariamente proporcionado y definido, demostró que la calidad podía triunfar sobre la cantidad. Conocido por su enfoque intelectual y holístico del entrenamiento, incorporando meditación y visualización, estableció un estándar de simetría y definición raramente igualado.</p>
+            </div>
+          </div>
+
+          <div class="legend-card reveal-card">
+            <div class="legend-image">
+              <img src="data:image/jpeg;base64,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" alt="Dorian Yates">
+            </div>
+            <div class="legend-info">
+              <h3>Dorian Yates</h3>
+              <p class="legend-title">La Sombra</p>
+              <p class="legend-description">Seis veces Mr. Olympia (1992-1997), Yates transformó el culturismo con su enfoque de alta intensidad y su impresionante densidad muscular. Entrenando en el aislamiento de su gimnasio en Birmingham, revolucionó las técnicas de entrenamiento con su interpretación del entrenamiento HIT. Su desarrollo de la espalda, en particular, estableció nuevos estándares en el deporte.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="influence-section">
+          <h2 class="section-title">Legado e Influencia</h2>
+          <div class="influence-content">
+            <div class="influence-text">
+              <p>Estas leyendas han trascendido el ámbito del culturismo para influir en la cultura popular, los métodos de entrenamiento y la percepción pública del fitness. Sus filosofías y enfoques diversos muestran que no existe un único camino hacia la excelencia física.</p>
+              <p>Desde los métodos de alta intensidad de Mike Mentzer y Dorian Yates hasta el enfoque más equilibrado de Arnold Schwarzenegger, cada leyenda ha aportado perspectivas valiosas que continúan moldeando cómo entrenamos hoy.</p>
+              <p>Más allá de sus logros físicos, estas figuras icónicas nos enseñan lecciones sobre disciplina, perseverancia, superación personal y la búsqueda de la excelencia que se aplican mucho más allá del gimnasio.</p>
+            </div>
+            <div class="quote-box">
+              <blockquote>
+                "El culturismo es mucho más que levantar pesas. Es un estilo de vida, una filosofía y una forma de autodescubrimiento."
+                <cite>- Arnold Schwarzenegger</cite>
+              </blockquote>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-dumbbell"></i>
+          <span>GYM</span>
+        </div>
+        <div class="footer-links">
+          <ul>
+            <li><a href="#" data-page="home">Inicio</a></li>
+            <li><a href="#" data-page="olympia">Mr. Olympia</a></li>
+            <li><a href="#" data-page="legends">Leyendas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 GYM - Creado por Gilberto Gonzalez Jimenez 403</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
