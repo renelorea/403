@@ -1,0 +1,964 @@
+:root {
+    --primary-brown: #5D4037;
+    --secondary-green: #2E7D32;
+    --accent-gold: #FFD54F;
+    --light-tan: #D7CCC8;
+    --dark-brown: #3E2723;
+    --white: #FFFFFF;
+    --light-grey: #F5F5F5;
+    --dark-grey: #424242;
+    --transition-speed: 0.4s;
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--light-grey);
+    color: var(--dark-grey);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-grey);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-brown);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-brown);
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-brown);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.football-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.football {
+    width: 80px;
+    height: 120px;
+    background-color: var(--primary-brown);
+    border-radius: 50% / 60%;
+    position: relative;
+    margin-bottom: 20px;
+    animation: spin 2s infinite ease-in-out;
+    box-shadow: 0 0 30px rgba(255, 213, 79, 0.7);
+}
+
+.football-lace {
+    position: absolute;
+    background-color: var(--white);
+    width: 8px;
+    height: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.football-lace:nth-child(1) {
+    top: 30px;
+}
+
+.football-lace:nth-child(2) {
+    top: 55px;
+}
+
+.football-lace:nth-child(3) {
+    top: 80px;
+}
+
+.football-lace:nth-child(4) {
+    top: 105px;
+    height: 10px;
+}
+
+.football-loader p {
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+/* Animación para el cursor personalizado */
+@keyframes cursorPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.4;
+  }
+}
+
+/* Animación para fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación para slide desde la izquierda */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animación para slide desde la derecha */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animación para bounce */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animación para rotar continuamente */
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animación para parpadeo */
+@keyframes blink {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+/* Animación para efecto wave (oscilar horizontalmente) */
+@keyframes wave {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+/* Header and Navigation */
+header {
+    background-color: var(--primary-brown);
+    color: var(--white);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color var(--transition-speed);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.logo i {
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-right: 0.5rem;
+    animation: bounce 2s infinite;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--accent-gold);
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+    display: flex;
+    align-items: center;
+}
+
+nav ul li i {
+    margin-right: 0.5rem;
+}
+
+nav ul li:hover, nav ul li.active {
+    background-color: var(--secondary-green);
+}
+
+/* Main Content Area */
+main {
+    min-height: calc(100vh - 160px); /* Account for header and footer */
+}
+
+.page {
+    display: none;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Sections */
+.hero {
+    height: 50vh;
+    background-image: url('img/foondo.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: var(--white);
+    text-align: center;
+}
+
+.champions-hero {
+    background-image: url('img/descarga.jpg');
+}
+
+.teams-hero {
+    background-image: url('img/2.jpg');
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(62, 39, 35, 0.7), rgba(46, 125, 50, 0.7));
+}
+
+.hero h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+    padding: 0 1rem;
+}
+
+/* Content Containers */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    margin-top: -50px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.content-container h3 {
+    color: var(--primary-brown);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.content-container h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 4px;
+    background-color: var(--secondary-green);
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.text-content p {
+    margin-bottom: 1rem;
+}
+
+.image-content img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-speed);
+}
+
+.image-content img:hover {
+    transform: scale(1.02);
+}
+
+.caption {
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: var(--dark-grey);
+    text-align: center;
+}
+
+/* Feature List */
+.feature-list {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.feature-list li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.feature-list li i {
+    color: var(--secondary-green);
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
+}
+
+/* Scoring Section */
+.scoring-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--light-tan);
+}
+
+.score-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.score-card {
+    background-color: var(--light-grey);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.score-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.score-card h4 {
+    color: var(--primary-brown);
+    margin-bottom: 0.5rem;
+}
+
+.points {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-green);
+    margin-bottom: 0.5rem;
+}
+
+/* Champions Page Styles */
+.champions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.champion-card {
+    background-color: var(--light-grey);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed);
+}
+
+.champion-card:hover {
+    transform: translateY(-10px);
+}
+
+.team-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.patriot-bg {
+    background-color: #002244;
+    background-image: url('img/patriots.gif');
+}
+
+.steelers-bg {
+    background-color: #FFB612;
+    background-image: url('img/steelers.gif');
+}
+
+.sf-bg {
+    background-color: #AA0000;
+    background-image: url('img/sf.gif');
+}
+
+.dallas-bg {
+    background-color: #002244;
+    background-image: url('img/dallas.gif');
+}
+
+.packers-bg {
+    background-color: #203731;
+    background-image: url('img/packers.gif');
+}
+
+.giants-bg {
+    background-color: #0B2265;
+    background-image: url('img/ny.gif');
+}
+
+.champion-card h4 {
+    color: var(--primary-brown);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.wins {
+    font-weight: bold;
+    color: var(--secondary-green);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Super Bowl Facts */
+.super-bowl-facts {
+    margin-top: 3rem;
+}
+
+.facts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.fact {
+    background-color: var(--light-grey);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fact i {
+    font-size: 2rem;
+    color: var(--secondary-green);
+    margin-bottom: 1rem;
+}
+
+/* Teams Page Styles */
+.conferences {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.conference h4 {
+    color: var(--secondary-green);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-gold);
+}
+
+.division {
+    margin-bottom: 1.5rem;
+}
+
+.division h5 {
+    color: var(--primary-brown);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.division ul {
+    list-style: none;
+}
+
+.division ul li {
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed var(--light-tan);
+}
+
+.division ul li:last-child {
+    border-bottom: none;
+}
+
+/* Stadium Gallery */
+.iconic-stadiums {
+    margin-top: 3rem;
+}
+
+.stadium-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.stadium {
+    background-color: var(--light-grey);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed);
+}
+
+.stadium:hover {
+    transform: translateY(-8px);
+}
+
+.stadium img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform var(--transition-speed);
+}
+
+.stadium:hover img {
+    transform: scale(1.05);
+}
+
+.stadium h4 {
+    padding: 1rem 1rem 0.5rem;
+    color: var(--primary-brown);
+}
+
+.stadium p {
+    padding: 0 1rem 1rem;
+    font-size: 0.9rem;
+    color: var(--dark-grey);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-brown);
+    color: var(--white);
+    padding: 3rem 2rem 1rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo i {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    margin-right: 0.5rem;
+}
+
+.footer-logo h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links ul li a {
+    color: var(--light-tan);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+.footer-links ul li a:hover {
+    color: var(--accent-gold);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-brown);
+    color: var(--white);
+    border-radius: 50%;
+    transition: all var(--transition-speed);
+}
+
+.social-links a:hover {
+    background-color: var(--accent-gold);
+    color: var(--dark-brown);
+    transform: translateY(-5px);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: var(--light-tan);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+   
+    .content-container {
+        padding: 1.5rem;
+        margin-top: -30px;
+    }
+   
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+   
+    .menu-toggle {
+        display: block;
+    }
+   
+    nav {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background-color: var(--primary-brown);
+        padding: 2rem;
+        transition: right var(--transition-speed);
+        z-index: 200;
+    }
+   
+    nav.active {
+        right: 0;
+    }
+   
+    nav ul {
+        flex-direction: column;
+        margin-top: 2rem;
+    }
+   
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+   
+    .hero {
+        height: 40vh;
+    }
+   
+    .hero h2 {
+        font-size: 2rem;
+    }
+   
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+   
+    .footer-links, .social-links {
+        margin: 1.5rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+   
+    .content-container h3 {
+        font-size: 1.5rem;
+    }
+   
+    .hero {
+        height: 30vh;
+    }
+   
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+   
+    .score-cards, .champions-grid, .facts-container, .conferences, .stadium-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+/* Aquí está tu archivo CSS modificado con más animaciones añadidas */
+
+:root {
+    --primary-brown: #5D4037;
+    --secondary-green: #2E7D32;
+    --accent-gold: #FFD54F;
+    --light-tan: #D7CCC8;
+    --dark-brown: #3E2723;
+    --white: #FFFFFF;
+    --light-grey: #F5F5F5;
+    --dark-grey: #424242;
+    --transition-speed: 0.4s;
+    --border-radius: 8px;
+}
+
+/* Tu CSS original + animaciones extra */
+
+/* Agregado: efecto de entrada animada en .score-card y .champion-card */
+.score-card, .champion-card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.score-card:nth-child(1) { animation-delay: 0.1s; }
+.score-card:nth-child(2) { animation-delay: 0.2s; }
+.score-card:nth-child(3) { animation-delay: 0.3s; }
+
+.champion-card:nth-child(1) { animation-delay: 0.1s; }
+.champion-card:nth-child(2) { animation-delay: 0.2s; }
+.champion-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Agregado: animación al hacer hover sobre .fact */
+.fact:hover {
+    animation: pulseShadow 0.6s ease-in-out;
+}
+
+@keyframes pulseShadow {
+    0% {
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 213, 79, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Agregado: efecto de latido en .team-logo */
+.team-logo {
+    animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Agregado: animación de flotación en .stadium */
+.stadium {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Agregado: transición de color a botones dentro de nav al hacer hover */
+nav ul li {
+    transition: background-color var(--transition-speed), transform 0.3s ease;
+}
+
+nav ul li:hover {
+    transform: scale(1.05);
+}
+
+/* Agregado: efecto fade-slide para contenido */
+.content-container {
+    animation: fadeSlide 0.7s ease-in-out;
+}
+
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Agregado: parpadeo sutil a .logo i */
+.logo i {
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}

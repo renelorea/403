@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fútbol Americano</title>
+    <link rel="icon" href="img/nfl.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Pantalla de Carga -->
+    <div class="loading-screen">
+        <div class="football-loader">
+            <div class="football">
+                <div class="football-lace"></div>
+                <div class="football-lace"></div>
+                <div class="football-lace"></div>
+                <div class="football-lace"></div>
+            </div>
+            <p>Cargando...</p>
+        </div>
+    </div>
+
+    <!-- Encabezado con Logo y Navegación -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-football"></i>
+            <h1>NLF <span>Americano</span></h1>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li data-page="home" class="active"><i class="fas fa-home"></i> Inicio</li>
+                <li data-page="champions"><i class="fas fa-trophy"></i> Campeones</li>
+                <li data-page="teams"><i class="fas fa-users"></i> Equipos</li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Área Principal de Contenido -->
+    <main>
+        <!-- Página de Inicio -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <h2>El Emocionante Mundo del Fútbol Americano</h2>
+                <div class="hero-overlay"></div>
+            </div>
+           
+            <div class="content-container">
+                <h3>¿Qué es el Fútbol Americano?</h3>
+                <div class="two-column">
+                    <div class="text-content">
+                        <p>El fútbol americano es un deporte de equipo jugado por dos equipos de once jugadores en un campo rectangular con postes de gol en cada extremo. La ofensiva, el equipo con la posesión del balón ovalado, intenta avanzar por el campo corriendo con el balón o pasándolo, mientras que la defensa busca detener su avance y tomar el control del balón.</p>
+                       
+                        <p>El juego se divide en cuatro cuartos, normalmente de 15 minutos cada uno. Los puntos se anotan principalmente al avanzar el balón hasta la zona de anotación del equipo contrario para un touchdown o al patear el balón entre los postes de gol del oponente para un gol de campo.</p>
+                       
+                        <h4>Elementos Clave del Juego</h4>
+                        <ul class="feature-list">
+                        <li><i class="fas fa-football-ball"></i> <strong>El Balón:</strong> Balón de cuero con forma ovalada y cordones</li>
+                        <li><i class="fas fa-map-marked-alt"></i> <strong>El Campo:</strong> 100 yardas de largo con zonas de anotación de 10 yardas</li>
+                        <li><i class="fas fa-users"></i> <strong>Equipos:</strong>11 jugadores en el campo por equipo</li>
+                        <li><i class="fas fa-stopwatch"></i> <strong>Duración:</strong> Cuatro cuartos de 15 minutos</li>
+                        <li><i class="fas fa-trophy"></i> <strong>Super Bowl:</strong> El juego de campeonato anual</li>
+                    </ul>
+                    </div>
+                    <div class="image-content">
+                        <img src="img/brady.png" alt="Jugadores de fútbol en acción">
+                        <p class="caption">El fútbol profesional es conocido por su acción de alta intensidad y exhibiciones atléticas</p>
+                    </div>
+                </div>
+
+                <div class="scoring-section">
+                    <h3>Puntaje en el Fútbol Americano</h3>
+                    <div class="score-cards">
+                        <div class="score-card">
+                            <h4>Touchdown</h4>
+                            <p class="points">6 Puntos</p>
+                            <p>Se anota al llevar o atrapar el balón en la zona de anotación del oponente.</p>
+                        </div>
+                        <div class="score-card">
+                            <h4>Punto Extra</h4>
+                            <p class="points">1-2 Puntos</p>
+                            <p>Intento después de un touchdown: se puede patear (1 punto) o hacer otra jugada de anotación (2 puntos).</p>
+                        </div>
+                        <div class="score-card">
+                            <h4>Gol de Campo</h4>
+                            <p class="points">3 Puntos</p>
+                            <p>Se anota al patear el balón entre los postes del oponente.</p>
+                        </div>
+                        <div class="score-card">
+                            <h4>Safety</h4>
+                            <p class="points">2 Puntos</p>
+                            <p>Ocurre cuando el equipo ofensivo es tacleado en su propia zona de anotación.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de Campeones -->
+        <section id="champions" class="page">
+            <div class="hero champions-hero">
+                <h2>Campeones del Super Bowl</h2>
+                <div class="hero-overlay"></div>
+            </div>
+           
+            <div class="content-container">
+                <h3>Equipos con Más Victorias en el Super Bowl</h3>
+                <p>El Super Bowl es el juego de campeonato anual de la NFL y representa la cima del éxito en el fútbol americano. Aquí están los equipos con más títulos:</p>
+               
+                <div class="champions-grid">
+                    <div class="champion-card">
+                        <div class="team-logo patriot-bg"></div>
+                        <h4>New England Patriots</h4>
+                        <p class="wins">6 Victorias</p>
+                        <p>Años: 2001, 2003, 2004, 2014, 2016, 2018</p>
+                    </div>
+                    <div class="champion-card">
+                        <div class="team-logo steelers-bg"></div>
+                        <h4>Pittsburgh Steelers</h4>
+                        <p class="wins">6 Victorias</p>
+                        <p>Años: 1974, 1975, 1978, 1979, 2005, 2008</p>
+                    </div>
+                    <div class="champion-card">
+                        <div class="team-logo sf-bg"></div>
+                        <h4>San Francisco 49ers</h4>
+                        <p class="wins">5 Victorias</p>
+                        <p>Años: 1981, 1984, 1988, 1989, 1994</p>
+                    </div>
+                    <div class="champion-card">
+                        <div class="team-logo dallas-bg"></div>
+                        <h4>Dallas Cowboys</h4>
+                        <p class="wins">5 Victorias</p>
+                        <p>Años: 1971, 1977, 1992, 1993, 1995</p>
+                    </div>
+                    <div class="champion-card">
+                        <div class="team-logo packers-bg"></div>
+                        <h4>Green Bay Packers</h4>
+                        <p class="wins">4 Victorias</p>
+                        <p>Años: 1966, 1967, 1996, 2010</p>
+                    </div>
+                    <div class="champion-card">
+                        <div class="team-logo giants-bg"></div>
+                        <h4>New York Giants</h4>
+                        <p class="wins">4 Victorias</p>
+                        <p>Años: 1986, 1990, 2007, 2011</p>
+                    </div>
+                </div>
+               
+                <div class="super-bowl-facts">
+                    <h3>Datos Curiosos del Super Bowl</h3>
+                    <div class="facts-container">
+                        <div class="fact">
+                            <i class="fas fa-tv"></i>
+                            <p>El Super Bowl es uno de los eventos televisivos más vistos en EE.UU., con más de 100 millones de espectadores cada año.</p>
+                        </div>
+                        <div class="fact">
+                            <i class="fas fa-music"></i>
+                            <p>El show de medio tiempo ha contado con artistas legendarios como Michael Jackson, Prince, Madonna y Beyoncé.</p>
+                        </div>
+                        <div class="fact">
+                            <i class="fas fa-ad"></i>
+                            <p>Las compañías pagan millones de dólares por anuncios de 30 segundos durante la transmisión.</p>
+                        </div>
+                        <div class="fact">
+                            <i class="fas fa-utensils"></i>
+                            <p>El domingo del Super Bowl es el segundo día de mayor consumo de alimentos en EE.UU., solo después del Día de Acción de Gracias.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Página de Equipos -->
+        <section id="teams" class="page">
+            <div class="hero teams-hero">
+                <h2>Equipos de la NFL</h2>
+                <div class="hero-overlay"></div>
+            </div>
+           
+            <div class="content-container">
+                <h3>Estructura de Conferencias</h3>
+                <p>La NFL está dividida en dos conferencias: la Conferencia Americana (AFC) y la Conferencia Nacional (NFC). Cada una tiene cuatro divisiones: Norte, Sur, Este y Oeste.</p>
+               
+                <div class="conferences">
+                    <div class="conference">
+                        <h4>Equipos AFC</h4>
+                        <div class="division">
+                            <h5>AFC Este</h5>
+                            <ul>
+                                <li>Buffalo Bills</li>
+                                <li>Miami Dolphins</li>
+                                <li>New England Patriots</li>
+                                <li>New York Jets</li>
+                            </ul>
+                        </div>
+                        <div class="division">
+                            <h5>AFC Norte</h5>
+                            <ul>
+                                <li>Baltimore Ravens</li>
+                                <li>Cincinnati Bengals</li>
+                                <li>Cleveland Browns</li>
+                                <li>Pittsburgh Steelers</li>
+                            </ul>
+                        </div>
+                        <div class="division">
+                            <h5>AFC Sur</h5>
+                            <ul>
+                                <li>Houston Texans</li>
+                                <li>Indianapolis Colts</li>
+                                <li>Jacksonville Jaguars</li>
+                                <li>Tennessee Titans</li>
+                            </ul>
+                        </div>
+                        <div class="division">
+                            <h5>AFC Oeste</h5>
+                            <ul>
+                                <li>Denver Broncos</li>
+                                <li>Kansas City Chiefs</li>
+                                <li>Las Vegas Raiders</li>
+                                <li>Los Angeles Chargers</li>
+                            </ul>
+                        </div>
+                    </div>
+                   
+                    <div class="conference">
+                        <h4>Equipos NFC</h4>
+                        <div class="division">
+                            <h5>NFC Este</h5>
+                            <ul>
+                                <li>Dallas Cowboys</li>
+                                <li>New York Giants</li>
+                                <li>Philadelphia Eagles</li>
+                                <li>Washington Commanders</li>
+                            </ul>
+                        </div>
+                        <div class="division">
+                            <h5>NFC Norte</h5>
+                            <ul>
+                                <li>Chicago Bears</li>
+                                <li>Detroit Lions</li>
+                                <li>Green Bay Packers</li>
+                                <li>Minnesota Vikings</li>
+                            </ul>
+                        </div>
+                        <div class="division">
+                            <h5>NFC Sur</h5>
+                            <ul>
+                                <li>Atlanta Falcons</li>
+                                <li>Carolina Panthers</li>
+                                <li>New Orleans Saints</li>
+                                <li>Tampa Bay Buccaneers</li>
+                            </ul>
+                        </div>
+                        <div class="division">
+                            <h5>NFC Oeste</h5>
+                            <ul>
+                                <li>Arizona Cardinals</li>
+                                <li>Los Angeles Rams</li>
+                                <li>San Francisco 49ers</li>
+                                <li>Seattle Seahawks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="iconic-stadiums">
+                    <h3>Estadios Icónicos de la NFL</h3>
+                    <div class="stadium-gallery">
+                        <div class="stadium">
+                            <img src="img/Sofi.jpg" alt="Estadio de Fútbol">
+                            <h4>SoFi Stadium</h4>
+                            <p>Casa de Los Angeles Rams y Los Angeles Chargers</p>
+                        </div>
+                        <div class="stadium">
+                            <img src="img/att.jpg" alt="Estadio de Fútbol">
+                            <h4>AT&T Stadium</h4>
+                            <p>Casa de los Dallas Cowboys</p>
+                        </div>
+                        <div class="stadium">
+                            <img src="img/Lambeau.png" alt="Estadio de Fútbol">
+                            <h4>Lambeau Field</h4>
+                            <p>Casa de los Green Bay Packers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-football"></i>
+                <h3>NFL AMERICANO</h3>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#champions">Campeones</a></li>
+                    <li><a href="#teams">Equipos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 NFL AMERICANO. Realizado por Erick 403.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
