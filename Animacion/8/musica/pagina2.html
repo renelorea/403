@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Teoría Musical - Detalles</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1rem 5rem;
+    overflow-x: hidden;
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 30px;
+    padding: 2.5rem 3rem;
+    max-width: 900px;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+  }
+
+  .container:nth-child(2) { animation-delay: 0.2s; }
+  .container:nth-child(3) { animation-delay: 0.4s; }
+  .container:nth-child(4) { animation-delay: 0.6s; }
+  .container:nth-child(5) { animation-delay: 0.8s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+  }
+
+  .container::before,
+  .container::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    animation: pulse 6s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  .container::before {
+    width: 160px;
+    height: 160px;
+    background: #ffde59;
+    top: -60px;
+    left: -60px;
+    animation-delay: 0s;
+  }
+
+  .container::after {
+    width: 260px;
+    height: 260px;
+    background: #1db954;
+    bottom: -110px;
+    right: -110px;
+    animation-delay: 3s;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.25;
+    }
+    50% {
+      transform: scale(1.15);
+      opacity: 0.1;
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 span {
+    display: inline-block;
+    animation: colorShift 4s infinite alternate;
+  }
+
+  h1 span:nth-child(odd) {
+    animation-delay: 0s;
+  }
+
+  h1 span:nth-child(even) {
+    animation-delay: 2s;
+  }
+
+  @keyframes colorShift {
+    0% { color: #ffde59; }
+    50% { color: #1db954; }
+    100% { color: #ffde59; }
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffde59;
+    position: relative;
+    z-index: 1;
+    border-bottom: 2px solid #1db954;
+    padding-bottom: 0.3rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    color: #eaeaea;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    margin: 1rem auto 2rem;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  img:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 0 30px rgba(255, 222, 89, 0.6);
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    width: 100%;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+
+  .btn {
+    background: linear-gradient(45deg, #ffde59, #1db954);
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #222;
+    box-shadow: 0 8px 20px rgba(255, 222, 89, 0.5);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    flex: 1;
+    user-select: none;
+  }
+
+  .btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -25%;
+    width: 150%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(25deg);
+    transition: all 0.5s ease;
+  }
+
+  .btn:hover::before {
+    left: 125%;
+  }
+
+  .btn:hover {
+    box-shadow: 0 12px 30px rgba(29, 185, 84, 0.8);
+    transform: scale(1.05);
+  }
+
+  .particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes floatUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Layout responsive */
+  @media (min-width: 768px) {
+    .container {
+      padding: 3rem 4rem;
+    }
+
+    img {
+      height: auto;
+    }
+
+    .btn-container {
+      max-width: 900px;
+    }
+  }
+</style>
+</head>
+<body>
+  <h1 aria-label="Detalles sobre Teoría Musical">
+    <span>T</span><span>e</span><span>o</span><span>r</span><span>í</span><span>a</span> 
+    <span>M</span><span>u</span><span>s</span><span>i</span><span>c</span><span>a</span> 🎼
+  </h1>
+
+  <div class="container" role="region" aria-labelledby="notas">
+    <h2 id="notas">Notas Musicales 🎵</h2>
+    <p>Las notas musicales son los símbolos que representan sonidos con diferentes alturas. En la música occidental hay 12 notas: Do, Do♯/Re♭, Re, Re♯/Mi♭, Mi, Fa, Fa♯/Sol♭, Sol, Sol♯/La♭, La, La♯/Si♭ y Si. Estas forman la base para crear melodías y armonías.</p>
+    <img src="https://miguitarraelectrica.com/wp-content/uploads/2021/07/notas-musicales-nombres-.png" alt="Notas musicales y sus nombres">
+  </div>
+
+  <div class="container" role="region" aria-labelledby="escalas">
+    <h2 id="escalas">Escalas 🎼</h2>
+    <p>Una escala es una sucesión ordenada de notas que forman un patrón específico. La escala más común es la escala mayor, que tiene un sonido brillante y alegre. También existen escalas menores, pentatónicas y muchas más, que aportan diferentes emociones y colores a la música.</p>
+    <img src="https://escuelavirtualdemusica.com/wp-content/uploads/2019/06/1-explicaci%C3%B3n-de-qu%C3%A9-es-una-escala.jpg" alt="Ejemplo de escalas musicales">
+  </div>
+
+  <div class="container" role="region" aria-labelledby="acordes">
+    <h2 id="acordes">Acordes 🎹</h2>
+    <p>Los acordes son combinaciones de notas que suenan juntas simultáneamente. Forman la armonía de una pieza musical. Los acordes pueden ser mayores, menores, disminuidos, aumentados y más, cada uno con su propio carácter y uso en la música.</p>
+    <img src="https://media.istockphoto.com/id/1267634160/es/vector/conjunto-de-iconos-de-acordes-de-guitarra.jpg?s=612x612&w=0&k=20&c=bvg_q7V-DtBcS8JBy165mKN-UQJsl5HsjwJaCHRUCkE=" alt="Iconos de acordes de guitarra">
+  </div>
+
+  <div class="container" role="region" aria-labelledby="ritmo">
+    <h2 id="ritmo">Ritmo 🥁</h2>
+    <p>El ritmo es el patrón temporal de los sonidos y silencios en la música. Determina la velocidad y la organización temporal, lo que hace que la música sea dinámica y movida. El compás y los tiempos son fundamentales para mantener el pulso rítmico.</p>
+    <img src="https://miro.medium.com/v2/resize:fit:1098/1*OXWr9BI1E2quxiApxnWwuA.jpeg" alt="Ejemplo visual de ritmo musical">
+  </div>
+
+  <div class="btn-container" role="navigation" aria-label="Navegación entre páginas">
+    <a href="index.html" class="btn" aria-label="Volver a la página principal de teoría musical">Volver a Inicio</a>
+    <a href="pagina3.html" class="btn" aria-label="Ir a la siguiente página de teoría musical">Siguiente Página</a>
+  </div>
+
+  <div class="particles" aria-hidden="true"></div>
+
+  <script>
+    const particlesContainer = document.querySelector('.particles');
+    const numParticles = 30;
+
+    for(let i = 0; i < numParticles; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      const size = Math.random() * 8 + 4;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDuration = `${Math.random() * 5 + 5}s`;
+      particle.style.animationName = 'floatUpDown';
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      particle.style.background = `rgba(255, 255, 255, ${Math.random() * 0.2 + 0.1})`;
+      particlesContainer.appendChild(particle);
+    }
+  </script>
+</body>
+</html>

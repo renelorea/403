@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Teoría Musical Animada</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 30px;
+    padding: 3rem 4rem;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container::before,
+  .container::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    animation: pulse 6s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  .container::before {
+    width: 180px;
+    height: 180px;
+    background: #ffde59;
+    top: -70px;
+    left: -70px;
+    animation-delay: 0s;
+  }
+
+  .container::after {
+    width: 280px;
+    height: 280px;
+    background: #1db954;
+    bottom: -130px;
+    right: -130px;
+    animation-delay: 3s;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.25;
+    }
+    50% {
+      transform: scale(1.15);
+      opacity: 0.1;
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  h1 span {
+    display: inline-block;
+    animation: colorShift 4s infinite alternate;
+  }
+
+  h1 span:nth-child(odd) {
+    animation-delay: 0s;
+  }
+
+  h1 span:nth-child(even) {
+    animation-delay: 2s;
+  }
+
+  @keyframes colorShift {
+    0% { color: #ffde59; }
+    50% { color: #1db954; }
+    100% { color: #ffde59; }
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    color: #eaeaea;
+  }
+
+  .btn {
+    background: linear-gradient(45deg, #ffde59, #1db954);
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #222;
+    box-shadow: 0 8px 20px rgba(255, 222, 89, 0.5);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -25%;
+    width: 150%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(25deg);
+    transition: all 0.5s ease;
+  }
+
+  .btn:hover::before {
+    left: 125%;
+  }
+
+  .btn:hover {
+    box-shadow: 0 12px 30px rgba(29, 185, 84, 0.8);
+    transform: scale(1.05);
+  }
+
+  /* Fondo dinámico con partículas sutiles */
+  .particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes floatUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+</style>
+</head>
+<body>
+  <div class="container" role="main" aria-label="Teoría Musical">
+    <h1 aria-label="Teoría Musical Animada">
+      <span>T</span><span>e</span><span>o</span><span>r</span><span>í</span><span>a</span> 
+      <span>M</span><span>u</span><span>s</span><span>i</span><span>c</span><span>a</span><span>l</span> 🎵
+    </h1>
+    <p>Explora los fundamentos de la música: notas, escalas, acordes y ritmos. Aprende a entender y crear melodías con pasión y precisión. 🎼🎶</p>
+    <a href="pagina2.html" target="_blank" rel="noopener" class="btn" aria-label="Comenzar aprendizaje de teoría musical">
+  Comenzar Aprendizaje
+</a>
+  </div>
+
+  <div class="particles"></div>
+
+  <script>
+    const particlesContainer = document.querySelector('.particles');
+    const numParticles = 30;
+
+    for(let i = 0; i < numParticles; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      const size = Math.random() * 8 + 4; 
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDuration = `${Math.random() * 5 + 5}s`;
+      particle.style.animationName = 'floatUpDown';
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      particle.style.background = `rgba(255, 255, 255, ${Math.random() * 0.2 + 0.1})`;
+      particlesContainer.appendChild(particle);
+    }
+  </script>
+</body>
+</html>
