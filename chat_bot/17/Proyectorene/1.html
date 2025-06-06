@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fútbol IA Navegación</title>
+  <style>
+    @property --glow-angle {
+      syntax: "<angle>";
+      inherits: true;
+      initial-value: 0deg;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      background-color: #000;
+      color: #d0d0d0;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      overflow-x: hidden;
+    }
+
+    .search-bar {
+      width: 90%;
+      max-width: 900px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 100;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+      border-radius: 1.5rem;
+      border: 4px solid transparent;
+      background:
+        linear-gradient(#fff, #fff) padding-box,
+        conic-gradient(from var(--glow-angle), red, yellow, lime, cyan, blue, magenta, red) border-box;
+      animation: rotateGlow 6s linear infinite;
+      color: #000;
+      background-color: #fff;
+      outline: none;
+      box-shadow: 0 0 20px rgba(255,255,255,0.15), 0 0 40px rgba(255,255,255,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .search-input:focus {
+      transform: scale(1.02);
+    }
+
+    .section {
+      display: none;
+      position: relative;
+      padding: 4rem 2rem;
+      width: 90%;
+      max-width: 900px;
+      background-color: #111;
+      border-radius: 1.5rem;
+      z-index: 1;
+      border: 4px solid transparent;
+      background:
+        linear-gradient(#111, #111) padding-box,
+        conic-gradient(from var(--glow-angle), red, yellow, lime, cyan, blue, magenta, red) border-box;
+      animation: rotateGlow 6s linear infinite;
+      box-shadow: 0 0 20px rgba(0,255,255,0.15), 0 0 60px rgba(0,255,255,0.1);
+      isolation: isolate;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .section.active {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: inherit;
+      background: conic-gradient(from var(--glow-angle), red, yellow, lime, cyan, blue, magenta, red);
+      filter: blur(30px);
+      z-index: -1;
+      animation: rotateGlow 6s linear infinite;
+      opacity: 0.4;
+    }
+
+    /* Animación del balón flotante */
+    .floating-ball {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle at 30% 30%, white 5%, #000 6%, #000 15%, white 16%, white 25%, #000 26%, #000 35%, white 36%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(100px, -50px) rotate(90deg); }
+      50% { transform: translate(200px, 0) rotate(180deg); }
+      75% { transform: translate(100px, 50px) rotate(270deg); }
+    }
+
+    /* Estilos para la sección de tácticas */
+    .tactics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .formation-card {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .formation-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+
+    .formation-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+    }
+
+    .formation-card:hover::before {
+      transform: translateX(100%);
+    }
+
+    .formation-field {
+      width: 100%;
+      aspect-ratio: 2/3;
+      background: linear-gradient(165deg, #0a5c0a 0%, #0a8f0a 50%, #0a5c0a 100%);
+      border-radius: 10px;
+      position: relative;
+      margin: 1rem 0;
+      overflow: hidden;
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+    }
+
+    .player-dot {
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+
+    .formation-field:hover .player-dot {
+      transform: scale(1.5);
+      box-shadow: 0 0 15px rgba(255,255,255,0.8);
+    }
+
+    /* Líneas del campo animadas */
+    .field-line {
+      position: absolute;
+      background: rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .field-line.horizontal {
+      height: 1px;
+      width: 100%;
+      transform-origin: left;
+    }
+
+    .field-line.vertical {
+      width: 1px;
+      height: 100%;
+      transform-origin: top;
+    }
+
+    .formation-field:hover .field-line {
+      background: rgba(255,255,255,0.4);
+    }
+
+    /* Animación de pulso mejorada */
+    @keyframes playerPulse {
+      0% { transform: scale(1); box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+      50% { transform: scale(1.8); box-shadow: 0 0 20px rgba(255,255,255,0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    }
+
+    .player-dot.active {
+      animation: playerPulse 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Lista de principios tácticos animada */
+    .tactics-list li {
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideIn 0.5s forwards;
+      animation-delay: calc(var(--li-index) * 0.1s);
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes rotateGlow {
+      to {
+        --glow-angle: 360deg;
+      }
+    }
+
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      .tactics-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .formation-card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Balones flotantes -->
+  <div class="floating-ball" style="top: 20%; left: 10%"></div>
+  <div class="floating-ball" style="top: 60%; left: 80%"></div>
+  <div class="floating-ball" style="top: 40%; left: 50%"></div>
+
+  <div class="search-bar">
+    <input class="search-input" type="text" placeholder="Escribe: qué es, reglas, leyendas, tácticas..." oninput="navigateSection(this.value)">
+  </div>
+
+  <!-- Pantalla 1: ¿Qué es el fútbol? -->
+  <div class="section active" id="pantalla1">
+    <h1>¿Qué es el fútbol?</h1>
+    <p>El fútbol es el deporte más popular del mundo. Se juega entre dos equipos de once jugadores en un campo rectangular con una portería en cada extremo. El objetivo es anotar goles pateando el balón dentro del arco rival.</p>
+    <p>Se juega en dos tiempos de 45 minutos, y el equipo que anote más goles gana. Además de ser un deporte, es una pasión cultural que une a millones en todo el mundo.</p>
+  </div>
+
+  <!-- Pantalla 2: Reglas y Torneos -->
+  <div class="section" id="pantalla2">
+    <h2>Reglas y Torneos</h2>
+    <ul>
+      <li>No se puede tocar el balón con las manos (salvo el portero en su área).</li>
+      <li>Se sancionan faltas, fuera de juego y tarjetas por conducta antideportiva.</li>
+      <li>El VAR se usa actualmente para revisar jugadas polémicas.</li>
+    </ul>
+    <h3>Torneos más importantes</h3>
+    <ul>
+      <li><strong>Copa del Mundo (FIFA World Cup)</strong></li>
+      <li>Champions League</li>
+      <li>Eurocopa</li>
+      <li>Copa América</li>
+      <li>Ligas locales (Premier League, LaLiga, Serie A, etc.)</li>
+    </ul>
+  </div>
+
+  <!-- Pantalla 3: Leyendas -->
+  <div class="section" id="pantalla3">
+    <h2>Leyendas del Fútbol y Grandes Goleadores</h2>
+    <ul>
+      <li>Pelé (Brasil)</li>
+      <li>Diego Maradona (Argentina)</li>
+      <li>Johan Cruyff (Países Bajos)</li>
+      <li>Lionel Messi (Argentina)</li>
+      <li>Cristiano Ronaldo (Portugal)</li>
+    </ul>
+    <h3>Máximos Goleadores Históricos</h3>
+    <ul>
+      <li>Cristiano Ronaldo</li>
+      <li>Josef Bican</li>
+      <li>Romário</li>
+      <li>Lionel Messi</li>
+      <li>Pelé</li>
+    </ul>
+  </div>
+
+  <!-- Pantalla 4: Tácticas -->
+  <div class="section" id="pantalla4">
+    <h2>Tácticas y Formaciones</h2>
+    <p>Las formaciones tácticas son fundamentales en el fútbol moderno. Cada una tiene sus ventajas y se adapta a diferentes estilos de juego.</p>
+    
+    <div class="tactics-grid">
+      <div class="formation-card" onclick="showFormation('4-3-3')">
+        <h3>4-3-3</h3>
+        <div class="formation-field" id="field-433"></div>
+        <p>Formación ofensiva y equilibrada</p>
+      </div>
+      
+      <div class="formation-card" onclick="showFormation('4-4-2')">
+        <h3>4-4-2</h3>
+        <div class="formation-field" id="field-442"></div>
+        <p>Formación clásica y versátil</p>
+      </div>
+      
+      <div class="formation-card" onclick="showFormation('3-5-2')">
+        <h3>3-5-2</h3>
+        <div class="formation-field" id="field-352"></div>
+        <p>Formación con énfasis en el mediocampo</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 2rem;">Principios Tácticos</h3>
+    <ul class="tactics-list">
+      <li style="--li-index: 1">Presión alta: Recuperar el balón cerca del área rival</li>
+      <li style="--li-index: 2">Posesión: Mantener el control del balón</li>
+      <li style="--li-index: 3">Contraataque: Atacar rápidamente tras recuperar</li>
+      <li style="--li-index: 4">Pressing: Presionar al rival para forzar errores</li>
+    </ul>
+  </div>
+
+  <script>
+    function navigateSection(value) {
+      const input = value.toLowerCase();
+      const secciones = {
+        'qué es': 'pantalla1',
+        'que es': 'pantalla1',
+        'inicio': 'pantalla1',
+        'reglas': 'pantalla2',
+        'torneos': 'pantalla2',
+        'leyendas': 'pantalla3',
+        'goleadores': 'pantalla3',
+        'mejores': 'pantalla3',
+        'tacticas': 'pantalla4',
+        'formaciones': 'pantalla4'
+      };
+
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+
+      for (const clave in secciones) {
+        if (input.includes(clave)) {
+          document.getElementById(secciones[clave]).classList.add('active');
+          return;
+        }
+      }
+
+      document.getElementById('pantalla1').classList.add('active');
+    }
+
+    function createFormationField(fieldId) {
+      const field = document.getElementById(fieldId);
+      
+      // Agregar líneas del campo
+      const lines = [
+        { class: 'horizontal', style: 'top: 50%;' },
+        { class: 'vertical', style: 'left: 50%;' },
+        { class: 'horizontal', style: 'top: 20%;' },
+        { class: 'horizontal', style: 'top: 80%;' }
+      ];
+
+      lines.forEach(line => {
+        const div = document.createElement('div');
+        div.className = `field-line ${line.class}`;
+        div.style = line.style;
+        field.appendChild(div);
+      });
+    }
+
+    function createFormation(fieldId, positions) {
+      const field = document.getElementById(fieldId);
+      createFormationField(fieldId);
+      
+      positions.forEach((pos, index) => {
+        const player = document.createElement('div');
+        player.className = 'player-dot';
+        player.style.left = pos[0] + '%';
+        player.style.top = pos[1] + '%';
+        field.appendChild(player);
+      });
+    }
+
+    const formations = {
+      '4-3-3': [
+        [50, 90], // Portero
+        [20, 70], [35, 70], [65, 70], [80, 70], // Defensas
+        [35, 50], [50, 45], [65, 50], // Mediocampistas
+        [20, 20], [50, 15], [80, 20] // Delanteros
+      ],
+      '4-4-2': [
+        [50, 90], // Portero
+        [20, 70], [35, 70], [65, 70], [80, 70], // Defensas
+        [20, 45], [35, 45], [65, 45], [80, 45], // Mediocampistas
+        [35, 20], [65, 20] // Delanteros
+      ],
+      '3-5-2': [
+        [50, 90], // Portero
+        [30, 70], [50, 70], [70, 70], // Defensas
+        [20, 45], [35, 45], [50, 40], [65, 45], [80, 45], // Mediocampistas
+        [35, 20], [65, 20] // Delanteros
+      ]
+    };
+
+    window.onload = function() {
+      createFormation('field-433', formations['4-3-3']);
+      createFormation('field-442', formations['4-4-2']);
+      createFormation('field-352', formations['3-5-2']);
+    };
+
+    function showFormation(formation) {
+      const field = document.getElementById(`field-${formation.replace(/-/g, '')}`);
+      const dots = field.querySelectorAll('.player-dot');
+      
+      dots.forEach((dot, index) => {
+        setTimeout(() => {
+          dot.classList.add('active');
+          setTimeout(() => dot.classList.remove('active'), 1200);
+        }, index * 150);
+      });
+    }
+  </script>
+</body>
+</html>
