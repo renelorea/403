@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teoría Musical - Videos Explicativos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem 5rem;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: colorShift 5s infinite alternate;
+    }
+
+    @keyframes colorShift {
+      0% { color: #ffde59; }
+      50% { color: #1db954; }
+      100% { color: #ffde59; }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 30px;
+      padding: 2rem 3rem;
+      max-width: 900px;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ffde59;
+      border-bottom: 2px solid #1db954;
+      padding-bottom: 0.3rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: #eaeaea;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(29, 185, 84, 0.5);
+      margin-bottom: 1.5rem;
+      outline: none;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      background: linear-gradient(45deg, #ffde59, #1db954);
+      border: none;
+      padding: 1rem 3rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      color: #222;
+      box-shadow: 0 8px 20px rgba(255, 222, 89, 0.5);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -25%;
+      width: 150%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.25);
+      transform: rotate(25deg);
+      transition: all 0.5s ease;
+    }
+
+    .btn:hover::before {
+      left: 125%;
+    }
+
+    .btn:hover {
+      box-shadow: 0 12px 30px rgba(29, 185, 84, 0.8);
+      transform: scale(1.05);
+    }
+
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 3rem 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Teoría Musical - Videos 🎥</h1>
+
+  <div class="container" role="region" aria-labelledby="notas-musicales">
+    <h2 id="notas-musicales">Notas Musicales 🎵</h2>
+    <p>Conoce las notas musicales básicas y cómo se representan en la teoría musical con este video explicativo.</p>
+    <iframe src="https://www.youtube.com/embed/wr_hZPsu6Ec" title="Notas Musicales"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="container" role="region" aria-labelledby="escalas">
+    <h2 id="escalas">Escalas 🎼</h2>
+    <p>Descubre cómo funcionan las escalas musicales y su importancia en la música a través de este video.</p>
+    <iframe src="https://www.youtube.com/embed/OdYIS8KXdFI" title="Escalas Musicales"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="container" role="region" aria-labelledby="acordes">
+    <h2 id="acordes">Acordes 🎹</h2>
+    <p>Aprende cómo se forman los acordes y su papel en la armonía musical con este video instructivo.</p>
+    <iframe src="https://www.youtube.com/embed/c_IR5o5Z2D8" title="Acordes Musicales"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="container" role="region" aria-labelledby="ritmos">
+    <h2 id="ritmos">Ritmos 🥁</h2>
+    <p>Explora los diferentes tipos de ritmos y cómo se usan en la música a través de este video.</p>
+    <iframe src="https://www.youtube.com/embed/0Zo6flU6uUQ" title="Ritmos Musicales"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="btn-group">
+    <a href="pagina2.html" class="btn" aria-label="Volver a la página 2">⬅ Volver</a>
+    <a href="pagina4.html" class="btn" aria-label="Ir a la página 4">Siguiente ➡</a>
+  </div>
+
+  <div class="particles"></div>
+
+  <script>
+    const particlesContainer = document.querySelector('.particles');
+    const numParticles = 30;
+
+    for(let i = 0; i < numParticles; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      const size = Math.random() * 8 + 4;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDuration = `${Math.random() * 5 + 5}s`;
+      particle.style.animationName = 'floatUpDown';
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      particle.style.background = `rgba(255, 255, 255, ${Math.random() * 0.2 + 0.1})`;
+      particlesContainer.appendChild(particle);
+    }
+  </script>
+</body>
+</html>
