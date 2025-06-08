@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot Educativo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .chat-container {
+      width: 350px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-box {
+      overflow-y: auto;
+      max-height: 300px;
+      margin-bottom: 15px;
+    }
+
+    .user-input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      width: calc(100% - 60px);
+      margin-right: 10px;
+    }
+
+    .send-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .send-btn:hover {
+      background-color: #45a049;
+    }
+
+    .chat-message {
+      margin-bottom: 10px;
+    }
+
+    .bot-message {
+      background-color: #e1f7d5;
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    .user-message {
+      background-color: #f0f0f0;
+      padding: 8px;
+      border-radius: 5px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-container">
+    <div id="chat-box" class="chat-box"></div>
+    <input type="text" id="user-input" class="user-input" placeholder="Escribe tu pregunta...">
+    <button onclick="sendMessage()" class="send-btn">Enviar</button>
+  </div>
+
+  <script>
+    // Respuestas predefinidas según el tema
+    const responses = {
+      "futbol": {
+        "¿Quién es el mejor jugador de fútbol?": "Lionel Messi es considerado uno de los mejores jugadores de fútbol de todos los tiempos.",
+        "¿Cuántos jugadores hay en un equipo de fútbol?": "En un equipo de fútbol hay 11 jugadores en el campo.",
+        "¿Qué es un gol?": "Un gol es cuando el balón entra completamente dentro de la portería contraria."
+      },
+      "redes sociales": {
+        "¿Qué es Facebook?": "Facebook es una red social que permite a las personas conectarse, compartir contenido y comunicarse.",
+        "¿Qué es Twitter?": "Twitter es una plataforma de microblogging donde los usuarios pueden publicar mensajes de hasta 280 caracteres.",
+        "¿Qué es Instagram?": "Instagram es una red social centrada en compartir fotos y videos."
+      },
+      "algebra": {
+        "¿Qué es una variable en álgebra?": "Una variable es un símbolo que representa un valor desconocido o variable.",
+        "¿Qué es una ecuación?": "Una ecuación es una igualdad matemática que contiene una o más variables.",
+        "¿Qué es una fracción?": "Una fracción es una expresión que representa una parte de un todo."
+      },
+      "maquillaje": {
+        "¿Qué es el maquillaje?": "El maquillaje es el uso de productos cosméticos para embellecer o cambiar la apariencia de la cara.",
+        "¿Qué es una base de maquillaje?": "La base de maquillaje es un producto que se aplica sobre la piel para unificar el tono y ocultar imperfecciones.",
+        "¿Qué es el delineador de ojos?": "El delineador de ojos es un cosmético utilizado para definir los ojos."
+      },
+      "alimentacion": {
+        "¿Qué es una dieta balanceada?": "Una dieta balanceada incluye una variedad de alimentos en proporciones adecuadas para mantener la salud.",
+        "¿Qué es una vitamina?": "Las vitaminas son compuestos orgánicos esenciales para el funcionamiento normal del cuerpo.",
+        "¿Cuántos alimentos debemos consumir al día?": "Es recomendable consumir entre 5 y 6 porciones de alimentos variados al día."
+      },
+      "gym": {
+        "¿Qué es el ejercicio cardiovascular?": "El ejercicio cardiovascular es cualquier actividad física que aumenta el ritmo cardíaco, como correr o nadar.",
+        "¿Qué es el levantamiento de pesas?": "El levantamiento de pesas es una actividad que fortalece los músculos mediante el uso de pesas o máquinas.",
+        "¿Qué son los músculos abdominales?": "Los músculos abdominales son los que se encuentran en la parte inferior del torso y son importantes para la estabilidad y postura."
+      }
+    };
+
+    let currentTopic = "";
+
+    // Función para mostrar el mensaje del usuario en el chat
+    function displayMessage(message, sender) {
+      const chatBox = document.getElementById("chat-box");
+      const div = document.createElement("div");
+      div.classList.add("chat-message");
+      div.classList.add(sender === "bot" ? "bot-message" : "user-message");
+      div.textContent = message;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Función para enviar un mensaje del usuario
+    function sendMessage() {
+      const userInput = document.getElementById("user-input").value;
+      if (userInput.trim() === "") return;
+
+      // Mostrar mensaje del usuario
+      displayMessage(userInput, "user");
+
+      // Buscar la respuesta según el tema
+      if (currentTopic && responses[currentTopic][userInput]) {
+        displayMessage(responses[currentTopic][userInput], "bot");
+      } else {
+        displayMessage("Lo siento, no entendí tu pregunta. ¿Sobre qué tema te gustaría preguntar?", "bot");
+      }
+
+      document.getElementById("user-input").value = "";
+    }
+
+    // Función para elegir un tema
+    function setTopic(topic) {
+      currentTopic = topic;
+      displayMessage(`¡Hola! Ahora estamos hablando sobre ${topic}. ¿Qué quieres saber?`, "bot");
+    }
+
+    // Inicialización
+    setTopic("futbol"); // Aquí puedes cambiar el tema inicial
+  </script>
+
+</body>
+</html>
