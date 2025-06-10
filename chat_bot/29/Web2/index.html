@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatBot - Gym</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="chat-container">
+    <h1>ChatBot GYM  💪</h1>
+    <div class="chat-box" id="chat-box">
+      <p><strong>Bot:</strong> ¡Hola! Elige una pregunta del menú para ayudarte.</p>
+    </div>
+
+    <div class="input-area">
+      <select id="question-select">
+        <option value="">-- Selecciona una pregunta --</option>
+        <option value="¿qué es el gym?">¿Qué es el gym?</option>
+        <option value="¿cuántas veces a la semana debo ir al gym?">¿Cuántas veces a la semana debo ir al gym?</option>
+        <option value="¿qué debo comer antes de entrenar?">¿Qué debo comer antes de entrenar?</option>
+        <option value="¿qué suplementos puedo tomar?">¿Qué suplementos puedo tomar?</option>
+        <option value="¿cuánto tiempo debo entrenar?">¿Cuánto tiempo debo entrenar?</option>
+        <option value="¿es bueno entrenar en ayunas?">¿Es bueno entrenar en ayunas?</option>
+        <option value="¿qué es la hipertrofia?">¿Qué es la hipertrofia?</option>
+        <option value="¿puedo perder grasa y ganar músculo a la vez?">¿Puedo perder grasa y ganar músculo a la vez?</option>
+        <option value="¿cuánto debo descansar entre series?">¿Cuánto debo descansar entre series?</option>
+        <option value="¿por qué es importante estirar?">¿Por qué es importante estirar?</option>
+      </select>
+      <button onclick="answerQuestion()">Responder</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
