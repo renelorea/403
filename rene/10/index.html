@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitWorld - Todo sobre el Gimnasio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>FitWorld</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Inicio</a></li>
+                <li><a href="#about" class="nav-link">¿Qué es?</a></li>
+                <li><a href="#olympia" class="nav-link">Mr. Olympia</a></li>
+                <li><a href="#benefits" class="nav-link">Beneficios</a></li>
+                <li><a href="#competitions" class="nav-link">Competencias</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Hero -->
+    <section id="home" class="hero">
+        <div class="particles"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="word">EL</span>
+                <span class="word">MUNDO</span>
+                <span class="word">DEL</span>
+                <span class="word">FITNESS</span>
+            </h1>
+            <p class="hero-subtitle">Descubre todo sobre el gimnasio, competencias y el estilo de vida fitness</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('about')">
+                    <i class="fas fa-play"></i>
+                    Comenzar
+                </button>
+                <button class="btn-secondary" onclick="scrollToSection('olympia')">
+                    <i class="fas fa-trophy"></i>
+                    Mr. Olympia
+                </button>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number" data-target="1946">0</span>
+                <span class="stat-label">Año de inicio</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="57">0</span>
+                <span class="stat-label">Años de Mr. Olympia</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="100">0</span>
+                <span class="stat-label">Millones de personas</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección ¿Qué es el Gym? -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">¿Qué es el Gimnasio?</h2>
+            <div class="about-grid">
+                <div class="about-card" data-aos="fade-up">
+                    <div class="card-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Definición</h3>
+                    <p>El gimnasio es un espacio dedicado al ejercicio físico y entrenamiento, equipado con máquinas, pesas libres y áreas para diferentes tipos de actividad física. Es el lugar donde las personas desarrollan su fuerza, resistencia y mejoran su condición física general.</p>
+                </div>
+                <div class="about-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Historia</h3>
+                    <p>Los primeros gimnasios modernos aparecieron a finales del siglo XIX. El culturismo como deporte organizado comenzó en la década de 1940, evolucionando desde las antiguas tradiciones griegas de entrenamiento físico hasta convertirse en el fenómeno global que conocemos hoy.</p>
+                </div>
+                <div class="about-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Comunidad</h3>
+                    <p>El gimnasio no es solo un lugar de entrenamiento, sino una comunidad donde se comparten conocimientos, se motivan mutuamente y se crean vínculos basados en objetivos comunes de salud y bienestar físico.</p>
+                </div>
+            </div>
+            
+            <div class="gym-info">
+                <div class="info-content" data-aos="fade-right">
+                    <h3>El Templo del Hierro</h3>
+                    <p>El gimnasio representa mucho más que un simple lugar de ejercicio. Es un santuario donde las personas transforman no solo su físico, sino también su mentalidad. Cada repetición, cada serie, cada gota de sudor contribuye a forjar una versión más fuerte y disciplinada de uno mismo.</p>
+                    <p>En este espacio sagrado del fitness, convergen personas de todas las edades y niveles, unidos por la pasión común de superarse día a día. Desde principiantes que dan sus primeros pasos hasta atletas experimentados que persiguen la perfección, todos comparten el mismo objetivo: evolucionar.</p>
+                    <div class="progress-bars">
+                        <div class="progress-item">
+                            <span>Fuerza</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <span>Resistencia</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <span>Disciplina</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-visual" data-aos="fade-left">
+                    <div class="floating-elements">
+                        <div class="floating-icon"><i class="fas fa-weight-hanging"></i></div>
+                        <div class="floating-icon"><i class="fas fa-heart"></i></div>
+                        <div class="floating-icon"><i class="fas fa-fire"></i></div>
+                        <div class="floating-icon"><i class="fas fa-bolt"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Mr. Olympia -->
+    <section id="olympia" class="olympia-section">
+        <div class="container">
+            <h2 class="section-title">Mr. Olympia</h2>
+            <div class="olympia-intro" data-aos="zoom-in">
+                <p>La competencia más prestigiosa del culturismo mundial, donde solo los mejores de los mejores compiten por el título más codiciado del fitness.</p>
+            </div>
+            
+            <div class="olympia-content">
+                <div class="olympia-history" data-aos="fade-up">
+                    <h3><i class="fas fa-crown"></i> Historia de la Competencia</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1965</div>
+                            <div class="timeline-content">
+                                <h4>Inicio de Mr. Olympia</h4>
+                                <p>Joe Weider crea la competencia. Larry Scott se convierte en el primer Mr. Olympia.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1970-1975</div>
+                            <div class="timeline-content">
+                                <h4>Era Schwarzenegger</h4>
+                                <p>Arnold Schwarzenegger domina la competencia, ganando 6 títulos consecutivos.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1984-1991</div>
+                            <div class="timeline-content">
+                                <h4>Reinado de Lee Haney</h4>
+                                <p>Lee Haney establece el récord con 8 títulos consecutivos.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1992-1997</div>
+                            <div class="timeline-content">
+                                <h4>Era Dorian Yates</h4>
+                                <p>Dorian Yates revoluciona el entrenamiento con 6 títulos usando el sistema HIT.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1998-2005</div>
+                            <div class="timeline-content">
+                                <h4>Ronnie Coleman</h4>
+                                <p>Coleman iguala el récord de Haney con 8 títulos consecutivos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="champions-grid">
+                    <div class="champion-card" data-aos="flip-left">
+                        <div class="champion-image">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Arnold Schwarzenegger</h4>
+                        <span class="titles">7 títulos (1970-1975, 1980)</span>
+                        <p>"The Austrian Oak" - Transformó el culturismo en un fenómeno mainstream.</p>
+                    </div>
+                    <div class="champion-card" data-aos="flip-left" data-aos-delay="100">
+                        <div class="champion-image">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h4>Lee Haney</h4>
+                        <span class="titles">8 títulos (1984-1991)</span>
+                        <p>Primer atleta en ganar 8 Mr. Olympia consecutivos.</p>
+                    </div>
+                    <div class="champion-card" data-aos="flip-left" data-aos-delay="200">
+                        <div class="champion-image">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h4>Ronnie Coleman</h4>
+                        <span class="titles">8 títulos (1998-2005)</span>
+                        <p>"Yeah Buddy!" - Conocido por su increíble masa muscular.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Beneficios y Desventajas -->
+    <section id="benefits" class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Beneficios y Desventajas</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefits-column" data-aos="slide-right">
+                    <h3><i class="fas fa-thumbs-up"></i> Beneficios</h3>
+                    <div class="benefit-items">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Salud Cardiovascular</h4>
+                                <p>Mejora la circulación, reduce la presión arterial y fortalece el corazón.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Salud Mental</h4>
+                                <p>Reduce el estrés, combate la depresión y mejora la autoestima.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Sistema Inmune</h4>
+                                <p>Fortalece las defensas naturales del cuerpo contra enfermedades.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Mejor Sueño</h4>
+                                <p>Mejora la calidad del descanso y regula los ciclos de sueño.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-bone"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Densidad Ósea</h4>
+                                <p>Fortalece los huesos y previene la osteoporosis.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Metabolismo</h4>
+                                <p>Acelera el metabolismo y ayuda en la quema de grasa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefits-column disadvantages" data-aos="slide-left">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Desventajas</h3>
+                    <div class="benefit-items">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-band-aid"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Riesgo de Lesiones</h4>
+                                <p>Mal uso de equipos o técnica incorrecta puede causar lesiones.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Tiempo Considerable</h4>
+                                <p>Requiere dedicación constante y planificación de horarios.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Costo Económico</h4>
+                                <p>Membresías, suplementos y equipamiento pueden ser costosos.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-tired"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Sobreentrenamiento</h4>
+                                <p>El exceso puede llevar a fatiga crónica y pérdida de motivación.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Presión Social</h4>
+                                <p>Comparaciones constantes pueden afectar la autoestima.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Dependencia</h4>
+                                <p>Riesgo de dependencia a suplementos o rutinas extremas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="balance-message" data-aos="fade-up">
+                <h3>El Equilibrio es la Clave</h3>
+                <p>Como en cualquier aspecto de la vida, el gimnasio ofrece beneficios extraordinarios cuando se practica con responsabilidad y equilibrio. La clave está en encontrar el punto medio entre el progreso y la sostenibilidad a largo plazo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Competencias -->
+    <section id="competitions" class="competitions-section">
+        <div class="container">
+            <h2 class="section-title">Competencias del Mundo del Fitness</h2>
+            
+            <div class="competitions-intro" data-aos="zoom-in">
+                <p>El mundo del fitness y culturismo ofrece diversas competencias para todos los niveles y categorías.</p>
+            </div>
+
+            <div class="competitions-grid">
+                <div class="competition-card" data-aos="flip-up">
+                    <div class="competition-header">
+                        <h3>Mr. Olympia</h3>
+                        <span class="competition-level">Elite Mundial</span>
+                    </div>
+                    <div class="competition-content">
+                        <p>La competencia más prestigiosa del culturismo. Solo por invitación.</p>
+                        <ul>
+                            <li>Premio: $400,000+ para el ganador</li>
+                            <li>Categorías: Men's Open, Classic Physique, 212</li>
+                            <li>Ubicación: Las Vegas, Nevada</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="competition-card" data-aos="flip-up" data-aos-delay="100">
+                    <div class="competition-header">
+                        <h3>Arnold Classic</h3>
+                        <span class="competition-level">Elite Internacional</span>
+                    </div>
+                    <div class="competition-content">
+                        <p>Segunda competencia más importante, fundada por Arnold Schwarzenegger.</p>
+                        <ul>
+                            <li>Premio: $200,000+ para el ganador</li>
+                            <li>Múltiples deportes incluidos</li>
+                            <li>Ubicación: Columbus, Ohio</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="competition-card" data-aos="flip-up" data-aos-delay="200">
+                    <div class="competition-header">
+                        <h3>IFBB Pro League</h3>
+                        <span class="competition-level">Profesional</span>
+                    </div>
+                    <div class="competition-content">
+                        <p>Circuito profesional que otorga clasificaciones para Mr. Olympia.</p>
+                        <ul>
+                            <li>Múltiples shows anuales</li>
+                            <li>Puntos de clasificación</li>
+                            <li>Nivel profesional requerido</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="competition-card" data-aos="flip-up" data-aos-delay="300">
+                    <div class="competition-header">
+                        <h3>NPC Nationals</h3>
+                        <span class="competition-level">Amateur Elite</span>
+                    </div>
+                    <div class="competition-content">
+                        <p>Competencia amateur que otorga tarjetas profesionales.</p>
+                        <ul>
+                            <li>Puerta de entrada al profesionalismo</li>
+                            <li>Múltiples categorías</li>
+                            <li>Requisitos de clasificación</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="competition-card" data-aos="flip-up" data-aos-delay="400">
+                    <div class="competition-header">
+                        <h3>Regional Shows</h3>
+                        <span class="competition-level">Amateur</span>
+                    </div>
+                    <div class="competition-content">
+                        <p>Competencias locales y regionales para todos los niveles.</p>
+                        <ul>
+                            <li>Ideal para principiantes</li>
+                            <li>Clasificatorias para nacionales</li>
+                            <li>Ambiente familiar</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="competition-card" data-aos="flip-up" data-aos-delay="500">
+                    <div class="competition-header">
+                        <h3>CrossFit Games</h3>
+                        <span class="competition-level">Funcional Elite</span>
+                    </div>
+                    <div class="competition-content">
+                        <p>La competencia de fitness funcional más importante del mundo.</p>
+                        <ul>
+                            <li>Premio: $300,000 para ganadores</li>
+                            <li>Pruebas variadas y exigentes</li>
+                            <li>"Fittest on Earth"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categories-section" data-aos="fade-up">
+                <h3>Categorías Principales</h3>
+                <div class="categories-grid">
+                    <div class="category-item">
+                        <h4>Men's Open Bodybuilding</h4>
+                        <p>Sin límite de peso, máximo desarrollo muscular</p>
+                    </div>
+                    <div class="category-item">
+                        <h4>Classic Physique</h4>
+                        <p>Estética clásica con límites de peso</p>
+                    </div>
+                    <div class="category-item">
+                        <h4>Men's Physique</h4>
+                        <p>Físico tipo playa, más estético</p>
+                    </div>
+                    <div class="category-item">
+                        <h4>212 Division</h4>
+                        <p>Hasta 212 libras, máximo desarrollo</p>
+                    </div>
+                    <div class="category-item">
+                        <h4>Women's Bikini</h4>
+                        <p>Categoría femenina más popular</p>
+                    </div>
+                    <div class="category-item">
+                        <h4>Women's Physique</h4>
+                        <p>Desarrollo muscular femenino</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>FitWorld</span>
+                </div>
+                <p>Dedicado a promover el conocimiento sobre el fitness y el culturismo.</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/agoblinn"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@alichi.s"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/@AlisonGutierrez-t7w"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Alison Gutierrez 403</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
