@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot Educativo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>ChatBot Educativo</h1>
+            <p>Elige un tema y haz preguntas para aprender más</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Pantalla de perfil de usuario -->
+            <div id="profile-screen" class="screen active">
+                <div class="profile-container">
+                    <h2>Personaliza tu ChatBot</h2>
+                    <form id="profile-form">
+                        <div class="form-group">
+                            <label for="user-name">Tu Nombre</label>
+                            <input type="text" id="user-name" placeholder="Ingresa tu nombre" required>
+                            <div id="name-error" class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Elige un Avatar</label>
+                            <div class="avatar-grid" id="avatar-grid">
+                                <!-- Los avatares se generarán dinámicamente -->
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <span>👤</span> Continuar
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Pantalla de selección de temas -->
+            <div id="topic-screen" class="screen">
+                <div class="topic-container">
+                    <h2>Elige un Tema</h2>
+                    <div class="topics-grid">
+                        <button class="topic-card football" data-topic="Fútbol">
+                            <span class="topic-icon">⚽</span>
+                            <span class="topic-name">Fútbol</span>
+                        </button>
+                        <button class="topic-card social" data-topic="Redes Sociales">
+                            <span class="topic-icon">📱</span>
+                            <span class="topic-name">Redes Sociales</span>
+                        </button>
+                        <button class="topic-card algebra" data-topic="Álgebra">
+                            <span class="topic-icon">📚</span>
+                            <span class="topic-name">Álgebra</span>
+                        </button>
+                        <button class="topic-card makeup" data-topic="Maquillaje">
+                            <span class="topic-icon">💄</span>
+                            <span class="topic-name">Maquillaje</span>
+                        </button>
+                        <button class="topic-card nutrition" data-topic="Alimentación">
+                            <span class="topic-icon">🍎</span>
+                            <span class="topic-name">Alimentación</span>
+                        </button>
+                        <button class="topic-card gym" data-topic="Gimnasio">
+                            <span class="topic-icon">💪</span>
+                            <span class="topic-name">Gimnasio</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pantalla de chat -->
+            <div id="chat-screen" class="screen">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <button id="back-btn" class="back-button">← Volver</button>
+                        <div class="user-info">
+                            <div class="user-avatar" id="user-avatar"></div>
+                            <div class="user-details">
+                                <h3 id="user-display-name"></h3>
+                                <p id="current-topic"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="messages-container" id="messages-container">
+                        <!-- Los mensajes se añadirán dinámicamente -->
+                    </div>
+                    
+                    <form class="message-form" id="message-form">
+                        <input type="text" id="message-input" placeholder="Escribe tu pregunta..." required>
+                        <button type="submit" id="send-btn">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2025 ChatBot Educativo - Aprende a través de la conversación</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
