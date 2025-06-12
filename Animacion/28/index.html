@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Maquillaje - GLAMOUR</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <a href="#" class="brand-link" onclick="showPage('home')">GLAMOUR</a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-links desktop-nav">
+                    <a href="#" class="nav-link" onclick="showPage('home')">Inicio</a>
+                    <a href="#" class="nav-link" onclick="showPage('productos')">Productos</a>
+                    <a href="#" class="nav-link" onclick="showPage('galeria')">Galería</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="mobile-menu-btn">
+                    <button id="menuToggle" class="menu-toggle">
+                        <span class="hamburger"></span>
+                        <span class="hamburger"></span>
+                        <span class="hamburger"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobileMenu" class="mobile-menu">
+                <div class="mobile-nav-links">
+                    <a href="#" class="mobile-nav-link" onclick="showPage('home'); closeMobileMenu()">Inicio</a>
+                    <a href="#" class="mobile-nav-link" onclick="showPage('productos'); closeMobileMenu()">Productos</a>
+                    <a href="#" class="mobile-nav-link" onclick="showPage('galeria'); closeMobileMenu()">Galería</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="main-content">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-background">
+                    <img src="https://images.pexels.com/photos/2253832/pexels-photo-2253832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Fondo de maquillaje">
+                    <div class="hero-overlay"></div>
+                </div>
+                
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            El Arte del <span class="highlight">Maquillaje</span>
+                        </h1>
+                        <p class="hero-description">
+                            Descubre el poder transformador del maquillaje y aprende a realzar tu belleza natural
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary" onclick="showPage('productos')">
+                                Ver Productos
+                                <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m9 18 6-6-6-6"/>
+                                </svg>
+                            </button>
+                            <button class="btn btn-secondary" onclick="showPage('galeria')">
+                                Explorar Galería
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Section -->
+            <section class="content-section">
+                <div class="container">
+                    <div class="content-wrapper">
+                        <h2 class="section-title">El Arte y la Ciencia del Maquillaje</h2>
+                        
+                        <div class="content-blocks">
+                            <div class="content-block">
+                                <h3 class="block-title">¿Qué es el Maquillaje?</h3>
+                                <p class="block-text">
+                                    El maquillaje es una forma de arte que combina creatividad y técnica para realzar la belleza natural. 
+                                    Es una práctica que ha evolucionado a lo largo de miles de años, desde los antiguos egipcios hasta las 
+                                    tendencias modernas de hoy en día.
+                                </p>
+                            </div>
+
+                            <div class="content-block">
+                                <h3 class="block-title">Objetivos del Maquillaje</h3>
+                                <ul class="objectives-list">
+                                    <li class="objective-item">
+                                        <span class="bullet"></span>
+                                        <div>
+                                            <strong>Realzar la Belleza Natural:</strong> Potenciar tus rasgos únicos y características faciales.
+                                        </div>
+                                    </li>
+                                    <li class="objective-item">
+                                        <span class="bullet"></span>
+                                        <div>
+                                            <strong>Corrección y Equilibrio:</strong> Disimular imperfecciones y crear armonía en el rostro.
+                                        </div>
+                                    </li>
+                                    <li class="objective-item">
+                                        <span class="bullet"></span>
+                                        <div>
+                                            <strong>Expresión Personal:</strong> Usar el maquillaje como medio de expresión artística y creatividad.
+                                        </div>
+                                    </li>
+                                    <li class="objective-item">
+                                        <span class="bullet"></span>
+                                        <div>
+                                            <strong>Confianza:</strong> Aumentar la seguridad personal y el bienestar emocional.
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="content-block">
+                                <h3 class="block-title">Principios Básicos</h3>
+                                <div class="principles-grid">
+                                    <div class="principle-card">
+                                        <h4 class="principle-title">Preparación de la Piel</h4>
+                                        <p class="principle-text">
+                                            La base de un buen maquillaje comienza con una piel bien cuidada y preparada. 
+                                            Limpieza, hidratación y protección solar son fundamentales.
+                                        </p>
+                                    </div>
+                                    <div class="principle-card">
+                                        <h4 class="principle-title">Color y Luz</h4>
+                                        <p class="principle-text">
+                                            Entender cómo trabajar con diferentes tonos y la importancia de la iluminación 
+                                            para crear dimensión y profundidad.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Productos Page -->
+        <div id="productosPage" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1 class="page-title">Guía de Productos de Maquillaje</h1>
+                    <p class="page-description">
+                        Descubre nuestra selección de productos esenciales y aprende sobre su función y uso correcto
+                    </p>
+                </div>
+            </section>
+
+            <section class="products-section">
+                <div class="container">
+                    <div class="products-categories">
+                        <!-- Brochas y Herramientas -->
+                        <div class="category-section">
+                            <h2 class="category-title">Brochas y Herramientas</h2>
+                            <div class="products-grid">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="https://images.pexels.com/photos/1749452/pexels-photo-1749452.jpeg" alt="Brocha para Base">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="product-name">Brocha para Base</h3>
+                                        <p class="product-description">Diseñada para aplicar base líquida o en polvo de manera uniforme.</p>
+                                    </div>
+                                </div>
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="https://images.pexels.com/photos/2688992/pexels-photo-2688992.jpeg" alt="Brocha para Rubor">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="product-name">Brocha para Rubor</h3>
+                                        <p class="product-description">Perfecta para aplicar y difuminar el rubor en las mejillas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Base y Correctores -->
+                        <div class="category-section">
+                            <h2 class="category-title">Base y Correctores</h2>
+                            <div class="products-grid">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="https://images.pexels.com/photos/2537930/pexels-photo-2537930.jpeg" alt="Base de Maquillaje">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="product-name">Base de Maquillaje</h3>
+                                        <p class="product-description">Unifica el tono de la piel y cubre imperfecciones.</p>
+                                    </div>
+                                </div>
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="https://images.pexels.com/photos/2533266/pexels-photo-2533266.jpeg" alt="Corrector">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="product-name">Corrector</h3>
+                                        <p class="product-description">Cubre ojeras y disimula imperfecciones específicas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ojos -->
+                        <div class="category-section">
+                            <h2 class="category-title">Ojos</h2>
+                            <div class="products-grid">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="https://images.pexels.com/photos/2253834/pexels-photo-2253834.jpeg" alt="Sombras">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="product-name">Sombras</h3>
+                                        <p class="product-description">Para crear profundidad y dimensión en la mirada.</p>
+                                    </div>
+                                </div>
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="https://images.pexels.com/photos/5938606/pexels-photo-5938606.jpeg" alt="Delineador">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="product-name">Delineador</h3>
+                                        <p class="product-description">Define y realza la forma de los ojos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Labios -->
+                        <div class="category-section">
+                            <h2 class="category-title">Labios</h2>
+                            <div class="products-grid">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="https://images.pexels.com/photos/2633986/pexels-photo-2633986.jpeg" alt="Labiales">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="product-name">Labiales</h3>
+                                        <p class="product-description">Dan color y definen los labios.</p>
+                                    </div>
+                                </div>
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="https://images.pexels.com/photos/2587370/pexels-photo-2587370.jpeg" alt="Brillos">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="product-name">Brillos</h3>
+                                        <p class="product-description">Aportan brillo y volumen a los labios.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Galería Page -->
+        <div id="galeriaPage" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1 class="page-title">Galería de Estilos</h1>
+                    <p class="page-description">
+                        Explora nuestra colección de looks y encuentra inspiración para tu próximo maquillaje
+                    </p>
+                </div>
+            </section>
+
+            <section class="gallery-section">
+                <div class="container">
+                    <div class="gallery-categories">
+                        <!-- Maquillaje Natural -->
+                        <div class="gallery-category">
+                            <h2 class="category-title">Maquillaje Natural</h2>
+                            <div class="gallery-grid">
+                                <div class="gallery-card">
+                                    <div class="gallery-image">
+                                        <img src="https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg" alt="Look natural para el día">
+                                        <div class="gallery-overlay">
+                                            <p class="gallery-description">Look natural para el día</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-card">
+                                    <div class="gallery-image">
+                                        <img src="https://images.pexels.com/photos/2683925/pexels-photo-2683925.jpeg" alt="Maquillaje suave y luminoso">
+                                        <div class="gallery-overlay">
+                                            <p class="gallery-description">Maquillaje suave y luminoso</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Maquillaje de Noche -->
+                        <div class="gallery-category">
+                            <h2 class="category-title">Maquillaje de Noche</h2>
+                            <div class="gallery-grid">
+                                <div class="gallery-card">
+                                    <div class="gallery-image">
+                                        <img src="https://images.pexels.com/photos/2695679/pexels-photo-2695679.jpeg" alt="Smokey eye dramático">
+                                        <div class="gallery-overlay">
+                                            <p class="gallery-description">Smokey eye dramático</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-card">
+                                    <div class="gallery-image">
+                                        <img src="https://images.pexels.com/photos/2697669/pexels-photo-2697669.jpeg" alt="Look glamuroso para eventos">
+                                        <div class="gallery-overlay">
+                                            <p class="gallery-description">Look glamuroso para eventos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Maquillaje Editorial -->
+                        <div class="gallery-category">
+                            <h2 class="category-title">Maquillaje Editorial</h2>
+                            <div class="gallery-grid">
+                                <div class="gallery-card">
+                                    <div class="gallery-image">
+                                        <img src="https://images.pexels.com/photos/2688992/pexels-photo-2688992.jpeg" alt="Maquillaje artístico">
+                                        <div class="gallery-overlay">
+                                            <p class="gallery-description">Maquillaje artístico</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-card">
+                                    <div class="gallery-image">
+                                        <img src="https://images.pexels.com/photos/2691473/pexels-photo-2691473.jpeg" alt="Look creativo y moderno">
+                                        <div class="gallery-overlay">
+                                            <p class="gallery-description">Look creativo y moderno</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-brand">GLAMOUR</p>
+                <p class="footer-text">
+                    &copy; 2024 GLAMOUR. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
