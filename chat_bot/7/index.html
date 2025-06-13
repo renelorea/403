@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot de Maquillaje</title>
+    <link rel="stylesheet" href="m.css">
+</head>
+<body>
+    <div id="chat-container">
+        <h2>ChatBot de Maquillaje 💄</h2>
+        <p>Selecciona una pregunta:</p>
+        <select id="pregunta-select">
+            <option value="">--Selecciona una pregunta--</option>
+            <option value="uso">¿Para qué sirve el maquillaje?</option>
+            <option value="labiales">¿Cuáles son las tendencias en labiales?</option>
+            <option value="primer_paso">¿Cuál es el primer paso antes de aplicar maquillaje?</option>
+            <option value="brochas">¿Por qué es importante usar brochas en el maquillaje?</option>
+            <option value="ocasiones">¿Cómo cambia el maquillaje según la ocasión?</option>
+            <option value="corrector">¿Para qué sirve el corrector en el maquillaje?</option>
+            <option value="iluminador">¿Qué efecto tienen los iluminadores en el rostro?</option>
+            <option value="marcas">¿Cuáles son las marcas de maquillaje más conocidas?</option>
+            <option value="coreano">¿Por qué el maquillaje coreano es tan famoso?</option>
+            <option value="contouring">¿Qué es la técnica del 'contouring'?</option>
+        </select>
+        <button onclick="enviarPregunta()">Enviar</button>
+        <div id="chat-box"></div>
+    </div>
+   
+    <script src="M.js"></script>
+</body>
+</html>
