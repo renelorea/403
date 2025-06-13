@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot de Temas Personalizados</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>Experto en Temas IA</h1>
+      <p class="header-subtitle">Personaliza tu asistente de IA y obtén respuestas sobre tu tema elegido</p>
+    </header>
+
+    <main class="app-content">
+      <!-- Sección de Configuración -->
+      <section id="setup-section" class="setup-section">
+        <div class="card topic-selection">
+          <h2>1. Elige un Tema</h2>
+          <div class="topics-grid">
+            <button class="topic-btn" data-topic="futbol">
+              <span class="topic-icon">⚽</span>
+              <span>Fútbol</span>
+            </button>
+            <button class="topic-btn" data-topic="redes">
+              <span class="topic-icon">📱</span>
+              <span>Redes Sociales</span>
+            </button>
+            <button class="topic-btn" data-topic="algebra">
+              <span class="topic-icon">🧮</span>
+              <span>Álgebra</span>
+            </button>
+            <button class="topic-btn" data-topic="maquillaje">
+              <span class="topic-icon">💄</span>
+              <span>Maquillaje</span>
+            </button>
+            <button class="topic-btn" data-topic="nutricion">
+              <span class="topic-icon">🥗</span>
+              <span>Nutrición</span>
+            </button>
+            <button class="topic-btn" data-topic="gimnasio">
+              <span class="topic-icon">💪</span>
+              <span>Gimnasio</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card personality-creation">
+          <h2>2. Personaliza la IA</h2>
+          <div class="personality-form">
+            <div class="form-group">
+              <label for="bot-name">Nombre del Asistente IA</label>
+              <input type="text" id="bot-name" placeholder="Ingresa un nombre para tu asistente IA">
+            </div>
+            
+            <div class="personality-traits">
+              <div class="trait-slider">
+                <label>Formalidad <span class="trait-value" id="formality-value">5</span></label>
+                <input type="range" id="formality" min="1" max="10" value="5">
+                <div class="trait-labels">
+                  <span>Casual</span>
+                  <span>Formal</span>
+                </div>
+              </div>
+              
+              <div class="trait-slider">
+                <label>Entusiasmo <span class="trait-value" id="enthusiasm-value">5</span></label>
+                <input type="range" id="enthusiasm" min="1" max="10" value="5">
+                <div class="trait-labels">
+                  <span>Reservado</span>
+                  <span>Emocionado</span>
+                </div>
+              </div>
+              
+              <div class="trait-slider">
+                <label>Humor <span class="trait-value" id="humor-value">5</span></label>
+                <input type="range" id="humor" min="1" max="10" value="5">
+                <div class="trait-labels">
+                  <span>Serio</span>
+                  <span>Divertido</span>
+                </div>
+              </div>
+              
+              <div class="trait-slider">
+                <label>Nivel de Detalle <span class="trait-value" id="detail-value">5</span></label>
+                <input type="range" id="detail" min="1" max="10" value="5">
+                <div class="trait-labels">
+                  <span>Breve</span>
+                  <span>Detallado</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="personality-preview">
+            <h3>Vista Previa de Personalidad</h3>
+            <div class="preview-message" id="personality-preview-message">
+              ¡Hola! Soy tu asistente de IA. Te ayudaré a responder tus preguntas sobre el tema que elijas.
+            </div>
+          </div>
+          
+          <button id="start-chat-btn" class="primary-btn" disabled>Comenzar a Chatear</button>
+        </div>
+      </section>
+
+      <!-- Sección de Chat (Inicialmente Oculta) -->
+      <section id="chat-section" class="chat-section hidden">
+        <div class="chat-header">
+          <div class="chat-info">
+            <div class="chat-avatar" id="chat-avatar">IA</div>
+            <div>
+              <h2 id="chat-bot-name">Asistente IA</h2>
+              <p id="chat-topic">Tema: No Seleccionado</p>
+            </div>
+          </div>
+          <div class="question-counter">
+            <span id="question-count">0</span>/10 Preguntas
+          </div>
+        </div>
+        
+        <div class="chat-messages" id="chat-messages">
+          <!-- Los mensajes se insertarán aquí con JavaScript -->
+        </div>
+        
+        <div class="chat-input">
+          <div class="suggestion-chips" id="suggestion-chips">
+            <!-- Las sugerencias se añadirán aquí -->
+          </div>
+          <div class="input-container">
+            <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí...">
+            <button id="send-btn" class="send-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <button id="reset-btn" class="secondary-btn">Elegir Nuevo Tema</button>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>© 2025 Chatbot de Temas Personalizados</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
