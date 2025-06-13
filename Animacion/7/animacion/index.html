@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fútbol Americano</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-image: url('americanoo.png ');
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(18, 209, 209, 0.7);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3em;
+      letter-spacing: 3px;
+    }
+
+    .box {
+      max-width: 800px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .box h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2em;
+      color: #00f7ff;
+    }
+
+    .box p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1em;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+    }
+
+    .botones {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .botones button {
+      background-color: #2edce2;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s;
+      color: #d8f1f1;
+      font-weight: bold;
+    }
+
+    .botones button:hover {
+      background-color: #0f7482cf;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>Fútbol Americano</header>
+
+  <section class="box" style="animation-delay: 0s;">
+    <h2>¿Qué es el fútbol americano?</h2>
+    <p>El fútbol americano es un deporte de contacto donde dos equipos compiten para avanzar el balón y anotar puntos. Es muy popular en Estados Unidos y requiere fuerza, estrategia y trabajo en equipo.</p>
+  </section>
+
+  <section class="box" style="animation-delay: 1s;">
+    <h2>Historia del fútbol americano</h2>
+    <p>El fútbol americano surgió en el siglo XIX a partir del rugby y el fútbol tradicional. A lo largo de los años, ha evolucionado con reglas propias y se ha convertido en un espectáculo enorme con millones de seguidores, especialmente gracias a la NFL.</p>
+  </section>
+
+  <div class="botones">
+    <button onclick="location.href='rules.html'">Reglas</button>
+    <button onclick="location.href='jugadores.html'">Jugadores</button>
+    <button onclick="location.href='equipo.html'">Equipamiento</button>
+    <button onclick="location.href='mood.html'">Modalidades</button>
+    <button onclick="location.href='val.html'">Valores</button>
+     <button onclick="location.href='cur.html'">Curiosidades</button>
+  </div>
+
+</body>
+</html>
+
+   
