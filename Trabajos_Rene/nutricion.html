@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nutrición | Gimnasio</title>
+  <style>
+    :root {
+      --bg-color: #121212;
+      --card-color: #1f1f1f;
+      --text-color: #f0f0f0;
+      --accent: #ff3c38;
+      --soft-white: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('C:\Users\AlumnoSC2PC8\Pictures\Screenshots\saludable_3.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-color);
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(18, 18, 18, 0.92);
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.8s ease;
+    }
+
+    header h1 {
+      color: var(--accent);
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: var(--soft-white);
+    }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: var(--card-color);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 60, 56, 0.15);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    section h2 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    section p, section ul {
+      color: var(--soft-white);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .section-img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .section-img:hover {
+      transform: scale(1.03);
+      filter: brightness(1.1);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--accent);
+      color: var(--soft-white);
+      font-style: italic;
+    }
+
+    .btn-custom {
+      display: inline-block;
+      background-color: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+
+    .btn-custom:hover {
+      background-color: var(--accent);
+      color: var(--text-color);
+    }
+
+    .btn-custom:active {
+      background-color: var(--soft-white);
+      color: var(--bg-color);
+      border-color: var(--soft-white);
+    }
+  </style>
+</head>
+<body>
+  <header id="page-header">
+    <h1>Nutrición y Alimentación</h1>
+    <p>Porque los resultados se construyen dentro y fuera del gimnasio</p>
+  </header>
+
+  <section class="fade">
+    <h2>Importancia de una buena alimentación</h2>
+    <p>Entrenar sin cuidar la alimentación es como construir sobre arena. Para ganar músculo, perder grasa o mantenerte saludable, necesitas una nutrición alineada a tus objetivos.</p>
+    <img class="section-img" src="F:\trabajos_Rene\temas\saludable_2.png" alt="Comida saludable">
+  </section>
+
+  <section class="fade">
+    <h2>Macronutrientes esenciales</h2>
+    <ul>
+      <li><strong>Proteínas:</strong> fundamentales para el crecimiento muscular. Fuentes: pollo, huevo, legumbres.</li>
+      <li><strong>Carbohidratos:</strong> tu principal fuente de energía. Fuentes: arroz, avena, frutas.</li>
+      <li><strong>Grasas saludables:</strong> esenciales para hormonas y recuperación. Fuentes: aguacate, nueces, aceite de oliva.</li>
+    </ul>
+    <img class="section-img" src="F:\trabajos_Rene\temas\selection-protein-sources-kitchen.png" alt="Macronutrientes">
+  </section>
+
+  <section class="fade">
+    <h2>Hidratación y micronutrientes</h2>
+    <p>El agua es clave para el rendimiento. Los micronutrientes como vitaminas y minerales regulan funciones vitales. No los descuides.</p>
+    <img class="section-img" src="F:\trabajos_Rene\temas\homemadesheetpanchic_693775.png" alt="Hidratación">
+  </section>
+
+  <section class="fade">
+    <h2>Ejemplo de dieta estructurada</h2>
+    <ul>
+      <li><strong>Desayuno:</strong> Avena + claras + plátano</li>
+      <li><strong>Comida:</strong> Arroz integral + pollo + brócoli</li>
+      <li><strong>Cena:</strong> Ensalada + atún + aguacate</li>
+    </ul>
+    <img class="section-img" src="F:\trabajos_Rene\temas\saludable.png" alt="Ejemplo de dieta">
+  </section>
+
+  <div style="text-align: center;">
+    <a href="index_gym.html" class="btn-custom">Volver al inicio</a>
+  </div>
+
+  <footer>
+    <p>"Alimenta tu cuerpo con disciplina y tu mente con metas claras."</p>
+  </footer>
+
+  <script>
+    const faders = document.querySelectorAll('.fade');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('page-header').style.opacity = 1;
+      document.getElementById('page-header').style.transform = 'translateY(0)';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gimnasio | Inicio</title>
+  <style>
+    :root {
+      --bg-color: #121212;
+      --card-color: #1f1f1f;
+      --text-color: #f0f0f0;
+      --accent: #ff3c38;
+      --soft-white: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-color);
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(18, 18, 18, 0.9);
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.8s ease;
+    }
+
+    header h1 {
+      color: var(--accent);
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: var(--soft-white);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.8s ease 0.2s;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-color);
+      padding: 10px 20px;
+      background-color: var(--card-color);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--accent);
+      color: var(--bg-color);
+      transform: scale(1.05);
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .btn-custom {
+  background-color:red;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: var(--accent);
+  color: var(--text-color);
+}
+
+.btn-custom:active {
+  background-color: var(--soft-white);
+  color: var(--bg-color);
+  border-color: var(--soft-white);
+}
+
+
+    .card {
+      background-color: var(--card-color);
+      padding: 20px;
+      width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 60, 56, 0.2);
+      text-align: center;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .card img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1em;
+      color: var(--soft-white);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--accent);
+      color: var(--soft-white);
+      font-style: italic;
+    }
+
+    footer p {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <header id="main-header">
+    <h1>Transforma Tu Cuerpo, Transforma Tu Vida</h1>
+    <p>Descubre los fundamentos esenciales del entrenamiento, la nutrición y el descanso.</p>
+  </header>
+
+  <nav id="main-nav">
+    <a href="entrenamiento.html">Entrenamiento</a>
+    <a href="nutricion.html">Nutrición</a>
+    <a href="descanso.html">Descanso</a>
+  </nav>
+
+  <main id="cards-container">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=800&q=80" alt="Entrenamiento">
+      <h3>Entrenamiento</h3>
+      <p>Conoce los tipos de rutinas, la importancia de la progresión y cómo mejorar tu rendimiento físico.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80" alt="Nutrición">
+      <h3>Nutrición</h3>
+      <p>Aprende cómo alimentar tu cuerpo con inteligencia: macronutrientes, timing y hábitos saludables.</p>
+    </div>
+
+    <div class="card">
+      <img src="F:\trabajos_Rene\temas\Captura de pantalla 2025-06-06 085400.png" alt="Descanso">
+      <h3>Descanso</h3>
+      <p>El crecimiento ocurre cuando duermes. Descubre cómo el descanso potencia tu cuerpo y mente.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>"El dolor que sientes hoy será la fuerza que sentirás mañana."</p>
+    <p>"No se trata de ser el mejor, se trata de ser mejor que ayer."</p>
+    <p>"Disciplina es hacer lo que tienes que hacer, aunque no quieras hacerlo."</p>
+  </footer>
+
+  <script>
+    // Animaciones de entrada
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('main-header').style.opacity = 1;
+      document.getElementById('main-header').style.transform = 'translateY(0)';
+
+      document.getElementById('main-nav').style.opacity = 1;
+      document.getElementById('main-nav').style.transform = 'translateY(0)';
+
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = 1;
+          card.style.transform = 'translateY(0)';
+        }, 300 * (index + 1));
+      });
+    });
+  </script>
+</body>
+</html>

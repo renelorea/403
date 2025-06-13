@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descanso | Gimnasio</title>
+  <style>
+    :root {
+      --bg-color: #121212;
+      --card-color: #1f1f1f;
+      --text-color: #f0f0f0;
+      --accent: #ff3c38;
+      --soft-white: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1571019613914-85f342c1d2c8?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-color);
+      padding: 20px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(18, 18, 18, 0.92);
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      color: var(--accent);
+      font-size: 3em;
+    }
+
+    header p {
+      color: var(--soft-white);
+      font-size: 1.2em;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: var(--card-color);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 60, 56, 0.15);
+      margin-bottom: 40px;
+    }
+
+    section h2 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    section p {
+      color: var(--soft-white);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    img.section-img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    img.section-img:hover {
+      transform: scale(1.03);
+      filter: brightness(1.1);
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: white;
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--accent);
+      color: var(--soft-white);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>La Importancia del Descanso</h1>
+    <p>Recuperar, crecer y rendir mejor</p>
+  </header>
+
+  <section>
+    <h2>¿Por qué es vital el descanso?</h2>
+    <p>El descanso es parte esencial del progreso en el gimnasio. Es durante el sueño y el reposo cuando los músculos se regeneran y crecen. Sin descanso, todo tu esfuerzo se puede estancar o incluso causar lesiones.</p>
+    <img class="section-img" src="F:\trabajos_Rene\temas\descanso_3.png" alt="descanso y recuperación">
+  </section>
+
+  <section>
+    <h2>Tipos de descanso</h2>
+    <p>El descanso puede ser:</p>
+    <ul>
+      <li><strong>Activo:</strong> Caminatas, estiramientos suaves o movilidad.</li>
+      <li><strong>PASIVO:</strong> Dormir, relajarse sin actividad física.</li>
+    </ul>
+    <p>Ambos tienen beneficios y deben ser parte de tu planificación semanal.</p>
+  </section>
+
+  <section>
+    <h2>Sueño de calidad</h2>
+    <p>Intenta dormir entre 7 y 9 horas por noche. Un sueño profundo y constante mejora tus niveles hormonales, tu estado de ánimo y tu rendimiento físico y mental.</p>
+    <img class="section-img" src="F:\trabajos_Rene\temas\descanso_2.png" alt="sueño profundo">
+  </section>
+
+  <a href="index_gym.html" class="button">Volver al inicio</a>
+
+  <footer>
+    <p>"Descansa como un campeón, para rendir como un guerrero."</p>
+  </footer>
+</body>
+</html>

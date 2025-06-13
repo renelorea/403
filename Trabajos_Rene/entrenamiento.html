@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrenamiento | Gimnasio</title>
+  <style>
+    :root {
+      --bg-color: #121212;
+      --card-color: #1f1f1f;
+      --text-color: #f0f0f0;
+      --accent: #ff3c38;
+      --soft-white: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-color);
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(18, 18, 18, 0.92);
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.8s ease;
+    }
+
+    header h1 {
+      color: var(--accent);
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: var(--soft-white);
+    }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: var(--card-color);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 60, 56, 0.15);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    section h2 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    section p, section ul {
+      color: var(--soft-white);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    section ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .section-img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .section-img:hover {
+      transform: scale(1.03);
+      filter: brightness(1.1);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--accent);
+      color: var(--soft-white);
+      font-style: italic;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .cta-button {
+      background-color: var(--accent);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #e32e2a;
+    }
+
+    .btn-custom {
+  background-color:transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-content: center;
+}
+
+.btn-custom:hover {
+  background-color: var(--accent);
+  color: var(--text-color);
+}
+
+.btn-custom:active {
+  background-color: var(--soft-white);
+  color: var(--bg-color);
+  border-color: var(--soft-white);
+}
+  </style>
+</head>
+<body>
+  <header id="page-header">
+    <h1>Guía de Entrenamiento</h1>
+    <p>Todo lo que necesitas saber para comenzar y progresar en el gimnasio</p>
+  </header>
+
+  <section class="fade">
+    <h2>1. Principios Básicos del Entrenamiento</h2>
+    <p>Todo entrenamiento se basa en la sobrecarga progresiva, la constancia y el descanso. No importa si eres principiante o avanzado, el principio es el mismo: desafiar tu cuerpo un poco más cada semana.</p>
+    <img class="section-img" src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80" alt="Principios del entrenamiento">
+  </section>
+
+  <section class="fade">
+    <h2>2. Tipos de Rutinas</h2>
+    <p>Existen muchos tipos de rutinas dependiendo de tus objetivos:</p>
+    <ul>
+      <li><strong>Fuerza:</strong> bajas repeticiones, cargas altas.</li>
+      <li><strong>Hipertrofia:</strong> repeticiones moderadas, volumen controlado.</li>
+      <li><strong>Resistencia:</strong> altas repeticiones, cargas moderadas.</li>
+    </ul>
+    <img class="section-img" src="F:\trabajos_Rene\temas\FrecuenciaDeEntrenamiento.png" alt="Tipos de rutina">
+  </section>
+
+  <section class="fade">
+    <h2>3. Técnica y Forma</h2>
+    <p>Antes de cargar peso, aprende la forma correcta de cada ejercicio. Evitarás lesiones y trabajarás los músculos de forma eficiente. Apóyate en videos de profesionales o asesórate en el gimnasio.</p>
+    <img class="section-img" src="F:\trabajos_Rene\temas\tecnica.png" alt="Técnica de ejercicios">
+  </section>
+
+  <section class="fade">
+    <h2>4. Frecuencia y Volumen</h2>
+    <p>No se trata de entrenar todos los días, sino de entrenar inteligentemente. Un buen volumen semanal puede lograrse en 3 a 5 días de entrenamiento. La clave está en el equilibrio.</p>
+    <img class="section-img" src="F:\trabajos_Rene\temas\volumen.png" alt="Frecuencia de entrenamiento">
+  </section>
+
+  <section class="fade">
+    <h2>5. Rutinas Populares</h2>
+    <p>Estas son algunas de las rutinas más utilizadas por principiantes y avanzados en el mundo del fitness:</p>
+    <ul>
+      <li><strong>Push Pull Legs (PPL):</strong> Divide el entrenamiento en empuje, tracción y piernas. Muy eficaz y fácil de seguir.</li>
+      <li><strong>Full Body:</strong> Ideal para principiantes, trabaja todo el cuerpo en una sola sesión, 3 veces por semana.</li>
+      <li><strong>Weider:</strong> Rutina clásica por grupos musculares (lunes pecho, martes espalda...). Alta especialización.</li>
+      <li><strong>Torso-Pierna:</strong> Enfocada en la parte superior e inferior del cuerpo en días alternos. Buen equilibrio entre volumen y descanso.</li>
+    </ul>
+    <img class="section-img" src="F:\trabajos_Rene\temas\Captura de pantalla 2025-06-06 090832.png" alt="Rutinas populares">
+  </section>
+  <a href="index_gym.html" class="btn-custom">Ir al menú</a>
+  <footer>
+    <p>"Sé fuerte no solo físicamente, sino mentalmente para seguir incluso cuando sea difícil."</p>
+  </footer>
+
+  <script>
+    const faders = document.querySelectorAll('.fade');
+
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('page-header').style.opacity = 1;
+      document.getElementById('page-header').style.transform = 'translateY(0)';
+    });
+  </script>
+</body>
+</html>

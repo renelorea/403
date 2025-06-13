@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio Principal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      color: white;
+      background-color: #00c6ff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #0072ff;
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenido</h1>
+    <a href="index_gym.html" class="btn" id="btnIndex">Ir a Index</a>
+    <a href="chatbot.html" class="btn" id="btnChatbot">Ir a Chatbot</a>
+  </div>
+
+  <script>
+    // Animación suave al cargar botones
+    const botones = document.querySelectorAll('.btn');
+    botones.forEach((btn, i) => {
+      btn.style.opacity = 0;
+      setTimeout(() => {
+        btn.style.transition = 'opacity 1s ease';
+        btn.style.opacity = 1;
+      }, 1000 + i * 200);
+    });
+  </script>
+</body>
+</html>
