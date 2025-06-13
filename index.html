@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>León Flores - Construye Páginas Web</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background: radial-gradient(circle at center, #262626 10%, #000 100%);
+      color: #fde61e;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-image: url('https://i.imgur.com/ClancyCover.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      animation: fadeIn 2s ease-out;
+      max-width: 400px;
+    }
+
+    h1 {
+      font-size: 4rem;
+      color: #fde61e;
+      text-shadow: 0 0 15px #fde61e;
+      animation: slideDown 2s ease-out;
+      letter-spacing: 3px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #de3b34;
+      margin-top: 10px;
+      text-shadow: 0 0 10px #de3b34;
+      animation: slideUp 2.5s ease-out;
+    }
+
+    .symbol {
+      margin-top: 40px;
+      animation: pulse 3s infinite;
+    }
+
+    .symbol a img {
+      width: 120px;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 10px #fde61e);
+      transition: transform 0.5s ease;
+    }
+
+    .symbol a img:hover {
+      transform: scale(1.1) rotate(5deg);
+      filter: drop-shadow(0 0 20px #de3b34);
+      cursor: pointer;
+    }
+
+    .links {
+      margin-top: 35px;
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      color: #fde61e;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 8px 12px;
+      border: 1.5px solid #fde61e;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: 0 0 5px #fde61e;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .links a:hover {
+      background-color: #de3b34;
+      color: #fff;
+      box-shadow: 0 0 10px #de3b34;
+    }
+
+    .slogan {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      color: #c2c0b3;
+      animation: flicker 4s infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-80px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(80px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.9; }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.8; }
+      10% { opacity: 0.3; }
+      20% { opacity: 1; }
+      30% { opacity: 0.7; }
+      100% { opacity: 0.9; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>LEÓN FLORES</h1>
+      <h2>Construye Páginas Web</h2>
+
+      <div class="symbol">
+        <a href="https://www.twentyonepilots.com/" target="_blank">
+          <img src="https://fbi.cults3d.com/uploaders/30032054/illustration-file/0504d567-3593-41ff-908a-96ddbaa2d448/CLANCY.png" alt="TOP Logo">
+        </a>
+      </div>
+
+      <nav class="links">
+        <a href="https://github.com/LeonFlores493/proyecto/tree/main">Proyecto</a>
+        <a href="https://github.com/renelorea/403/blob/main/Animacion/8/musica/index.html">Animación</a>
+        <a href="https://github.com/renelorea/403/tree/main/equipo2/JUEGO%20R">Juegos web</a>
+        <a href="https://github.com/renelorea/403/blob/main/chat_bot/8/8%20flores%20villareal%20chatvot.rar">Chatbot</a>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>
