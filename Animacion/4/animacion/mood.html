@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modalidades de Fútbol Americano</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Quicksand&display=swap');
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #e0f7fa 0%, #0ecfd3 100%);
+      font-family: 'Quicksand', sans-serif;
+      color: #012f36;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+      overflow-x: hidden;
+      background-attachment: fixed;
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem;
+      color: #012f36;
+      margin-bottom: 2rem;
+      letter-spacing: 1.5px;
+      animation: titleFloat 3.5s ease-in-out infinite alternate;
+      text-align: center;
+      position: relative;
+    }
+
+    @keyframes titleFloat {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .modalidades-container {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 20px;
+      max-width: 960px;
+      width: 100%;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(12px);
+    }
+
+    .modalidad {
+      margin-bottom: 2rem;
+      border-left: 6px solid #0ecfd3;
+      padding-left: 1.5rem;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modalidad::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -50px;
+      width: 50px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      transform: skewX(-20deg);
+      transition: left 0.5s ease;
+    }
+
+    .modalidad:hover::before {
+      left: 100%;
+    }
+
+    .modalidad:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(14, 207, 211, 0.3);
+    }
+
+    .modalidad h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #075f63;
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+      animation: fadeInUp 1s ease both;
+    }
+
+    .modalidad p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #054449;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .modalidades-container {
+        padding: 1.8rem 1.5rem;
+      }
+
+      .modalidad h2 {
+        font-size: 1.4rem;
+      }
+
+      .modalidad p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Modalidades de Juego</h1>
+
+  <div class="modalidades-container">
+
+    <div class="modalidad">
+      <h2>Fútbol Americano Tradicional Equipado</h2>
+      <p>Es la modalidad más conocida donde los jugadores usan casco, hombreras y protecciones completas. Se juega en un campo de 100 yardas y participan 11 jugadores por equipo.</p>
+    </div>
+
+    <div class="modalidad">
+      <h2>Fútbol Flag (Cochito Bandera)</h2>
+      <p>Una versión sin contacto donde los defensores deben quitar una bandera al portador del balón. Es ágil, seguro y muy popular entre niños y adultos.</p>
+    </div>
+
+    <div class="modalidad">
+      <h2>Arena Fútbol</h2>
+      <p>Modalidad bajo techo, con campo reducido y ritmo muy dinámico. Se enfoca en ofensivas rápidas y puntuaciones frecuentes.</p>
+    </div>
+
+    <div class="modalidad">
+      <h2>Ligas Femeniles</h2>
+      <p>Existen ligas femeniles activas y competitivas como la <strong>WFLA</strong>, <strong>LEXA</strong> y <strong>LIFFAE</strong>. Promueven la equidad, inclusión y el alto rendimiento.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
