@@ -1,0 +1,1317 @@
+
+        nav {
+            background-color: #000000;
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+            font-family: 'Playfair Display', serif;
+            justify-content: center !important;
+            animation: fadeInDown 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .navbar-nav {
+        text-align: center;
+        width: 100%;
+        justify-content: center;
+        }
+
+        .navbar .nav-link,
+        .navbar-brand {
+         color: white !important;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar-brand:hover {
+         color: #ddd !important;
+        }
+
+        h1{
+        padding: 20px;
+        font-size: 20px;
+        font-family: 'Playfair Display', serif;
+        animation: fadeInDown 1.5s ease forwards;
+        opacity: 0;
+        }
+
+        body {
+        margin: 0;
+        background-color: white;
+        font-family: 'Playfair Display', serif;
+        }
+
+        .poster {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        }
+
+        .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+        animation: fadeIn 1s ease-in-out;
+        }
+
+        .grid a img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 2px solid black;
+        }
+
+        .grid a:hover img {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .titulo {
+        text-align: center;
+        margin-top: 20px;
+        animation: slideUp 1s ease-in-out;
+        }
+
+        .titulo h1 {
+        font-size: 50px;
+        margin: 0;
+        letter-spacing: 3px;
+        }
+
+        .titulo h2 {
+        font-size: 28px;
+        margin: 0;
+        letter-spacing: 2px;
+        }
+
+        @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+        }
+
+        .contenedor-central {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 60px;
+        gap: 1px;
+        }
+
+        .portada {
+        width: 200px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 51, 102, 0.3);
+        }
+        .disco {
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+        animation: girar 4s linear infinite;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Animación de giro */
+        @keyframes girar {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+        }
+
+                .album-info {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 30px;
+          padding: 40px 20px;
+        }
+
+        .album-info img {
+          width: 250px;
+          border-radius: 10px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .detalles {
+          max-width: 400px;
+        }
+
+        .detalles h2 {
+          color: #484740;
+          margin-bottom: 10px;
+        }
+
+        .detalles ul {
+          padding-left: 20px;
+        }
+
+        .detalles li {
+          margin-bottom: 8px;
+        }
+
+        .tracklist {
+          background-color: #817d7d;
+          padding: 40px 20px;
+          text-align: center;
+        }
+
+        .tracklist h2 {
+          font-size: 2em;
+          margin-bottom: 20px;
+          color: #b3adaf;
+        }
+
+        .tracklist ol {
+          list-style-position: inside;
+          padding: 0;
+          margin: 0 auto;
+          max-width: 500px;
+          font-size: 1.1em;
+        }
+
+        .tracklist li {
+          margin-bottom: 10px;
+          padding: 8px;
+          background-color: #c4c0c0;
+          border-radius: 6px;
+        }
+        p {
+          animation: fadeInUp 1.5s ease forwards;
+          animation-delay: 0.5s;
+          opacity: 0;
+        }
+
+        /* Animación para los títulos de sección */
+        .album-info h2,
+        .tracklist h2 {
+          animation: fadeIn 1.5s ease forwards;
+          animation-delay: 1s;
+          opacity: 0;
+        }
+
+        /* Animación para las listas */
+        .album-info ul li,
+        .tracklist ol li {
+          opacity: 0;
+          animation: slideInLeft 0.6s ease forwards;
+        }
+
+        /* Para que las li aparezcan en cascada */
+        .album-info ul li:nth-child(1),
+        .tracklist ol li:nth-child(1) { animation-delay: 1.5s; }
+        .album-info ul li:nth-child(2),
+        .tracklist ol li:nth-child(2) { animation-delay: 1.8s; }
+        .album-info ul li:nth-child(3),
+        .tracklist ol li:nth-child(3) { animation-delay: 2.1s; }
+        .album-info ul li:nth-child(4),
+        .tracklist ol li:nth-child(4) { animation-delay: 2.4s; }
+        .album-info ul li:nth-child(5),
+        .tracklist ol li:nth-child(5) { animation-delay: 2.7s; }
+        .album-info ul li:nth-child(6),
+        .tracklist ol li:nth-child(6) { animation-delay: 3.0s; }
+        .album-info ul li:nth-child(7),
+        .tracklist ol li:nth-child(7) { animation-delay: 3.3s; }
+        .album-info ul li:nth-child(8),
+        .tracklist ol li:nth-child(8) { animation-delay: 3.6s; }
+
+        @keyframes fadeInDown {
+          0% {
+            opacity: 0;
+            transform: translateY(-30px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInUp {
+          0% {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideInLeft {
+          0% {
+            opacity: 0;
+            transform: translateX(-50px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+                h2 {
+          font-family: "Times New Roman", serif;
+          font-weight: bold;
+          font-size: 1.5em;
+          margin-top: 40px;
+          margin-bottom: 10px;
+          border-bottom: 1px solid #aaa;
+          padding-bottom: 5px;
+        }
+
+        .newspaper {
+          column-count: 2;
+          column-gap: 40px;
+          text-align: justify;
+          text-indent: 30px;
+        }
+
+        .dropcap:first-letter {
+          float: left;
+          font-size: 4em;
+          line-height: 1;
+          padding-right: 8px;
+          font-weight: bold;
+          color: rgb(10, 10, 10);
+          font-family: "Georgia", serif;
+        }
+                body.nineteeneighty-nine {
+          background-color: #e6f0ff;
+          color: #003366;
+          font-family: 'Playfair Display', serif;
+        }
+
+        .nineteeneighty-nine .navbar {
+          background-color: #86a8dc; 
+        }
+
+        .nineteeneighty-nine .nav-link {
+          color: #003366;
+          font-weight: bold;
+        }
+
+        .nineteeneighty-nine .nav-link:hover {
+          color: #0059b3;
+        }
+
+        .nineteeneighty-nine h1, .nineteeneighty-nine h2 {
+          color: #004080;
+        }
+
+        .nineteeneighty-nine .btn-volver {
+          background-color: #3366cc; 
+          color: white;
+          border: none;
+          border-radius: 10px;
+          padding: 10px 20px;
+          font-weight: bold;
+          text-decoration: none;
+          transition: background-color 0.3s ease;
+        }
+
+        .nineteeneighty .btn-volver:hover {
+          background-color: #003366; 
+        }
+
+        .nineteeneighty-nine .contenedor-central {
+          text-align: center;
+          margin: 20px 0;
+        }
+        .nineteeneighty-nine .album-info {
+          background-color: #cce0ff;
+          border-radius: 15px;
+          padding: 15px 20px;
+          max-width: 600px;
+          margin: 20px auto;
+          box-shadow: 0 2px 6px rgba(0, 51, 102, 0.2);
+        }
+
+        .nineteeneighty-nine .album-info ul {
+          list-style: none;
+          padding-left: 0;
+        }
+
+        .nineteeneighty-nine .album-info li {
+          margin-bottom: 8px;
+        }
+
+        .nineteeneighty-nine .tracklist {
+          background-color: #cce0ff;
+          border-radius: 15px;
+          padding: 20px;
+          max-width: 600px;
+          margin: 20px auto 40px;
+          box-shadow: 0 4px 8px rgba(0, 51, 102, 0.2);
+        }
+
+        .nineteeneighty-nine .tracklist ol {
+          padding-left: 20px;
+          color: #00264d;
+        }
+
+        .nineteeneighty-nine .tracklist li {
+          margin: 8px 0;
+          font-weight: 600;
+          background-color: #d1daf2;
+        }
+
+                body.reputation {
+          background-color: #121212;
+          color: #e0e0e0;
+          font-family: 'Playfair Display', serif;
+        }
+
+        .reputation .navbar {
+          background-color: #1f1f1f;
+        }
+
+        .reputation .nav-link {
+          color: #e0e0e0;
+          font-weight: bold;
+        }
+
+        .reputation .nav-link:hover {
+          color: #bbbbbb;
+        }
+
+        .reputation h1, .reputation h2 {
+          color: #f5f5f5;
+        }
+
+        .reputation .btn-volver {
+          background-color: #333333;
+          color: #f5f5f5;
+          border: none;
+          border-radius: 10px;
+          padding: 10px 20px;
+          font-weight: bold;
+          text-decoration: none;
+          transition: background-color 0.3s ease;
+        }
+
+        .reputation .btn-volver:hover {
+          background-color: #555555;
+        }
+
+        .reputation .contenedor-central {
+          text-align: center;
+          margin: 20px 0;
+        }
+
+        .reputation .album-info {
+          background-color: #222222;
+          border-radius: 15px;
+          padding: 15px 20px;
+          max-width: 600px;
+          margin: 20px auto;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .reputation .album-info ul {
+          list-style: none;
+          padding-left: 0;
+        }
+
+        .reputation .album-info li {
+          margin-bottom: 8px;
+          color: #cccccc;
+        }
+
+        .reputation .tracklist {
+          background-color: #222222;
+          border-radius: 15px;
+          padding: 20px;
+          max-width: 600px;
+          margin: 20px auto 40px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .reputation .tracklist ol {
+          padding-left: 20px;
+          color: #dddddd;
+        }
+
+        .reputation .tracklist li {
+          margin: 8px 0;
+          font-weight: 600;
+        }
+
+        body.lover {
+          background-color: #fac7dc;  
+          color: #660033; 
+          font-family: 'Playfair Display', serif;
+        }
+
+        .lover .navbar {
+          background-color: #ffb3d9;
+        }
+
+        .lover .nav-link {
+          color: #660033;
+          font-weight: bold;
+        }
+
+        .lover .nav-link:hover {
+          color: #d980ac;  
+        }
+
+        .lover h1, .lover h2 {
+          color: #df74aa;
+        }
+
+        .lover .btn-volver {
+          background-color: #f6a6c0;  
+          color: white;
+          border: none;
+          border-radius: 10px;
+          padding: 10px 20px;
+          font-weight: bold;
+          text-decoration: none;
+          transition: background-color 0.3s ease;
+        }
+
+        .lover .btn-volver:hover {
+          background-color: #990033; 
+        }
+
+        .lover .contenedor-central {
+          text-align: center;
+          margin: 20px 0;
+        }
+
+        .lover .album-info {
+          background-color: #ffd9ec;
+          border-radius: 15px;
+          padding: 15px 20px;
+          max-width: 600px;
+          margin: 20px auto;
+          box-shadow: 0 2px 6px rgba(215, 119, 151, 0.2);
+        }
+
+        .lover .album-info ul {
+          list-style: none;
+          padding-left: 0;
+        }
+
+        .lover .album-info li {
+          margin-bottom: 8px;
+        }
+
+        .lover .tracklist {
+          background-color: #ffd9ec;
+          border-radius: 15px;
+          padding: 20px;
+          max-width: 600px;
+          margin: 20px auto 40px;
+          box-shadow: 0 4px 8px rgba(232, 156, 182, 0.2);
+        }
+
+        .lover .tracklist ol {
+          padding-left: 20px;
+          color: #660033;
+        }
+
+        .lover .tracklist li {
+          margin: 8px 0;
+          font-weight: 600;
+          background-color: #f0bfdc;
+        }
+
+                body.folklore {
+          background-color: #f0f0f0;
+          color: #333333;
+          font-family: 'Playfair Display', serif;
+        }
+
+        .folklore .navbar {
+          background-color: #d9d9d9;
+        }
+
+        .folklore .nav-link {
+          color: #333333;
+          font-weight: bold;
+        }
+
+        .folklore .nav-link:hover {
+          color: #666666;
+        }
+
+        .folklore h1, .folklore h2 {
+          color: #222222;
+        }
+
+        .folklore .btn-volver {
+          background-color: #999999;
+          color: white;
+          border: none;
+          border-radius: 10px;
+          padding: 10px 20px;
+          font-weight: bold;
+          text-decoration: none;
+          transition: background-color 0.3s ease;
+        }
+
+        .folklore .btn-volver:hover {
+          background-color: #666666;
+        }
+
+        .folklore .contenedor-central {
+          text-align: center;
+          margin: 20px 0;
+        }
+
+        .folklore .album-info {
+          background-color: #e6e6e6;
+          border-radius: 15px;
+          padding: 15px 20px;
+          max-width: 600px;
+          margin: 20px auto;
+          box-shadow: 0 2px 6px rgba(100, 100, 100, 0.2);
+        }
+
+        .folklore .album-info ul {
+          list-style: none;
+          padding-left: 0;
+        }
+
+        .folklore .album-info li {
+          margin-bottom: 8px;
+        }
+
+        .folklore .tracklist {
+          background-color: #e6e6e6;
+          border-radius: 15px;
+          padding: 20px;
+          max-width: 600px;
+          margin: 20px auto 40px;
+          box-shadow: 0 4px 8px rgba(100, 100, 100, 0.2);
+        }
+
+        .folklore .tracklist ol {
+          padding-left: 20px;
+          color: #444444;
+        }
+
+        .folklore .tracklist li {
+          margin: 8px 0;
+          font-weight: 600;
+
+        }
+
+        body.evermore {
+          background-color: #f5f1eb;
+          color: #5b4636;
+          font-family: 'Playfair Display', serif;
+        }
+
+        .evermore .navbar {
+          background-color: #d9cbbf;
+        }
+
+        .evermore .nav-link {
+          color: #5b4636;
+          font-weight: bold;
+        }
+
+        .evermore .nav-link:hover {
+          color: #8b6e4a;
+        }
+
+        .evermore h1, .evermore h2 {
+          color: #4a3b2b;
+        }
+
+        .evermore .btn-volver {
+          background-color: #8b6e4a;
+          color: white;
+          border: none;
+          border-radius: 10px;
+          padding: 10px 20px;
+          font-weight: bold;
+          text-decoration: none;
+          transition: background-color 0.3s ease;
+        }
+
+        .evermore .btn-volver:hover {
+          background-color: #6b5435;
+        }
+
+        .evermore .contenedor-central {
+          text-align: center;
+          margin: 20px 0;
+        }
+        .evermore .album-info {
+          background-color: #e8dfd4;
+          border-radius: 15px;
+          padding: 15px 20px;
+          max-width: 600px;
+          margin: 20px auto;
+          box-shadow: 0 2px 6px rgba(91, 70, 54, 0.2);
+        }
+
+        .evermore .album-info ul {
+          list-style: none;
+          padding-left: 0;
+        }
+
+        .evermore .album-info li {
+          margin-bottom: 8px;
+        }
+
+        .evermore .tracklist {
+          background-color: #e8dfd4;
+          border-radius: 15px;
+          padding: 20px;
+          max-width: 600px;
+          margin: 20px auto 40px;
+          box-shadow: 0 4px 8px rgba(91, 70, 54, 0.2);
+        }
+
+        .evermore .tracklist ol {
+          padding-left: 20px;
+          color: #5b4636;
+        }
+
+        .evermore .tracklist li {
+          margin: 8px 0;
+          font-weight: 600;
+          background-color: #94896c;
+        }
+
+                  body.midnights {
+            background-color: #0a0a23; 
+            color: #e0e0f0;       
+            font-family: 'Playfair Display', serif;
+          }
+
+          .midnights .navbar {
+            background-color: #1a1a3d;
+          }
+
+          .midnights .nav-link {
+            color: #e0e0f0;
+            font-weight: bold;
+          }
+
+          .midnights .nav-link:hover {
+            color: #80aaff; 
+          }
+
+          .midnights h1, .midnights h2 {
+            color: #c0c0ff; 
+          }
+
+          .midnights .btn-volver {
+            background-color: #3366cc; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+          }
+
+          .midnights .btn-volver:hover {
+            background-color: #254aa5; 
+          }
+
+          .midnights .contenedor-central {
+            text-align: center;
+            margin: 20px 0;
+          }
+
+          .midnights .album-info {
+            background-color: #1f1f3f;
+            border-radius: 15px;
+            padding: 15px 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 2px 6px rgba(128, 170, 255, 0.2);
+          }
+
+          .midnights .album-info ul {
+            list-style: none;
+            padding-left: 0;
+          }
+
+          .midnights .album-info li {
+            margin-bottom: 8px;
+          }
+
+          .midnights .tracklist {
+            background-color: #1f1f3f;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto 40px;
+            box-shadow: 0 4px 8px rgba(128, 170, 255, 0.2);
+          }
+
+          .midnights .tracklist ol {
+            padding-left: 20px;
+            color: #e0e0f0;
+          }
+
+          .midnights .tracklist li {
+            margin: 8px 0;
+            font-weight: 600;
+            background-color: #333f5c;
+          }
+
+          body.debut {
+            background-color: #f0fff0; 
+            color: #2e5339;       
+            font-family: 'Playfair Display', serif;
+          }
+
+          .debut .navbar {
+            background-color: #b5d6b5;
+          }
+
+          .debut .nav-link {
+            color: #2e5339;
+            font-weight: bold;
+          }
+
+          .debut .nav-link:hover {
+            color: #558b6e; 
+          }
+
+          .debut h1, .debut h2 {
+            color: #3b6d50; 
+          }
+
+          .debut .btn-volver {
+            background-color: #558b6e; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+          }
+
+          .debut .btn-volver:hover {
+            background-color: #3b6d50; 
+          }
+
+          .debut .contenedor-central {
+            text-align: center;
+            margin: 20px 0;
+          }
+
+          .debut .album-info {
+            background-color: #d5f0d5;
+            border-radius: 15px;
+            padding: 15px 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 2px 6px rgba(85, 139, 110, 0.2);
+          }
+
+          .debut .album-info ul {
+            list-style: none;
+            padding-left: 0;
+          }
+
+          .debut .album-info li {
+            margin-bottom: 8px;
+          }
+
+          .debut .tracklist {
+            background-color: #d5f0d5;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto 40px;
+            box-shadow: 0 4px 8px rgba(85, 139, 110, 0.2);
+          }
+
+          .debut .tracklist ol {
+            padding-left: 20px;
+            color: #2e5339;
+          }
+
+          .debut .tracklist li {
+            margin: 8px 0;
+            font-weight: 600;
+            background-color: #eafae8;
+          }
+
+          body.red {
+            background-color: #fff5f5; 
+            color: #990000;       
+            font-family: 'Playfair Display', serif;
+          }
+
+          .red .navbar {
+            background-color: #754646;
+          }
+
+          .red .nav-link {
+            color: #990000;
+            font-weight: bold;
+          }
+
+          .red .nav-link:hover {
+            color: #cc0000; 
+          }
+
+          .red h1, .red h2 {
+            color: #b30000; 
+          }
+
+          .red .btn-volver {
+            background-color: #d32f2f; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+          }
+
+          .red .btn-volver:hover {
+            background-color: #a30000; 
+          }
+
+          .red .contenedor-central {
+            text-align: center;
+            margin: 20px 0;
+          }
+
+          .red .album-info {
+            background-color: #f4cccc;
+            border-radius: 15px;
+            padding: 15px 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 2px 6px rgba(204, 0, 0, 0.2);
+          }
+
+          .red .album-info ul {
+            list-style: none;
+            padding-left: 0;
+          }
+
+          .red .album-info li {
+            margin-bottom: 8px;
+          }
+
+          .red .tracklist {
+            background-color: #f4cccc;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto 40px;
+            box-shadow: 0 4px 8px rgba(204, 0, 0, 0.2);
+          }
+
+          .red .tracklist ol {
+            padding-left: 20px;
+            color: #990000;
+          }
+
+          .red .tracklist li {
+            margin: 8px 0;
+            font-weight: 600;
+            background-color: #fdeaea;
+          }
+
+          body.fearless {
+            background-color: #fffbea; 
+            color: #7c5c00;       
+            font-family: 'Playfair Display', serif;
+          }
+
+          .fearless .navbar {
+            background-color: #635734;
+          }
+
+          .fearless .nav-link {
+            color: #7c5c00;
+            font-weight: bold;
+          }
+
+          .fearless .nav-link:hover {
+            color: #b38900; 
+          }
+
+          .fearless h1, .fearless h2 {
+            color: #b38900; 
+          }
+
+          .fearless .btn-volver {
+            background-color: #f5c542; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+          }
+
+          .fearless .btn-volver:hover {
+            background-color: #d4a322; 
+          }
+
+          .fearless .contenedor-central {
+            text-align: center;
+            margin: 20px 0;
+          }
+
+          .fearless .album-info {
+            background-color: #fff2cc;
+            border-radius: 15px;
+            padding: 15px 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 2px 6px rgba(179, 137, 0, 0.2);
+          }
+
+          .fearless .album-info ul {
+            list-style: none;
+            padding-left: 0;
+          }
+
+          .fearless .album-info li {
+            margin-bottom: 8px;
+          }
+
+          .fearless .tracklist {
+            background-color: #fff2cc;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto 40px;
+            box-shadow: 0 4px 8px rgba(179, 137, 0, 0.2);
+          }
+
+          .fearless .tracklist ol {
+            padding-left: 20px;
+            color: #7c5c00;
+          }
+
+          .fearless .tracklist li {
+            margin: 8px 0;
+            font-weight: 600;
+            background-color: #fff9e6;
+          }
+
+          /* SPEAK NOW */
+          body.speaknow {
+            background-color: #f5ecf8; 
+            color: #4a2e5c;       
+            font-family: 'Playfair Display', serif;
+          }
+
+          .speaknow .navbar {
+            background-color: #6e5780;
+          }
+
+          .speaknow .nav-link {
+            color: #4a2e5c;
+            font-weight: bold;
+          }
+
+          .speaknow .nav-link:hover {
+            color: #7c519c; 
+          }
+
+          .speaknow h1, .speaknow h2 {
+            color: #7a4099; 
+          }
+
+          .speaknow .btn-volver {
+            background-color: #b497bd; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+          }
+
+          .speaknow .btn-volver:hover {
+            background-color: #9a76a6; 
+          }
+
+          .speaknow .contenedor-central {
+            text-align: center;
+            margin: 20px 0;
+          }
+
+          .speaknow .album-info {
+            background-color: #e8d7f1;
+            border-radius: 15px;
+            padding: 15px 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 2px 6px rgba(122, 64, 153, 0.2);
+          }
+
+          .speaknow .album-info ul {
+            list-style: none;
+            padding-left: 0;
+          }
+
+          .speaknow .album-info li {
+            margin-bottom: 8px;
+          }
+
+          .speaknow .tracklist {
+            background-color: #e8d7f1;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto 40px;
+            box-shadow: 0 4px 8px rgba(122, 64, 153, 0.2);
+          }
+
+          .speaknow .tracklist ol {
+            padding-left: 20px;
+            color: #4a2e5c;
+          }
+
+          .speaknow .tracklist li {
+            margin: 8px 0;
+            font-weight: 600;
+            background-color: #f6edf9;
+          }
+                  body.torturedpoets {
+            background-color: #525252;
+            color: #000000; 
+            font-family: 'Playfair Display', serif;
+          }
+
+          .torturedpoets .navbar {
+            background-color: #757575;  
+          }
+
+          .torturedpoets .nav-link {
+            color: #d6d6d6;
+            font-weight: bold;
+          }
+
+          .torturedpoets .nav-link:hover {
+            color: #000000; 
+          }
+
+          .torturedpoets h1, .torturedpoets h2 {
+            color: #797979;
+          }
+
+          .torturedpoets .btn-volver {
+            background-color: #7e7e7e; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+          }
+
+          .torturedpoets .btn-volver:hover {
+            background-color: #535353;
+          }
+
+          .torturedpoets .contenedor-central {
+            text-align: center;
+            margin: 20px 0;
+          }
+
+          .torturedpoets .album-info {
+            background-color: #8c8c8c;
+            border-radius: 15px;
+            padding: 15px 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+          }
+
+          .torturedpoets .album-info ul {
+            list-style: none;
+            padding-left: 0;
+          }
+
+          .torturedpoets .album-info li {
+            margin-bottom: 8px;
+          }
+
+          .torturedpoets .tracklist {
+            background-color: #c4c4c4;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          }
+
+          .torturedpoets .tracklist ol {
+            padding-left: 20px;
+            color: #e8d6d7;
+          }
+
+          .torturedpoets .tracklist li {
+            margin: 8px 0;
+            font-weight: 600;
+            background-color: #cdcdcd;
+            border-radius: 5px;
+            padding: 5px 10px;
+          }
+
+                    
+          .chat-img {
+            width: 150px;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #666;
+          }
+
+          .chat-box {
+            background-color: #404040;
+            height: 400px;
+            overflow-y: auto;
+            box-shadow: inset 0 0 8px #222;
+          }
+
+          .chat-message.bot {
+            background-color: #555;
+            color: #eee;
+            align-self: flex-start;
+          }
+
+          .chat-message.user {
+            background-color: #bbb;
+            color: #222;
+            align-self: flex-end;
+          }
+          .chat-box::-webkit-scrollbar {
+            width: 8px;
+          }
+
+          .chat-box::-webkit-scrollbar-track {
+            background: transparent;
+          }
+
+          .chat-box::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 20px;
+          }
+
+          body.regrabaciones {
+            background: #cbcbcb;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+          }
+
+          .regrabaciones .carousel-item {
+            background: #4b4b4b;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px 30px;
+            margin-bottom: 30px;
+          }
+
+          .regrabaciones .carousel-item img {
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          }
+
+          .regrabaciones .carousel-item p {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #555;
+          }
+
+          .regrabaciones .carousel-item .row {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            padding: 20px;
+          }
+
+          .regrabaciones .carousel-item h3 {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+          }
+
+          .regrabaciones .carousel-item img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 6px 16px rgba(44, 62, 80, 0.2);
+          }
+
+          .regrabaciones .carousel-item ol {
+            padding-left: 20px;
+            color: #34495e;
+            font-weight: 500;
+            max-height: 320px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #bdc3c7 transparent;
+          }
+
+          .regrabaciones .carousel-item ol::-webkit-scrollbar {
+            width: 6px;
+          }
+
+          .regrabaciones .carousel-item ol::-webkit-scrollbar-thumb {
+            background-color: #bdc3c7;
+            border-radius: 10px;
+          }
+
+          .regrabaciones .carousel-item ol li {
+            margin-bottom: 8px;
+            padding: 6px 10px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+          }
+
+          .regrabaciones .carousel-item ol li:hover {
+            background-color: #d0d7de;
+          }
+
+          /* Botones de control (prev / next) */
+          .regrabaciones .carousel-control-prev-icon,
+          .regrabaciones .carousel-control-next-icon {
+            background-color: #000000;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.5);
+          }
+
+          .regrabaciones .carousel-indicators [data-bs-target] {
+            background-color: #000000;
+          }
+
+          .regrabaciones .carousel-indicators .active {
+            background-color: #2980b9;
+          }
