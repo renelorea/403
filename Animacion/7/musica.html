@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musify - Tu Música Favorita</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Audio Element for Playback -->
+    <audio id="audio-player" preload="metadata"></audio>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Screen -->
+        <section id="home-screen" class="screen active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Musify</h1>
+                    <p>Tu música favorita</p>
+                    <div class="hero-decoration"></div>
+                </div>
+            </div>
+            <div class="featured-albums">
+                <h2>Álbumes destacados</h2>
+                <div class="album-grid">
+                    <div class="album-card" data-album="1">
+                        <div class="album-image-container">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCwm8g7x6Rlw2raDQtZ9mlfJ_mhf8TsABTrg&s" alt="After Hours">
+                            <div class="play-overlay">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>After Hours</h3>
+                        <p>The Weeknd</p>
+                    </div>
+                    <div class="album-card" data-album="2">
+                        <div class="album-image-container">
+                            <img src="https://los40.com/resizer/v2/33MUJKVXTBIE7H7ZROLFXUB3BQ.jpg?auth=911a0685332b03587335c5feadffd01e5bca4fc9e322fb2e28814680283ca99c&quality=70&width=1200&height=900&focal=760,240" alt="Random Access Memories">
+                            <div class="play-overlay">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>Random Access Memories</h3>
+                        <p>Daft Punk</p>
+                    </div>
+                    <div class="album-card" data-album="3">
+                        <div class="album-image-container">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMIyoo56TFmk7CUxP5kNrqW1hRWifDrkqXKg&s" alt="To Pimp a Butterfly">
+                            <div class="play-overlay">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>To Pimp a Butterfly</h3>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Library Screen -->
+        <section id="library-screen" class="screen">
+            <div class="screen-header">
+                <h1>Tu Biblioteca</h1>
+            </div>
+            <div class="tabs">
+                <button class="tab active" data-tab="albums">Álbumes</button>
+                <button class="tab" data-tab="tracks">Canciones</button>
+            </div>
+            <div class="library-content"></div>
+        </section>
+
+        <!-- Search Screen -->
+        <section id="search-screen" class="screen">
+            <div class="screen-header">
+                <h1>Búsqueda</h1>
+            </div>
+            <div class="search-bar">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                </svg>
+                <input type="text" placeholder="Buscar géneros musicales...">
+            </div>
+            <div class="genres-section">
+                <h2>Géneros populares</h2>
+                <div class="genres-carousel">
+                    <div class="genre-card" data-genre="pop" style="background: linear-gradient(135deg, #ff6b6b, #ee5a52)">
+                        <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg" alt="Pop">
+                        <div class="genre-overlay">
+                            <h3>Pop</h3>
+                        </div>
+                    </div>
+                    <div class="genre-card" data-genre="rock" style="background: linear-gradient(135deg, #4ecdc4, #44a08d)">
+                        <img src="https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg" alt="Rock">
+                        <div class="genre-overlay">
+                            <h3>Rock</h3>
+                        </div>
+                    </div>
+                    <div class="genre-card" data-genre="hiphop" style="background: linear-gradient(135deg, #45b7d1, #3a86c7)">
+                        <img src="https://images.pexels.com/photos/2747450/pexels-photo-2747450.jpeg" alt="Hip Hop">
+                        <div class="genre-overlay">
+                            <h3>Hip Hop</h3>
+                        </div>
+                    </div>
+                    <div class="genre-card" data-genre="reggaeton" style="background: linear-gradient(135deg, #f093fb, #f5576c)">
+                        <img src="https://images.pexels.com/photos/1983037/pexels-photo-1983037.jpeg" alt="Reggaeton Mexicano">
+                        <div class="genre-overlay">
+                            <h3>Reggaeton Mexicano</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="genre-artists"></div>
+        </section>
+
+        <!-- Now Playing Screen -->
+        <section id="now-playing-screen" class="screen">
+            <div class="now-playing-content">
+                <div class="album-art-container">
+                    <img id="current-album-cover" src="" alt="Album Cover">
+                    <div class="vinyl-effect"></div>
+                </div>
+                <div class="track-info">
+                    <h2 id="current-song-title"></h2>
+                    <p id="current-artist"></p>
+                </div>
+                <div class="progress-container">
+                    <span id="current-time">0:00</span>
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress" id="progress"></div>
+                        <div class="progress-handle" id="progress-handle"></div>
+                    </div>
+                    <span id="total-time">0:00</span>
+                </div>
+                <div class="controls">
+                    <button id="prev-button" class="control-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                        </svg>
+                    </button>
+                    <button id="play-button" class="control-btn main-play">
+                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                        </svg>
+                    </button>
+                    <button id="next-button" class="control-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Navigation -->
+    <nav>
+        <button class="nav-button active" data-screen="home-screen">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9,22 9,12 15,12 15,22"/>
+            </svg>
+            <span>Inicio</span>
+        </button>
+        <button class="nav-button" data-screen="library-screen">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+            <span>Biblioteca</span>
+        </button>
+        <button class="nav-button" data-screen="search-screen">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+            </svg>
+            <span>Búsqueda</span>
+        </button>
+        <button class="nav-button" data-screen="now-playing-screen">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="10,8 16,12 10,16 10,8"/>
+            </svg>
+            <span>Reproduciendo</span>
+        </button>
+    </nav>
+
+    <!-- Mini Player -->
+    <div id="mini-player" style="display: none;">
+        <img id="mini-album-cover" src="" alt="Mini Album Cover">
+        <div class="mini-info">
+            <h4 id="mini-song-title"></h4>
+            <p id="mini-artist"></p>
+        </div>
+        <div class="mini-controls">
+            <button id="mini-play-button" class="mini-control-btn">
+                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="java.js"></script>
+</body>
+</html>
