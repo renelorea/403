@@ -9,6 +9,7 @@
     --games-gradient: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
     --chatbot-gradient: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
     --gym-gradient: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%);
+    --papeleria-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
     --background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
     --card-bg: rgba(255, 255, 255, 0.08);
     --text-primary: #ffffff;
@@ -127,6 +128,10 @@ body {
     background: var(--gym-gradient);
 }
 
+.papeleria-card::before {
+    background: var(--papeleria-gradient);
+}
+
 .app-card:hover {
     transform: translateY(-15px) scale(1.03);
     box-shadow: var(--shadow-hover);
@@ -240,6 +245,10 @@ body {
 
 .gym-card .card-glow {
     background: radial-gradient(circle, rgba(253, 121, 168, 0.25) 0%, transparent 70%);
+}
+
+.papeleria-card .card-glow {
+    background: radial-gradient(circle, rgba(168, 237, 234, 0.25) 0%, transparent 70%);
 }
 
 .footer {
