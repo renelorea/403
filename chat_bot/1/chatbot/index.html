@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot Educativo Personalizado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 ChatBot Educativo</h1>
+            <p>Tu asistente personal de aprendizaje</p>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <p>¡Hola! Soy tu chatbot educativo personalizado. 🎯</p>
+                        <p>Para comenzar, por favor dime tu nombre:</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <input type="text" id="userInput" placeholder="Escribe tu respuesta aquí..." disabled>
+                <button id="sendButton" disabled>Enviar</button>
+            </div>
+        </div>
+
+        <div class="stats-container" id="statsContainer" style="display: none;">
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Pregunta:</span>
+                    <span class="stat-value" id="currentQuestion">0/10</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Puntuación:</span>
+                    <span class="stat-value" id="currentScore">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Tema:</span>
+                    <span class="stat-value" id="currentTopic">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
