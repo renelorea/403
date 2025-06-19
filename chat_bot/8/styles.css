@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: url('https://i.imgur.com/bwWJvJz.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+}
+
+.chat-container {
+  background: rgba(0, 0, 0, 0.85);
+  width: 420px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #00ff55;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(8px);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+header h1 {
+  font-size: 24px;
+  color: #00ff55;
+  margin-bottom: 5px;
+}
+
+header p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.buttons button {
+  background: #00ff55;
+  color: #000;
+  border: none;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.buttons button:hover {
+  background: #00cc44;
+  transform: scale(1.05);
+}
+
+.chat-box {
+  height: 300px;
+  overflow-y: auto;
+  background: #1b1b1b;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid #00ff55;
+  scrollbar-width: thin;
+  scrollbar-color: #00ff55 #1b1b1b;
+}
+
+.chat-box::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-box::-webkit-scrollbar-thumb {
+  background: #00ff55;
+  border-radius: 10px;
+}
+
+.chat-box p {
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 80%;
+  animation: fadeIn 0.3s ease;
+  font-size: 14px;
+}
+
+.user {
+  align-self: flex-end;
+  background-color: #00ff55;
+  color: #000;
+}
+
+.bot {
+  align-self: flex-start;
+  background-color: #333;
+  color: #0f0;
+}
+
+form {
+  display: flex;
+  gap: 5px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+button[type="submit"] {
+  background-color: #00ff55;
+  color: #000;
+  font-weight: bold;
+  padding: 10px 18px;
+
+
