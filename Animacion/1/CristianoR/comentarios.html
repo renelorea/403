@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comentarios</title>
+     <link rel="icon" href="imagenes/logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    /* Importar fuente moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #545457 50%, #0f172a 100%);
+    min-height: 100vh;
+    color: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Elementos de fondo animados */
+.background-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.bg-element {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+}
+
+.bg-element-1 {
+    width: 320px;
+    height: 320px;
+    background: rgba(147, 51, 234, 0.4);
+    top: -160px;
+    right: -160px;
+    animation-delay: 0s;
+}
+
+.bg-element-2 {
+    width: 320px;
+    height: 320px;
+    background: rgba(59, 130, 246, 0.4);
+    bottom: -160px;
+    left: -160px;
+    animation-delay: 2s;
+}
+
+.bg-element-3 {
+    width: 400px;
+    height: 400px;
+    background: rgba(99, 102, 241, 0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* Container principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: slideInFromTop 0.8s ease-out;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #c0daf1 0%, #f6f0f7 50%, #d2e0e9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: #cbd5e1;
+    font-weight: 400;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Form Container */
+.form-container {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 2rem;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: slideInFromBottom 0.8s ease-out 0.2s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.3s; }
+.form-group:nth-child(2) { animation-delay: 0.4s; }
+.form-group:nth-child(3) { animation-delay: 0.5s; }
+.form-group:nth-child(4) { animation-delay: 0.6s; }
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.form-group:focus-within .form-label {
+    color: #c5bfcc;
+}
+
+/* Input Wrapper */
+.input-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+
+.textarea-icon {
+    top: 1.5rem;
+    transform: none;
+}
+
+.input-wrapper:focus-within .input-icon {
+    color: #c084fc;
+}
+
+/* Form Inputs */
+.form-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input::placeholder {
+    color: #94a3b8;
+}
+
+.form-input:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.form-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #c084fc;
+    box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-textarea {
+    resize: none;
+    min-height: 120px;
+    padding-top: 1rem;
+}
+
+/* Error Messages */
+.error-message {
+    color: #f87171;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.error-message.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.form-input.error {
+    border-color: #f87171;
+    background: rgba(248, 113, 113, 0.1);
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #1d74c5 0%, #508ce6 100%);
+    border: none;
+    border-radius: 1rem;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out 0.7s both;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -12px rgba(230, 225, 235, 0.4);
+    background: linear-gradient(135deg, #4d84e9 0%, #3361f7 100%);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-icon {
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover .btn-icon {
+    transform: translateX(2px);
+}
+
+.loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 2rem;
+    animation: fadeInUp 0.6s ease-out 0.8s both;
+}
+
+.footer p {
+    color: #94a3b8;
+    font-size: 0.875rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 400px;
+    margin: 1rem;
+    animation: scaleIn 0.4s ease-out;
+}
+
+.success-icon {
+    color: #10b981;
+    margin-bottom: 1.5rem;
+    animation: bounceIn 0.6s ease-out 0.2s both;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.modal-content p {
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.modal-close {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+    border-radius: 0.75rem;
+    color: #ffffff;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
+}
+
+/* Animaciones */
+@keyframes slideInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .form-container {
+        padding: 2rem 1.5rem;
+        border-radius: 1.5rem;
+    }
+    
+    .bg-element-1,
+    .bg-element-2 {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .bg-element-3 {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .form-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .modal-content {
+        padding: 2rem 1.5rem;
+    }
+}
+</style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="background-elements">
+        <div class="bg-element bg-element-1"></div>
+        <div class="bg-element bg-element-2"></div>
+        <div class="bg-element bg-element-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title">Comenta</h1>
+            <p class="subtitle">Completa el formulario y nos pondremos en contacto contigo</p>
+        </div>
+
+        <!-- Form Container -->
+        <div class="form-container">
+          <form action="https://formsubmit.co/edualb06070@gmail.com" method="POST">
+             
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name" class="form-label">Nombre Completo</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            class="form-input" 
+                            placeholder="Ingresa tu nombre completo"
+                            required
+                        />
+                    </div>
+                    <div class="error-message" id="name-error"></div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="tu@email.com"
+                            required
+                        />
+                    </div>
+                    <div class="error-message" id="email-error"></div>
+                </div>
+
+                <!-- Phone Field -->
+                <div class="form-group">
+                    <label for="phone" class="form-label">Teléfono</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            class="form-input" 
+                            placeholder="+1 (555) 000-0000"
+                            required
+                        />
+                    </div>
+                    <div class="error-message" id="phone-error"></div>
+                </div>
+
+                <!-- Message Field -->
+                <div class="form-group">
+                    <label for="message" class="form-label">Mensaje</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon textarea-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            class="form-input form-textarea" 
+                            rows="5" 
+                            placeholder="Cuéntanos sobre tu proyecto o consulta..."
+                            required
+                        ></textarea>
+                    </div>
+                    <div class="error-message" id="message-error"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                        </svg>
+                        Enviar Mensaje
+                    </span>
+                    <div class="loading-spinner" style="display: none;">
+                        <div class="spinner"></div>
+                        Enviando...
+                    </div>
+                </button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Tu privacidad es importante para nosotros. No compartimos tu información.</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                </svg>
+            </div>
+            <h2>¡Mensaje Enviado!</h2>
+            <p>Gracias por contactarnos. Te responderemos pronto.</p>
+            <button class="modal-close" onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // Elementos del DOM
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const modal = document.getElementById('successModal');
+const btnText = submitBtn.querySelector('.btn-text');
+const loadingSpinner = submitBtn.querySelector('.loading-spinner');
+
+// Validación en tiempo real
+const inputs = document.querySelectorAll('.form-input');
+inputs.forEach(input => {
+    input.addEventListener('input', function() {
+        validateField(this);
+    });
+    
+    input.addEventListener('blur', function() {
+        validateField(this);
+    });
+});
+
+// Función de validación de campos
+function validateField(field) {
+    const fieldName = field.name;
+    const value = field.value.trim();
+    const errorElement = document.getElementById(fieldName + '-error');
+    
+    let isValid = true;
+    let errorMessage = '';
+    
+    // Validaciones específicas
+    switch(fieldName) {
+        case 'name':
+            if (!value) {
+                isValid = false;
+                errorMessage = 'El nombre es requerido';
+            } else if (value.length < 2) {
+                isValid = false;
+                errorMessage = 'El nombre debe tener al menos 2 caracteres';
+            }
+            break;
+            
+        case 'email':
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!value) {
+                isValid = false;
+                errorMessage = 'El email es requerido';
+            } else if (!emailRegex.test(value)) {
+                isValid = false;
+                errorMessage = 'El email no es válido';
+            }
+            break;
+            
+        case 'phone':
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            if (!value) {
+                isValid = false;
+                errorMessage = 'El teléfono es requerido';
+            } else if (!phoneRegex.test(value.replace(/[\s\-\(\)]/g, ''))) {
+                isValid = false;
+                errorMessage = 'El teléfono no es válido';
+            }
+            break;
+            
+        case 'message':
+            if (!value) {
+                isValid = false;
+                errorMessage = 'El mensaje es requerido';
+            } else if (value.length < 10) {
+                isValid = false;
+                errorMessage = 'El mensaje debe tener al menos 10 caracteres';
+            }
+            break;
+    }
+    
+    // Mostrar/ocultar errores
+    if (isValid) {
+        field.classList.remove('error');
+        errorElement.classList.remove('show');
+        errorElement.textContent = '';
+    } else {
+        field.classList.add('error');
+        errorElement.textContent = errorMessage;
+        errorElement.classList.add('show');
+    }
+    
+    return isValid;
+}
+
+// Validar todo el formulario
+function validateForm() {
+    let isFormValid = true;
+    
+    inputs.forEach(input => {
+        if (!validateField(input)) {
+            isFormValid = false;
+        }
+    });
+    
+    return isFormValid;
+}
+
+// Manejar envío del formulario
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Validar formulario
+    if (!validateForm()) {
+        // Hacer scroll al primer error
+        const firstError = document.querySelector('.form-input.error');
+        if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstError.focus();
+        }
+        return;
+    }
+    
+    // Mostrar estado de carga
+    setLoadingState(true);
+    
+    try {
+        // Simular procesamiento del formulario
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // Simular éxito (en un entorno real aquí enviarías los datos)
+        console.log('Datos del formulario:', {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            message: document.getElementById('message').value
+        });
+        
+        // Mostrar modal de éxito
+        showSuccessModal();
+        form.reset();
+        
+        // Limpiar errores
+        inputs.forEach(input => {
+            input.classList.remove('error');
+            const errorElement = document.getElementById(input.name + '-error');
+            errorElement.classList.remove('show');
+            errorElement.textContent = '';
+        });
+        
+    } catch (error) {
+        // Manejar errores
+        console.error('Error:', error);
+        alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
+    } finally {
+        setLoadingState(false);
+    }
+});
+
+// Función para manejar estado de carga
+function setLoadingState(isLoading) {
+    if (isLoading) {
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        loadingSpinner.style.display = 'flex';
+        submitBtn.style.cursor = 'not-allowed';
+    } else {
+        submitBtn.disabled = false;
+        btnText.style.display = 'flex';
+        loadingSpinner.style.display = 'none';
+        submitBtn.style.cursor = 'pointer';
+    }
+}
+
+// Mostrar modal de éxito
+function showSuccessModal() {
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    
+    // Auto-cerrar después de 5 segundos
+    setTimeout(() => {
+        closeModal();
+    }, 5000);
+}
+
+// Cerrar modal
+function closeModal() {
+    modal.classList.remove('show');
+    document.body.style.overflow = 'auto';
+}
+
+// Cerrar modal al hacer clic fuera
+modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// Cerrar modal con tecla Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('show')) {
+        closeModal();
+    }
+});
+
+// Efectos de hover para mejorar la experiencia
+inputs.forEach(input => {
+    input.addEventListener('focus', function() {
+        this.parentElement.style.transform = 'translateY(-2px)';
+    });
+    
+    input.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'translateY(0)';
+    });
+});
+
+// Animación de entrada para elementos
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.form-group');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    });
+    
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Inicializar animaciones cuando se carga la página
+document.addEventListener('DOMContentLoaded', function() {
+    // Pequeño delay para que las animaciones CSS se ejecuten primero
+    setTimeout(() => {
+        animateOnScroll();
+    }, 500);
+});
+
+// Efecto de partículas en el botón de envío (opcional)
+submitBtn.addEventListener('click', function(e) {
+    if (!this.disabled) {
+        createRippleEffect(e, this);
+    }
+});
+
+function createRippleEffect(event, element) {
+    const ripple = document.createElement('span');
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    ripple.classList.add('ripple');
+    
+    element.appendChild(ripple);
+    
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+}
+
+// CSS para el efecto ripple
+const style = document.createElement('style');
+style.textContent = `
+    .submit-btn {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(0);
+        animation: ripple-animation 0.6s linear;
+        pointer-events: none;
+    }
+    
+    @keyframes ripple-animation {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+    </script>
+</body>
+</html>

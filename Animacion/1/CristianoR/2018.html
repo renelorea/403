@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristiano Ronaldo 2018</title>
+    <link rel="stylesheet" href="2008.css">
+      <link rel="icon" href="imagenes/logo.jpg">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('imagenes/cristianofondo2018.jpeg');
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Sección de imagen del jugador */
+.player-image-section {
+    flex: 0 0 40%;
+    position: relative;
+    overflow: hidden;
+}
+
+.player-image {
+    width: 110%;
+    height: 200%;
+    position: relative;
+}
+
+.player-image img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(1.1) contrast(1.2);
+    transition: transform 0.3s ease;
+}
+
+.player-image:hover img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+   
+    z-index: 1;
+}
+
+/* Sección de contenido */
+.content-section {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Título del año */
+.year-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+.year-title {
+    font-size: 150px;
+    font-weight: bold;
+    color: #e7ff12;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.5rem;
+    animation: glow 2s ease-in-out infinite alternate;
+
+    /* Añadido para hacer el título más ancho */
+    letter-spacing: 1px;       /* Espacio entre letras */
+    transform: scaleX(1.9);     /* Estira horizontalmente */
+    display: inline-block;      /* Necesario para que scaleX funcione correctamente */
+}
+
+.year-subtitle {
+    font-size: 40px;
+    color: #e7ff12;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Grid de información */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Tarjetas de información */
+.info-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.info-card.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+}
+
+.card-header i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    color: #667eea;
+}
+
+.card-header h3 {
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Tarjeta de trofeos */
+.trophy-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.trophy-item:hover {
+    background-color: #f8f9fa;
+}
+
+.trophy-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    object-fit: cover;
+}
+
+.trophy-info h4 {
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.trophy-info p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Tarjeta de estadísticas */
+.stats-card .card-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #adadad 0%, #555555 100%);
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: scale(1.05);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Información adicional */
+.additional-info {
+    text-align: center;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+
+.info-highlight {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-highlight i {
+    margin-right: 1rem;
+    color: #ffd700;
+    font-size: 1.2rem;
+}
+
+/* Partículas de fondo */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    to {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 
+                     0 0 20px rgba(255, 255, 255, 0.4);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .player-image-section {
+        flex: 0 0 40vh;
+    }
+    
+    .player-image img {
+        height: 40vh;
+    }
+    
+    .content-section {
+        padding: 1rem;
+    }
+    
+    .year-title {
+        font-size: 3rem;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stats-card .card-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .year-title {
+        font-size: 2.5rem;
+    }
+    
+    .info-card {
+        padding: 1rem;
+    }
+    
+    .stats-card .card-content {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <!-- Imagen de Cristiano a la izquierda -->
+        <div class="player-image-section">
+            <div class="player-image">
+                <img src="imagenes/cristiano2018estadisticas.png">
+                <div class="image-overlay"></div>
+            </div>
+        </div>
+
+        <!-- Contenido principal a la derecha -->
+        <div class="content-section">
+            <!-- Año 2008 -->
+            <div class="year-header">
+                <h1 class="year-title" id="year-title">2018</h1>
+                <div class="year-subtitle">El Rey</div>
+            </div>
+
+            <!-- Información y trofeos -->
+            <div class="info-grid">
+                <!-- Tarjeta de Trofeos -->
+                <div class="info-card trophies-card" id="trophies-card">
+                    <div class="card-header">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Trofeos Ganados</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="trophy-item">
+                            <img src="imagenes/realmadridescudo.png" alt="Premier League">
+                            <div class="trophy-info">
+                                <h4>Supercopa de Europa</h4>
+                                <p>Real Madrid</p>
+                            </div>
+                        </div>
+                        <div class="trophy-item">
+                            <img src="imagenes/championslogo.jpeg" alt="Champions League">
+                            <div class="trophy-info">
+                                <h4>Champions League</h4>
+                                <p>UEFA</p>
+                            </div>
+                        </div>
+                        <div class="trophy-item">
+                            <img src="imagenes/juventusescudo.png" alt="Balón de Oro">
+                            <div class="trophy-info">
+                                <h4>Traspaso</h4>
+                                <p>Juventus</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Estadísticas -->
+                <div class="info-card stats-card" id="stats-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Estadísticas</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="49">0</div>
+                            <div class="stat-label">Goles</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="53">0</div>
+                            <div class="stat-label">Partidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="12">0</div>
+                            <div class="stat-label">Asistencias</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="33">0</div>
+                            <div class="stat-label">Edad</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información adicional -->
+            <div class="additional-info" id="additional-info">
+                <div class="info-highlight">
+                    <i class="fas fa-star"></i>
+                    <p>Jugador de la Juventus • Mejor jugador del mundo • 49 goles en temporada</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partículas de fondo -->
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <script>
+    // Animación de contador para estadísticas
+function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    const timer = setInterval(() => {
+        start += increment;
+        element.textContent = Math.floor(start);
+        
+        if (start >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        }
+    }, 16);
+}
+
+// Crear partículas flotantes
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Observador de intersección para animaciones
+function createIntersectionObserver() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                
+                // Animar contadores si es la tarjeta de estadísticas
+                if (entry.target.classList.contains('stats-card')) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(statNumber => {
+                        const target = parseInt(statNumber.getAttribute('data-target'));
+                        animateCounter(statNumber, target);
+                    });
+                }
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    // Observar las tarjetas de información
+    document.querySelectorAll('.info-card').forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Efecto de paralaje suave
+function handleParallaxEffect() {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        
+        const particles = document.querySelectorAll('.particle');
+        particles.forEach((particle, index) => {
+            const speed = (index % 3 + 1) * 0.1;
+            particle.style.transform = `translateY(${rate * speed}px)`;
+        });
+    });
+}
+
+// Efecto hover en la imagen principal
+function setupImageHover() {
+    const playerImage = document.getElementById('cristiano-img');
+    
+    playerImage.addEventListener('mouseenter', () => {
+        playerImage.style.filter = 'brightness(1.2) contrast(1.3) saturate(1.1)';
+    });
+    
+    playerImage.addEventListener('mouseleave', () => {
+        playerImage.style.filter = 'brightness(1.1) contrast(1.2)';
+    });
+}
+
+// Efecto de escritura en el título del año
+function typewriterEffect() {
+    const yearTitle = document.getElementById('year-title');
+    const text = yearTitle.textContent;
+    yearTitle.textContent = '';
+    
+    let i = 0;
+    const typeInterval = setInterval(() => {
+        yearTitle.textContent += text.charAt(i);
+        i++;
+        
+        if (i >= text.length) {
+            clearInterval(typeInterval);
+        }
+    }, 300);
+}
+
+// Animación de las tarjetas de trofeos
+function animateTrophyCards() {
+    const trophyItems = document.querySelectorAll('.trophy-item');
+    
+    trophyItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'all 0.5s ease';
+            
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateX(0)';
+            }, 100);
+        }, index * 200);
+    });
+}
+
+// Efecto de brillo en las estadísticas
+function addGlowEffect() {
+    const statItems = document.querySelectorAll('.stat-item');
+    
+    statItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.3)';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.style.boxShadow = 'none';
+        });
+    });
+}
+
+// Inicialización cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    // Crear partículas
+    createParticles();
+    
+    // Configurar observador de intersección
+    createIntersectionObserver();
+    
+    // Configurar efecto de paralaje
+    handleParallaxEffect();
+    
+    // Configurar hover de imagen
+    setupImageHover();
+    
+    // Efecto de escritura en el título
+    setTimeout(typewriterEffect, 500);
+    
+    // Animar tarjetas de trofeos
+    setTimeout(animateTrophyCards, 1000);
+    
+    // Agregar efecto de brillo
+    addGlowEffect();
+});
+
+// Animación adicional al hacer scroll
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const yearTitle = document.getElementById('year-title');
+    
+    if (yearTitle) {
+        const opacity = Math.max(0, 1 - scrolled / 300);
+        yearTitle.style.opacity = opacity;
+    }
+});
+
+// Efecto de click en las tarjetas de información
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.info-card')) {
+        const card = e.target.closest('.info-card');
+        
+        // Efecto de pulso
+        card.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+            card.style.transform = 'scale(1)';
+        }, 150);
+    }
+});
+</script>
+</body>
+</html>
