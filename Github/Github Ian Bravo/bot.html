@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot AI - Asistente Virtual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .chat-container {
+            width: 90%;
+            max-width: 800px;
+            height: 80vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .bot-avatar {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .chat-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: linear-gradient(180deg, #f8f9ff 0%, #e6f3ff 100%);
+        }
+
+        .message {
+            margin-bottom: 20px;
+            animation: messageSlide 0.5s ease-out;
+        }
+
+        @keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .message.bot {
+            animation: messageSlideBot 0.5s ease-out;
+        }
+
+        @keyframes messageSlideBot {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 15px 20px;
+            border-radius: 20px;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .message.user .message-bubble {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+        }
+
+        .message.bot .message-bubble {
+            background: white;
+            color: #333;
+            border: 2px solid #e1e8ed;
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .typing-indicator {
+            display: none;
+            max-width: 70%;
+            padding: 15px 20px;
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 20px;
+            border-bottom-left-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #999;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+
+        .chat-input {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e1e8ed;
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-field {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e1e8ed;
+            border-radius: 25px;
+            outline: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .send-button {
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .send-button:active {
+            transform: translateY(0);
+        }
+
+        .suggestions {
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            background: #f8f9ff;
+        }
+
+        .suggestion-chip {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            animation: chipFloat 0.5s ease-out;
+        }
+
+        @keyframes chipFloat {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .suggestion-chip:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .chat-container {
+                width: 95%;
+                height: 90vh;
+            }
+            
+            .message-bubble {
+                max-width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-particles" id="particles"></div>
+    
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="bot-avatar">🤖</div>
+            <div class="chat-title">ChatBot AI - Tu Asistente Virtual</div>
+        </div>
+        
+        <div class="suggestions">
+            <div class="suggestion-chip" onclick="sendSuggestion('¿Cómo estás?')">¿Cómo estás?</div>
+            <div class="suggestion-chip" onclick="sendSuggestion('Cuéntame un chiste')">Cuéntame un chiste</div>
+            <div class="suggestion-chip" onclick="sendSuggestion('¿Qué puedes hacer?')">¿Qué puedes hacer?</div>
+            <div class="suggestion-chip" onclick="sendSuggestion('Dame un consejo')">Dame un consejo</div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-bubble">
+                    ¡Hola! 👋 Soy tu asistente virtual. Puedo ayudarte con preguntas generales, darte consejos, contar chistes, y mucho más. ¿En qué puedo ayudarte hoy?
+                </div>
+            </div>
+        </div>
+        
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="typing-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" class="input-field" id="messageInput" placeholder="Escribe tu mensaje aquí..." maxlength="500">
+            <button class="send-button" onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        // Respuestas del bot con diferentes categorías
+        const botResponses = {
+            saludos: [
+                "¡Hola! 😊 Me alegra que estés aquí. ¿Cómo puedo ayudarte hoy?",
+                "¡Hey! 👋 ¿Qué tal? Estoy aquí para lo que necesites.",
+                "¡Saludos! 🌟 Espero que tengas un día genial. ¿En qué puedo asistirte?"
+            ],
+            chistes: [
+                "¿Por qué los pájaros vuelan hacia el sur en invierno? 🐦 ¡Porque es muy lejos para caminar! 😄",
+                "¿Qué le dice un pez a otro pez? 🐟 ¡Nada! 😂",
+                "¿Cómo se llama el campeón de buceo japonés? 🏊‍♂️ Tokofondo! 🤣",
+                "¿Qué hace una abeja en el gimnasio? 🐝 ¡Zum-ba! 💪😄"
+            ],
+            consejos: [
+                "Recuerda: cada día es una nueva oportunidad para crecer. 🌱 No tengas miedo de cometer errores, son parte del aprendizaje.",
+                "La paciencia es una virtud poderosa. 🧘‍♀️ Las mejores cosas toman tiempo para florecer.",
+                "Sé amable contigo mismo. 💚 Eres tu compañero de vida más importante.",
+                "La curiosidad es la llave del conocimiento. 🗝️ Nunca dejes de hacer preguntas."
+            ],
+            capacidades: [
+                "Puedo ayudarte con muchas cosas: 🎯 Responder preguntas generales, dar consejos, contar chistes, hablar sobre ciencia, tecnología, cultura, y mucho más. ¿Qué te interesa?",
+                "Mis habilidades incluyen: 💡 Conversación general, resolución de dudas, entretenimiento, consejos de vida, y explicaciones sobre diversos temas. ¡Pregúntame lo que quieras!",
+                "Estoy aquí para: 🤝 Chatear contigo, responder tus preguntas, ayudarte a pensar sobre problemas, y hacer tu día un poco más interesante. ¿Qué necesitas?"
+            ],
+            despedidas: [
+                "¡Hasta luego! 👋 Que tengas un día fantástico. Vuelve cuando quieras charlar.",
+                "¡Nos vemos pronto! 🌟 Cuídate mucho y que todo te salga genial.",
+                "¡Adiós por ahora! 😊 Ha sido un placer conversar contigo."
+            ],
+            general: [
+                "Esa es una pregunta interesante. 🤔 ¿Podrías darme más detalles para ayudarte mejor?",
+                "Me gusta tu curiosidad. 🌟 Aunque no tengo toda la información sobre eso, puedo intentar ayudarte desde otro ángulo.",
+                "¡Excelente pregunta! 💡 Permíteme pensar en la mejor manera de ayudarte con eso.",
+                "Interesante tema. 📚 ¿Hay algún aspecto específico que te gustaría explorar?"
+            ]
+        };
+
+    
+        function detectMessageType(message) {
+            const msg = message.toLowerCase();
+            
+            if (msg.includes('hola') || msg.includes('hey') || msg.includes('buenos') || msg.includes('buenas') || msg.includes('saludos')) {
+                return 'saludos';
+            } else if (msg.includes('chiste') || msg.includes('gracioso') || msg.includes('humor') || msg.includes('reír')) {
+                return 'chistes';
+            } else if (msg.includes('consejo') || msg.includes('ayuda') || msg.includes('qué hago') || msg.includes('sugerencia')) {
+                return 'consejos';
+            } else if (msg.includes('qué puedes') || msg.includes('qué sabes') || msg.includes('capacidades') || msg.includes('habilidades')) {
+                return 'capacidades';
+            } else if (msg.includes('adiós') || msg.includes('hasta luego') || msg.includes('nos vemos') || msg.includes('chau')) {
+                return 'despedidas';
+            }
+            return 'general';
+        }
+
+        // Obtener respuesta del bot
+        function getBotResponse(message) {
+            const type = detectMessageType(message);
+            const responses = botResponses[type];
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+
+        // Crear partículas flotantes
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + 'vw';
+                    particle.style.animationDelay = Math.random() * 6 + 's';
+                    particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                    particlesContainer.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 7000);
+                }, i * 300);
+            }
+        }
+
+        // Agregar mensaje al chat
+        function addMessage(message, isUser = false) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.className = 'message-bubble';
+            bubbleDiv.textContent = message;
+            
+            messageDiv.appendChild(bubbleDiv);
+            chatMessages.appendChild(messageDiv);
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Mostrar indicador de escritura
+        function showTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            typingIndicator.style.display = 'block';
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Ocultar indicador de escritura
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            typingIndicator.style.display = 'none';
+        }
+
+        // Enviar mensaje
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value.trim();
+            
+            if (message === '') return;
+            
+            addMessage(message, true);
+            messageInput.value = '';
+            
+            showTypingIndicator();
+            
+            setTimeout(() => {
+                hideTypingIndicator();
+                const botResponse = getBotResponse(message);
+                addMessage(botResponse);
+            }, Math.random() * 1500 + 1000);
+        }
+
+        // Enviar sugerencia
+        function sendSuggestion(suggestion) {
+            const messageInput = document.getElementById('messageInput');
+            messageInput.value = suggestion;
+            sendMessage();
+        }
+
+        // Eventos
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Inicializar partículas
+        createParticles();
+        setInterval(createParticles, 8000);
+
+        // Efecto de brillo en el botón de enviar
+        document.querySelector('.send-button').addEventListener('mouseenter', function() {
+            this.style.background = 'linear-gradient(135deg, #764ba2, #667eea)';
+        });
+
+        document.querySelector('.send-button').addEventListener('mouseleave', function() {
+            this.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
+        });
+    </script>
+</body>
+</html>
