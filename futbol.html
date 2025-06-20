@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot de Fútbol</title>
+    <link rel="stylesheet" href="f1.css">
+</head>
+<body>
+    <div id="chat-container">
+        <h2>ChatBot de Fútbol ⚽</h2>
+        <p>Selecciona una pregunta:</p>
+        <select id="pregunta-select">
+            <option value="">--Selecciona una pregunta--</option>
+            <option value="popular">¿Cuál es el deporte más popular en el mundo?</option>
+            <option value="mejores">¿Quiénes son los mejores jugadores de fútbol actualmente?</option>
+            <option value="mundial">¿Cada cuántos años se juega el Mundial?</option>
+            <option value="champions">¿Cuál es el torneo de clubes más prestigioso de Europa?</option>
+            <option value="copas">¿Qué país ha ganado más Copas del Mundo?</option>
+            <option value="champions_titulos">¿Qué equipo tiene más títulos de Champions League?</option>
+            <option value="var">¿Cómo ha cambiado el arbitraje con el VAR?</option>
+            <option value="legendas">¿Quiénes son Pelé y Maradona en la historia del fútbol?</option>
+            <option value="tactica">¿Cuál es el papel de la táctica en el fútbol moderno?</option>
+            <option value="ingresos">¿Por qué las ligas europeas generan tantos ingresos?</option>
+        </select>
+        <button onclick="enviarPregunta()">Enviar</button>
+        <div id="chat-box"></div>
+    </div>
+   
+    <script src="futbol1.js"></script>
+</body>
+</html>

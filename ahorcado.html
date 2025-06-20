@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Ahorcado</title>
+    <link rel="stylesheet" href="ahorcado.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="logo-area">
+            <img src="logocecya.jpg" alt="Logo del Juego" class="logo">
+        </div>
+
+        <h1>¡Ahorcado!</h1>
+
+        <div class="difficulty-select    ion">
+            <label for="difficulty">Nivel de Dificultad:</label>
+            <select id="difficulty">
+                <option value="easy">Fácil</option>
+                <option value="medium">Normal</option>
+                <option value="hard">Difícil</option>
+            </select>
+            <button id="startGame">Empezar Juego</button>
+        </div>
+
+        <div class="game-area">
+            <div class="hangman-display">
+                <canvas id="hangmanCanvas" width="200" height="250"></canvas>
+            </div>
+
+            <div class="word-display">
+                <p id="wordToGuess" class="hidden-word"></p>
+                <button id="hintButton">Pista (una letra)</button>
+                <p id="hintText" class="hint"></p>
+            </div>
+        </div>
+
+        <div class="keyboard">
+            </div>
+
+        <div id="messageOverlay" class="overlay">
+            <div class="message-box">
+                <p id="gameMessage"></p>
+                <p id="correctWord"></p>
+                <button id="playAgain">Jugar de Nuevo</button>
+            </div>
+        </div>
+
+        <div id="confetti" class="confetti-container"></div>
+    </div>
+
+    <script src="ahorcado.js"></script>
+</body>
+</html>
