@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot Interactivo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="chat-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🤖</span>
+                    <h1>ChatBot Pro</h1>
+                </div>
+                <div class="header-controls">
+                    <button class="btn-icon" id="backToMenuBtn" title="Volver al Menú">🏠</button>
+                    <button class="btn-icon" id="settingsBtn" title="Configuraciones">⚙️</button>
+                    <button class="btn-icon" id="clearBtn" title="Limpiar Chat">🗑️</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Bot Selection Panel -->
+        <div class="bot-selection" id="botSelection">
+            <h2>Elige tu Asistente Virtual</h2>
+            <div class="bot-grid">
+                <div class="bot-card" data-bot="gym">
+                    <div class="bot-avatar">💪</div>
+                    <h3>Muscle Mike</h3>
+                    <p>Entrenador Personal</p>
+                    <div class="bot-theme gym-theme"></div>
+                </div>
+                <div class="bot-card" data-bot="chef">
+                    <div class="bot-avatar">👨‍🍳</div>
+                    <h3>Chef Marco</h3>
+                    <p>Experto Culinario</p>
+                    <div class="bot-theme chef-theme"></div>
+                </div>
+                <div class="bot-card" data-bot="life">
+                    <div class="bot-avatar">🧘‍♀️</div>
+                    <h3>Wise Sofia</h3>
+                    <p>Coach de Vida</p>
+                    <div class="bot-theme life-theme"></div>
+                </div>
+                <div class="bot-card" data-bot="knowledge">
+                    <div class="bot-avatar">🎓</div>
+                    <h3>Prof. Alex</h3>
+                    <p>Cultura General</p>
+                    <div class="bot-theme knowledge-theme"></div>
+                </div>
+            </div>
+            <button class="start-chat-btn" id="startChatBtn">Comenzar Chat</button>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel" id="settingsPanel">
+            <div class="settings-content">
+                <h3>Configuraciones</h3>
+                <div class="setting-group">
+                    <label>Nombre del Bot:</label>
+                    <input type="text" id="customBotName" placeholder="Nombre personalizado">
+                </div>
+                <div class="setting-group">
+                    <label>Tema:</label>
+                    <select id="themeSelect">
+                        <option value="auto">Automático</option>
+                        <option value="dark">Oscuro</option>
+                        <option value="light">Claro</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>Velocidad de Escritura:</label>
+                    <input type="range" id="typingSpeed" min="20" max="100" value="50">
+                </div>
+                <button class="close-settings" id="closeSettings">Cerrar</button>
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="chat-container" id="chatContainer">
+            <!-- Bot Info Bar -->
+            <div class="bot-info-bar" id="botInfoBar">
+                <div class="current-bot-avatar" id="currentBotAvatar">💪</div>
+                <div class="bot-details">
+                    <div class="bot-name" id="currentBotName">Muscle Mike</div>
+                    <div class="bot-status" id="botStatus">En línea</div>
+                </div>
+                <button class="change-bot-btn" id="changeBotBtn">Cambiar Bot</button>
+            </div>
+
+            <!-- Messages Area -->
+            <div class="messages-area" id="messagesArea">
+                <div class="welcome-message">
+                    <div class="welcome-avatar">👋</div>
+                    <div class="welcome-text">
+                        <h3>¡Bienvenido!</h3>
+                        <p>Selecciona un bot y comienza a chatear</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <span class="typing-text">escribiendo...</span>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
+                    <input type="text" id="messageInput" placeholder="Escribe tu mensaje aquí...">
+                    <button class="send-btn" id="sendBtn">
+                        <span class="send-icon">📤</span>
+                    </button>
+                </div>
+                <div class="quick-actions">
+                    <button class="quick-btn" data-message="Hola">👋 Saludar</button>
+                    <button class="quick-btn" data-message="¿Cómo estás?">❓ ¿Cómo estás?</button>
+                    <button class="quick-btn" data-message="Dame un consejo">💡 Consejo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <p>Creado por <strong>Alison Gutiérrez</strong></p>
+                <p class="footer-subtitle">Desarrolladora Full Stack & Diseñadora UX/UI</p>
+                <div class="footer-links">
+                    <span class="footer-year">© 2025</span>
+                    <span class="footer-separator">•</span>
+                    <span class="footer-tech">HTML • CSS • JavaScript</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
