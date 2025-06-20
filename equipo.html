@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Equipamiento de Fútbol Americano</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Space+Mono&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Space Mono', monospace;
+      color: #00ffe5;
+      background: url('equipamiento.png') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2em 1em;
+      text-shadow: 0 0 6px #00ffe5cc;
+    }
+
+    .contenedor {
+      background: rgba(10, 10, 30, 0.75);
+      border-radius: 15px;
+      padding: 2em 3em;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 0 25px 5px #551a8b99;
+      border: 2px solid #00ffe5;
+      animation: aparecer 1s ease forwards;
+    }
+
+    /* Máquina de escribir */
+    .titulo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      color: #00ffe5;
+      border-right: 3px solid #00ffe5;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(22) forwards, blinkCaret 0.75s step-end infinite;
+      margin-bottom: 1.5em;
+      user-select: none;
+    }
+
+    /* Lista del equipamiento */
+    ul {
+      list-style: none;
+      font-size: 1.3rem;
+      line-height: 1.8;
+      padding-left: 0;
+      color: #c1dbee;
+    }
+
+    ul li {
+      margin-bottom: 1em;
+      padding-left: 1em;
+      position: relative;
+      border-left: 4px solid #551a8b;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    ul li:hover {
+      color: #00ffe5;
+      border-left-color: #00ffe5;
+      text-shadow: 0 0 12px #00ffe5;
+    }
+
+    /* Drip: dónde comprar */
+    .drip {
+      margin-top: 3em;
+      background: #0cfded;
+      padding: 1.5em 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #060606f3;
+    }
+    .drip h2 {
+      color: #131414;
+      margin-bottom: 1em;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .drip a {
+      color: #131515;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      display: block;
+      margin: 0.5em 0;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    .drip a:hover {
+      color: #240a83;
+      text-shadow: 0 0 8px #1c37a3;
+    }
+
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 22ch }
+    }
+    @keyframes blinkCaret {
+      50% { border-color: transparent }
+      100% { border-color: #00ffe5 }
+    }
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(20px) }
+      to { opacity: 1; transform: translateY(0) }
+    }
+
+    /* Responsive */
+    @media(max-width: 600px){
+      .titulo {
+        font-size: 2.5rem;
+        animation: typing 4s steps(22) forwards, blinkCaret 0.75s step-end infinite;
+      }
+      .contenedor {
+        padding: 1.5em 1.5em;
+      }
+      ul li {
+        font-size: 1.1rem;
+      }
+      .drip a {
+        font-size: 1rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1 class="titulo">Equipamiento</h1>
+    <ul>
+      <li>Casco con protector facial <br>¡imprescindible para la seguridad!</li>
+      <li>Hombreras reforzadas para absorber impactos fuertes</li>
+      <li>Guantes que mejoran el agarre y protegen las manos</li>
+      <li>Jersey cómodo y transpirable con número visible</li>
+      <li>Pantalón con protección integrada para muslos y caderas</li>
+      <li>Protección bucal para evitar lesiones dentales</li>
+      <li>Calzado con tacos adecuados para campo de juego</li>
+    </ul>
+    <div class="drip">
+      <h2>¿Dónde comprar tu Drip?</h2>
+      <a href="https://www.nike.com/mx/w/futbol-americano-1m7vznz8r3a" target="_blank" rel="noopener noreferrer">Nike Fútbol Americano</a>
+      <a href="https://www.underarmour.mx/collections/futbol-americano" target="_blank" rel="noopener noreferrer">Under Armour México</a>
+      <a href="https://rayonegro.mx/" target="_blank" rel="noopener noreferrer">Rayo Negro</a>
+      <a href="https://nxtrndusa.com/" target="_blank" rel="noopener noreferrer">Next brend futbol</a>
+      <a href="https://www.dripshopmx.com/" target="_blank" rel="noopener noreferrer">Drip shop</a>
+    </div>
+  </div>
+</body>
+</html>

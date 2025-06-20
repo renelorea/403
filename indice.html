@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Indice</title>
+  <link rel="stylesheet" href="indice.css" />
+</head>
+<body>
+  <div class="blur-fondo"></div>
+
+  <div class="contenedor" id="inicio">
+    <h1 class="titulo">¡Bienvenid@ 👋!</h1>
+    <p>Por favor, escribe tu nombre para comenzar:</p>
+    <input type="text" id="nombreInput" placeholder="Tu nombre" />
+    <button onclick="mostrarMenu()">Ingresar</button>
+  </div>
+
+  <div class="menu" id="menu" style="display: none;">
+    <h2 class="saludo" id="saludo"></h2>
+    <ul>
+      <li><a href="chatbot.html">🤖 Chatbot</a></li>
+      <li><a href="juegos.html">🎮Juegos</a></li>
+      <li><a href="index.html">🎬 Animación</a></li>
+      <li><a href="proyectoF.html">🌟 Proyecto Final</a></li>
+    </ul>
+     <button class="btn-regresar" onclick="regresar()">🔙 Regresar</button>
+  </div>
+
+  <script>
+    function mostrarMenu() {
+      const nombre = document.getElementById('nombreInput').value;
+      if (nombre.trim() === '') {
+        alert('Por favor, escribe tu nombre.');
+        return;
+      }
+      document.getElementById('inicio').style.display = 'none';
+      document.getElementById('menu').style.display = 'block';
+      document.getElementById('saludo').innerText = `Hola, ${nombre}  ¡Elige tu aplicación!`;
+    }
+    function regresar() {
+      document.getElementById('menu').style.display = 'none';
+      document.getElementById('inicio').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Curiosidades del Fútbol Americano</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Space+Grotesk&display=swap');
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #e0f7fa;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 1rem;
+
+    /* Fondo con imagen y filtro oscuro */
+    background-image: 
+      linear-gradient(rgba(0, 47, 53, 0.75), rgba(0, 47, 53, 0.75)),
+      url('curiosidades.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  h1 {
+    font-family: 'Comfortaa', cursive;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: #e0f7fa;
+    letter-spacing: 4px;
+    text-shadow:
+      0 0 10px #00fff7,
+      0 0 20px #00a9af;
+    user-select: none;
+  }
+
+  /* Fondo animado con círculos abstractos */
+  .background-shapes {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: floatUpDown 8s ease-in-out infinite alternate;
+    mix-blend-mode: screen;
+  }
+
+  .circle1 {
+    width: 250px;
+    height: 250px;
+    background: #00fff7;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+  }
+
+  .circle2 {
+    width: 180px;
+    height: 180px;
+    background: #007f7f;
+    top: 70%;
+    left: 15%;
+    animation-delay: 2s;
+  }
+
+  .circle3 {
+    width: 300px;
+    height: 300px;
+    background: #00c4cc;
+    top: 30%;
+    right: 10%;
+    animation-delay: 4s;
+  }
+
+  .circle4 {
+    width: 150px;
+    height: 150px;
+    background: #009999;
+    top: 80%;
+    right: 20%;
+    animation-delay: 6s;
+  }
+
+  @keyframes floatUpDown {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(-30px) translateX(15px); }
+  }
+
+  .cards-container {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 30px;
+    flex: 1 1 280px;
+    padding: 2rem 2.2rem;
+    box-shadow:
+      0 8px 20px rgba(0, 255, 247, 0.3);
+    cursor: default;
+    color: #e0f7fa;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card:hover {
+    transform: translateY(-12px);
+    box-shadow:
+      0 15px 40px rgba(0, 255, 247, 0.6);
+    background: rgba(0, 255, 247, 0.2);
+  }
+
+  .card h3 {
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1.5px;
+  }
+
+  .card p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    user-select: text;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 2rem;
+    }
+    .cards-container {
+      gap: 1.3rem;
+    }
+    .card {
+      padding: 1.5rem 1.8rem;
+      flex: 1 1 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <h1>Curiosidades del Fútbol Americano</h1>
+
+  <div class="background-shapes" aria-hidden="true">
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+    <div class="circle circle4"></div>
+  </div>
+
+  <div class="cards-container">
+    <div class="card">
+      <h3>El balón ovalado</h3>
+      <p>Originalmente el balón era redondo, pero evolucionó a forma oval para facilitar los pases largos y rápidos.</p>
+    </div>
+    <div class="card">
+      <h3>El Super Bowl</h3>
+      <p>Es el evento deportivo más visto en Estados Unidos, con millones de espectadores y anuncios publicitarios icónicos.</p>
+    </div>
+    <div class="card">
+      <h3>Más que un deporte</h3>
+      <p>El fútbol americano es una experiencia cultural que une familias, amigos y comunidades alrededor del país.</p>
+    </div>
+    <div class="card">
+      <h3>Jugadores famosos</h3>
+      <p>Muchos jugadores destacados también tienen carreras en actuación, música o política.</p>
+    </div>
+    <div class="card">
+      <h3>Casco inteligente</h3>
+      <p>Los cascos modernos cuentan con sensores que detectan impactos para prevenir lesiones cerebrales.</p>
+    </div>
+  </div>
+
+</body>
+</html>

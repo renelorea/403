@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modalidades de Fútbol Americano</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Quicksand&display=swap');
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0dd3cce2 0%, #06a691 100%);
+      font-family: 'Quicksand', sans-serif;
+      color: #e0f7fa;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.2rem;
+      color: #a2f9f1;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+      text-shadow:
+        0 0 5px #a2f9f1,
+        0 0 15px #00fff7,
+        0 0 30px #00fff7;
+      animation: glowPulse 3s ease-in-out infinite;
+      user-select: none;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {
+        text-shadow:
+          0 0 5px #a2f9f1,
+          0 0 15px #00fff7,
+          0 0 30px #00fff7;
+      }
+      50% {
+        text-shadow:
+          0 0 10px #66fff9,
+          0 0 25px #00fff7,
+          0 0 45px #00fff7;
+      }
+    }
+
+    .modalidades-container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      max-width: 900px;
+      width: 100%;
+      padding: 2rem 2.5rem;
+      box-shadow:
+        0 8px 30px rgba(0, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      border: 2px solid #00fff7;
+    }
+
+    .modalidad {
+      margin-bottom: 2rem;
+      border-left: 6px solid #00fff7;
+      padding-left: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      border-radius: 8px;
+      background: rgba(0, 255, 255, 0.05);
+      box-shadow: 0 0 10px #00fff7;
+    }
+
+    .modalidad:hover {
+      transform: translateX(15px);
+      box-shadow: 0 0 20px 5px #00fff7;
+    }
+
+    .modalidad h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #a2f9f1;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1.2px;
+    }
+
+    .modalidad p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #ccfbff;
+      user-select: text;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      .modalidades-container {
+        padding: 1.5rem 1.8rem;
+      }
+      .modalidad p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Modalidades de Juego</h1>
+
+  <div class="modalidades-container">
+
+    <div class="modalidad">
+      <h2>Fútbol Americano Tradicional Equipado</h2>
+      <p>Es la modalidad más conocida donde los jugadores usan casco, hombreras y protecciones completas. El objetivo es avanzar el balón y anotar touchdowns a través de pases y carreras. Se juega en un campo de 100 yardas y 11 jugadores por equipo están en el campo.</p>
+    </div>
+
+    <div class="modalidad">
+      <h2>Fútbol Flag (Cochito Bandera)</h2>
+      <p>Una versión sin contacto físico, donde en lugar de tackles, los defensores deben quitar una bandera que cuelga del cinturón del portador del balón. Perfecto para todas las edades, es rápido, seguro y fomenta la agilidad y velocidad.</p>
+    </div>
+
+    <div class="modalidad">
+      <h2>Arena Fútbol</h2>
+      <p>Se juega en un campo más pequeño, usualmente techado, con menos jugadores por equipo y reglas adaptadas para un juego más rápido y ofensivo. Es muy popular en Estados Unidos y en algunas ligas mexicanas.</p>
+    </div>
+
+    <div class="modalidad">
+      <h2>Ligas Femeniles</h2>
+      <p>Las mujeres también tienen ligas propias muy activas como la <strong>WFLA</strong> (Women's Football League of America), <strong>LEXA</strong> (Liga de Expansión de Fútbol Americano Femenil) y <strong>LIFFAE</strong> (Liga Intermedia de Fútbol Americano Femenil). Estas ligas promueven el deporte y la igualdad, y tienen un nivel competitivo impresionante.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(120deg, #c9e4f6, #e0f7fa);
+}
+
+.blur-fondo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #87cefa, #e0ffff);
+  filter: blur(30px);
+  animation: movimiento 10s infinite alternate;
+  z-index: 0;
+}
+
+
+@keyframes movimiento {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+
+.contenedor, .menu {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 10% auto;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+.titulo {
+  font-size: 2.5em;
+  color: #0d47a1;
+  animation: letras 2s ease-in-out infinite alternate;
+}
+
+@keyframes letras {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); color: #1565c0; }
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 1rem;
+  width: 80%;
+  border-radius: 10px;
+  border: 1px solid #90caf9;
+  margin-top: 15px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  margin: 15px 0;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #0d47a1;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #1565c0;
+}
+
+.saludo {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #0d47a1;
+}
+.btn-regresar:hover {
+  background-color: #0c74a8;
+}

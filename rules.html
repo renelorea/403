@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reglas del Fútbol Americano</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: #0ecfd3;
+      overflow: hidden;
+      color: white;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .contenido {
+      position: relative;
+      z-index: 10;
+      padding: 4em 2em;
+      max-width: 800px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+      animation: flotar 5s ease-in-out infinite alternate;
+      margin-top: 3em;
+    }
+
+    .titulo {
+      text-align: center;
+      font-size: 3em;
+      color: #00ffe5;
+      text-shadow: 0 0 10px white;
+      animation: wave 3s infinite ease-in-out;
+      margin-bottom: 1em;
+    }
+
+    .reglas {
+      list-style: none;
+      padding: 0;
+    }
+
+    .reglas li {
+      background: rgba(255, 255, 255, 0.1);
+      margin: 1em 0;
+      padding: 1em;
+      border-left: 5px solid #00ffe5;
+      border-radius: 10px;
+      font-size: 1.2em;
+      animation: entrada 1s ease both;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-5px); }
+    }
+
+    @keyframes entrada {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="fondoBalones"></canvas>
+
+  <div class="contenido">
+    <h1 class="titulo">Reglas del Fútbol Americano</h1>
+    <ul class="reglas">
+      <h2> Duración del partido</h2>
+      <li>El juego se divide en 4 cuartos de 15 minutos (en NFL y colegial en EE. UU.) o de 12 minutos
+         (en ligas juveniles o femeniles).</li>
+         <h2>  Inicio del juego</h2>
+      <li>Empieza con una patada de salida (kickoff) desde la yarda 35 (o 30 dependiendo la liga).<br>
+        El equipo que recibe intenta avanzar la pelota lo más lejos posible.</li>
+        <h2> Objetivo del juego</h2>
+      <li>Anotar más puntos que el rival llevando el balón a la zona de anotación (end zone) o pateando goles de campo.<br>
+           Cada equipo tiene 4 intentos (downs) para avanzar 10 yardas.</li>
+      <li>Un touchdown vale 6 puntos. También hay goles de campo y conversiones.</li>
+      <li>El equipo tiene 4 intentos para avanzar 10 yardas.</li>
+    </ul>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("fondoBalones");
+    const ctx = canvas.getContext("2d");
+    let width, height;
+
+    const balones = [];
+    const totalBalones = 12;
+
+    function redimensionar() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    redimensionar();
+    window.addEventListener("resize", redimensionar);
+
+    for (let i = 0; i < totalBalones; i++) {
+      const img = new Image();
+      img.src = "balon.png"; // ícono de balón
+
+      balones.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        dx: 2 + Math.random() * 3,
+        dy: 2 + Math.random() * 3,
+        size: 40 + Math.random() * 20,
+        img: img
+      });
+    }
+
+    function animar() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let b of balones) {
+        ctx.drawImage(b.img, b.x, b.y, b.size, b.size);
+
+        b.x += b.dx;
+        b.y += b.dy;
+
+        if (b.x + b.size > width || b.x < 0) b.dx *= -1;
+        if (b.y + b.size > height || b.y < 0) b.dy *= -1;
+      }
+
+      requestAnimationFrame(animar);
+    }
+
+    animar();
+  </script>
+</body>
+</html>

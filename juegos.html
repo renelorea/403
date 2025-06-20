@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juegos Clásicos</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <i class="fas fa-gamepad"></i>
+      <h1>Juegos Clásicos</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" data-game="ahorcado">El Ahorcado</a></li>
+        <li><a href="#" data-game="memorama">Memorama</a></li>
+        <li><a href="#" data-game="habilidad">Habilidad Mental</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Página de inicio -->
+    <section id="inicio" class="active">
+      <h2>Selecciona un juego para empezar</h2>
+      <div class="juegos-grid">
+        <div class="juego-card" data-game="ahorcado">
+          <div class="juego-icon"><i class="fas fa-user-slash"></i></div>
+          <h3>El Ahorcado</h3>
+          <p>Adivina la palabra antes de que el personaje sea ahorcado</p>
+          <button class="btn-jugar">Jugar</button>
+        </div>
+        <div class="juego-card" data-game="memorama">
+          <div class="juego-icon"><i class="fas fa-clone"></i></div>
+          <h3>Memorama</h3>
+          <p>Encuentra los pares de cartas idénticas antes que se acabe el tiempo</p>
+          <button class="btn-jugar">Jugar</button>
+        </div>
+        <div class="juego-card" data-game="habilidad">
+          <div class="juego-icon"><i class="fas fa-brain"></i></div>
+          <h3>Habilidad Mental</h3>
+          <p>Pon a prueba tu agilidad mental con este desafiante juego</p>
+          <button class="btn-jugar">Jugar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Configuración común -->
+    <section id="configuracion" class="hidden">
+      <div class="back-btn"><i class="fas fa-arrow-left"></i> Volver</div>
+      <h2>Configuración de <span id="juego-nombre"></span></h2>
+      <div class="config-container">
+        <div class="config-section">
+          <h3>Jugadores</h3>
+          <div class="player-count">
+            <button class="player-btn active" data-players="1">1</button>
+            <button class="player-btn" data-players="2">2</button>
+            <button class="player-btn" data-players="3">3</button>
+            <button class="player-btn" data-players="4">4</button>
+          </div>
+          <div id="player-names" class="player-names">
+            <div class="player-input">
+              <label for="player1">Jugador 1:</label>
+              <input type="text" id="player1" value="Jugador 1">
+            </div>
+          </div>
+        </div>
+        <div class="config-section">
+          <h3>Dificultad</h3>
+          <div class="difficulty">
+            <button class="diff-btn active" data-diff="facil">Fácil</button>
+            <button class="diff-btn" data-diff="medio">Medio</button>
+            <button class="diff-btn" data-diff="dificil">Difícil</button>
+          </div>
+        </div>
+        <div class="config-section cards-options hidden">
+          <h3>Número de cartas</h3>
+          <div class="cards-count">
+            <button class="cards-btn active" data-cards="10">10 cartas</button>
+            <button class="cards-btn" data-cards="20">20 cartas</button>
+            <button class="cards-btn" data-cards="40">40 cartas</button>
+          </div>
+        </div>
+        <button id="start-game" class="btn-start">¡Comenzar juego!</button>
+      </div>
+    </section>
+
+    <!-- El Ahorcado -->
+    <section id="ahorcado" class="hidden game-section">
+      <div class="game-header">
+        <div class="back-btn"><i class="fas fa-arrow-left"></i> Volver</div>
+        <h2>El Ahorcado</h2>
+        <div class="game-stats">
+          <div class="player-turn">Turno: <span id="ahorcado-player">Jugador 1</span></div>
+          <div class="score">Puntaje: <span id="ahorcado-score">0</span></div>
+          <div class="timer hidden">Tiempo: <span id="ahorcado-timer">0:00</span></div>
+        </div>
+      </div>
+
+      <div class="game-container">
+        <div class="ahorcado-tema">
+          <label for="categoria">Categoría:</label>
+          <select id="categoria">
+            <option value="animales">Animales</option>
+            <option value="paises">Países</option>
+            <option value="deportes">Deportes</option>
+            <option value="comida">Comidas</option>
+            <option value="peliculas">Películas</option>
+          </select>
+        </div>
+
+        <div class="ahorcado-juego">
+          <div class="ahorcado-dibujo">
+            <svg width="200" height="250" viewBox="0 0 200 250" class="hangman-svg">
+              <!-- Base -->
+              <line x1="20" y1="230" x2="180" y2="230" stroke="#fff" stroke-width="3" />
+              <!-- Poste vertical -->
+              <line x1="60" y1="230" x2="60" y2="30" stroke="#fff" stroke-width="3" class="hangman-part" />
+              <!-- Poste horizontal -->
+              <line x1="60" y1="30" x2="140" y2="30" stroke="#fff" stroke-width="3" class="hangman-part" />
+              <!-- Cuerda -->
+              <line x1="140" y1="30" x2="140" y2="60" stroke="#fff" stroke-width="3" class="hangman-part" />
+              <!-- Cabeza -->
+              <circle cx="140" cy="80" r="20" stroke="#fff" stroke-width="3" fill="transparent" class="hangman-part hidden" />
+              <!-- Cuerpo -->
+              <line x1="140" y1="100" x2="140" y2="150" stroke="#fff" stroke-width="3" class="hangman-part hidden" />
+              <!-- Brazo izquierdo -->
+              <line x1="140" y1="120" x2="120" y2="140" stroke="#fff" stroke-width="3" class="hangman-part hidden" />
+              <!-- Brazo derecho -->
+              <line x1="140" y1="120" x2="160" y2="140" stroke="#fff" stroke-width="3" class="hangman-part hidden" />
+              <!-- Pierna izquierda -->
+              <line x1="140" y1="150" x2="120" y2="180" stroke="#fff" stroke-width="3" class="hangman-part hidden" />
+              <!-- Pierna derecha -->
+              <line x1="140" y1="150" x2="160" y2="180" stroke="#fff" stroke-width="3" class="hangman-part hidden" />
+            </svg>
+          </div>
+
+          <div class="ahorcado-palabra">
+            <div id="palabra-container" class="palabra-container"></div>
+            <div class="pista">
+              <p>Pista: <span id="pista-texto">Selecciona una categoría y comienza el juego</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ahorcado-teclado">
+          <div class="teclado-fila">
+            <button class="tecla">A</button>
+            <button class="tecla">B</button>
+            <button class="tecla">C</button>
+            <button class="tecla">D</button>
+            <button class="tecla">E</button>
+            <button class="tecla">F</button>
+            <button class="tecla">G</button>
+          </div>
+          <div class="teclado-fila">
+            <button class="tecla">H</button>
+            <button class="tecla">I</button>
+            <button class="tecla">J</button>
+            <button class="tecla">K</button>
+            <button class="tecla">L</button>
+            <button class="tecla">M</button>
+            <button class="tecla">N</button>
+          </div>
+          <div class="teclado-fila">
+            <button class="tecla">Ñ</button>
+            <button class="tecla">O</button>
+            <button class="tecla">P</button>
+            <button class="tecla">Q</button>
+            <button class="tecla">R</button>
+            <button class="tecla">S</button>
+            <button class="tecla">T</button>
+          </div>
+          <div class="teclado-fila">
+            <button class="tecla">U</button>
+            <button class="tecla">V</button>
+            <button class="tecla">W</button>
+            <button class="tecla">X</button>
+            <button class="tecla">Y</button>
+            <button class="tecla">Z</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memorama -->
+    <section id="memorama" class="hidden game-section">
+      <div class="game-header">
+        <div class="back-btn"><i class="fas fa-arrow-left"></i> Volver</div>
+        <h2>Memorama</h2>
+        <div class="game-stats">
+          <div class="player-turn">Turno: <span id="memorama-player">Jugador 1</span></div>
+          <div class="score">Puntaje: <span id="memorama-score">0</span></div>
+          <div class="timer hidden">Tiempo: <span id="memorama-timer">0:00</span></div>
+        </div>
+      </div>
+
+      <div class="game-container">
+        <div id="memorama-tablero" class="memorama-tablero"></div>
+      </div>
+    </section>
+
+    <!-- Habilidad Mental -->
+    <section id="habilidad" class="hidden game-section">
+      <div class="game-header">
+        <div class="back-btn"><i class="fas fa-arrow-left"></i> Volver</div>
+        <h2>Habilidad Mental</h2>
+        <div class="game-stats">
+          <div class="player-turn">Turno: <span id="habilidad-player">Jugador 1</span></div>
+          <div class="score">Puntaje: <span id="habilidad-score">0</span></div>
+          <div class="timer hidden">Tiempo: <span id="habilidad-timer">0:00</span></div>
+          <div class="level">Nivel: <span id="habilidad-level">1</span></div>
+        </div>
+      </div>
+
+      <div class="game-container">
+        <div class="habilidad-instrucciones">
+          <p id="habilidad-instruction">Prepárate para el desafío...</p>
+        </div>
+        <div id="habilidad-area" class="habilidad-area">
+          <!-- Contenido dinámico del juego de habilidad mental -->
+        </div>
+        <div class="habilidad-controles">
+          <button id="habilidad-start" class="btn-start">Comenzar nivel</button>
+          <div id="habilidad-options" class="habilidad-options hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal de resultados -->
+    <div id="resultado-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2 id="resultado-titulo">¡Juego terminado!</h2>
+        <p id="resultado-mensaje"></p>
+        <div id="resultado-stats" class="resultado-stats"></div>
+        <div class="modal-buttons">
+          <button id="jugar-otra-vez" class="btn-jugar">Jugar otra vez</button>
+          <button id="volver-inicio" class="btn-start">Volver al inicio</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de reglas -->
+    <div id="reglas-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="reglas-titulo">Reglas del juego</h2>
+        <div id="reglas-contenido"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 EQUIPO 2 - Todos los derechos reservados</p>
+    <button id="mostrar-logros" class="btn-footer">Ver Logros</button>
+  </footer>
+
+  <!-- Modal de logros -->
+  <div id="logros-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Logros desbloqueados</h2>
+      <div id="logros-container" class="logros-container">
+        <p>¡Juega para desbloquear logros!</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

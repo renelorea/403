@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tipos de jugadores</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Orbitron:wght@500&display=swap');
+
+    body {
+      background: linear-gradient(to bottom, #54ffddb0, #2ad4e0);
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(88, 222, 255, 0.04) 40px),
+        linear-gradient(to bottom, #0ff0c3, #8fd4dd);
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      background-size: cover;
+      background-attachment: fixed;
+      padding: 2em;
+    }
+
+    .jugadores {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 2em;
+      border-radius: 12px;
+      max-width: 1000px;
+      margin: auto;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Anton', sans-serif;
+      font-size: 3em;
+      margin-bottom: 1em;
+      color: #00ffe5;
+      text-shadow: 0 0 10px #00ffe5;
+    }
+
+    .jugador {
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-left: 6px solid #00ffe5;
+      border-radius: 10px;
+      padding: 1.2em;
+      margin: 1.5em 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: slideIn 0.8s ease forwards;
+    }
+
+    .jugador:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(0, 255, 229, 0.3);
+    }
+
+    .jugador img {
+      width: 120px;
+      height: 120px;
+      margin-right: 20px;
+      border-radius: 10px;
+      transition: transform 0.4s ease;
+    }
+
+    .jugador:hover img {
+      transform: rotate(5deg) scale(1.1);
+    }
+
+    .texto {
+      flex: 1;
+    }
+
+    .texto strong {
+      color: #00ffe5;
+      text-shadow: 0 0 5px #00ffe5;
+      font-size: 1.3em;
+    }
+
+    .texto p {
+      margin-top: 5px;
+      font-size: 1.05em;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="jugadores">
+    <h1>Tipos de jugadores</h1>
+
+    <div class="jugador">
+      <img src="qb.png" alt="Quarterback">
+      <div class="texto">
+        <strong>Quarterback (QB):</strong>
+        <p>El líder del equipo ofensivo. Se encarga de lanzar pases, leer defensas y tomar decisiones rápidas. Es clave en cada jugada.</p>
+      </div>
+    </div>
+
+    <div class="jugador">
+      <img src="rb.png" alt="Running Back">
+      <div class="texto">
+        <strong>Running Back (RB):</strong>
+        <p>Corre con el balón después de recibirlo del QB. También bloquea o recibe pases cortos. Requiere velocidad y fuerza.</p>
+      </div>
+    </div>
+
+    <div class="jugador">
+      <img src="res.png" alt="Wide Receiver">
+      <div class="texto">
+        <strong>Wide Receiver (WR):</strong>
+        <p>Especialista en atrapar pases largos. Su agilidad y rapidez le permiten desmarcarse y lograr grandes jugadas.</p>
+      </div>
+    </div>
+
+    <div class="jugador">
+      <img src="te.png" alt="Wide Receiver">
+      <div class="texto">
+        <strong>Tight End (TE)</strong>
+        <p>Combina las funciones de receptor y bloqueador, ayudando en el ataque y la protección.</p>
+      </div>
+    </div>
+
+    <div class="jugador">
+      <img src="ol.png" alt="Wide Receiver">
+      <div class="texto">
+        <strong>Offensive Lineman (OL)</strong>
+        <p>Grupo de jugadores que protegen al quarterback y abren caminos para el running back.</p>
+      </div>
+    </div>
+
+    <div class="jugador">
+      <img src="sf.png" alt="Wide Receiver">
+      <div class="texto">
+        <strong>Cornerback (CB)</strong>
+        <p>Defiende contra los receptores para evitar que atrapen el balón.</p>
+      </div>
+    </div>
+
+    <div class="jugador">
+      <img src="lin.png" alt="Wide Receiver">
+      <div class="texto">
+        <strong>Safety (S)</strong>
+        <p>Última línea de defensa; ayuda en cobertura contra pases largos y detiene carreras.</p>
+      </div>
+    </div>
+
+
+    <div class="jugador">
+      <img src="kif.png" alt="Wide Receiver">
+      <div class="texto">
+        <strong>Kicker (K) </strong>
+        <p>Se encarga de los tiros de despeje, patadas de inicio y goles de campo.</p>
+      </div>
+    </div>
+
+
+    <div class="jugador">
+      <img src="line.png" alt="Linebacker">
+      <div class="texto">
+        <strong>Linebacker (LB):</strong>
+        <p>Es el corazón de la defensa. Puede detener carreras, cubrir pases o presionar al QB. Debe ser fuerte y muy inteligente.</p>
+      </div>
+    </div>
+    <div class="jugador">
+      <img src="dl.png" alt="Defensive Lineman">
+      <div class="texto">
+        <strong>Defensive Lineman:</strong>
+        <p>Su tarea es romper la línea ofensiva rival para atrapar al QB o frenar al corredor. Son los más grandes y fuertes.</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

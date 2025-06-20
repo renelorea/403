@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINDA'S BAZAR</title>
+    <link rel="icon" type="image/png" href="lindasbazar.ico">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            background-color: #f3f0d8;
+            text-align: center;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 22px;
+        }   
+        body::before {
+            content:"";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/rd.jpg') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(2px);
+            z-index: -1;
+        }
+        header {
+            background-color: #f7dd95;
+            color: white;
+            padding: 5px;
+            font-size: 24px;
+        }
+        nav {
+            background-color: #ccb370;
+            overflow: hidden;
+        }
+        nav a {
+            float:left;
+            display: block;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            padding: 19px 20px;
+        }
+        nav a:hover {
+            background-color: #ffe5ad;
+            color: rgb(255, 255, 255);
+        }
+        .imagen-encabezado {
+            position:fixed;
+            top:auto;
+            right: 10px;
+            height: 100px;
+            width: auto;
+            z-index: 10;
+        }
+        .logo {
+            display:flex;
+            justify-content:right;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 200px;
+            height: 200px;;
+            border-radius: 110%;
+            border: 4px solid #f3ebbd;
+        }
+        .jumbotron {
+            background-color: #f8e8bb;
+            color: #b6a235;
+        }
+        .btn-custom {
+            background-color: #f7e9ab;
+            color: white;
+        }
+        h1 {
+            text-align: center;
+            color: #ada74e;
+            margin-bottom: 15px;
+        }
+        .slogan {
+            text-align: center;
+            font-style: italic;
+            font-style:bold;
+            font-size: 1.5em;
+            color: #000000;
+            margin-bottom: 30px; 
+
+        }
+        .card {
+            border: 2px solid #f1f390;
+            border-radius: 100px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #fff0f5;
+        }
+        .card h2 {
+            color: #b9a80b;
+            margin-top: 0;
+        }
+        .jumbotron {
+            background-color: #f8efbb;
+            color: #b8a014;
+        }
+        .card-img-top {
+            object-fit: cover;
+            height: 200px;
+        }
+        .btn-custom {
+            background-color: #f0e262;
+            color: white;
+        }
+        .info-box {
+            background-color: #f4f8bb;
+            border: 3px solid #d8c51b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .info-box h3 {
+            color: #d8b51b;
+        }
+        .contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .producto {
+            background: white;
+            width: 300px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .producto img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain; 
+            border-radius: 8px;
+            background-color: white;
+        }
+        .producto h2 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #dac35f;
+        }
+        .producto p {
+            font-size: 20px;
+            color: #000000;
+        }
+        .producto-of {
+            background: white;
+            width: 300px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .producto-of-img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain; 
+            border-radius: 8px;
+            background-color: white;
+        }
+        .producto-of-h2 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #dac35f;
+        }
+        .producto-of-p {
+            font-size: 20px;
+            color: #000000;
+        }
+        .redes, .cuestionario {
+            margin: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 100px;
+            border: 2px solid #f1f390;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .btn-red, .btn-form {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px; 
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        .social-facebook { background-color: #3b5998; }
+        .social-instagram { background-color: #e4405f; }
+        .social-tiktok { background-color: #000000; }
+        .btn-form { background-color: hsl(49, 42%, 42%); 
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .seccion {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 0.7s ease forwards;
+        }
+        .seccion.activa {
+            display: block;
+            opacity: 1;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+            text-align: left;
+            animation: scaleIn 0.3s ease;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        } 
+        #chatbot {
+    background-color: #fdf6e3; 
+    border: 2px solid #e0cda9; 
+    border-radius: 12px;
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Georgia', serif;
+    color: #5c4b2c;
+}
+
+.chat-header {
+    background-color: #e4d2b0;
+    color: #4b3a24;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.chat-box {
+    background-color: #fffaf0;
+    height: 220px;
+    overflow-y: auto;
+    border: 1px solid #e0cda9;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+#user-input {
+    width: calc(100% - 90px);
+    padding: 8px;
+    border: 1px solid #d8c8a8;
+    border-radius: 5px;
+    background-color: #fffaf0;
+    color: #5c4b2c;
+    font-size: 14px;
+    margin-right: 6px;
+}
+
+button {
+    padding: 8px 14px;
+    border: none;
+    background-color: #d4b483;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #bca173;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <h1 style="color: #ffffff;">LINDA'S BAZAR</h1>
+        <a href="#" onclick="mostrarSeccion('inicio')">INICIO</a>
+        <a href="#" onclick="mostrarSeccion('creadores')">CREADORES</a>
+        <a href="#" onclick="mostrarSeccion('misvis')">MISIÓN Y VISIÓN</a>
+        <a href="#" onclick="mostrarSeccion('galeria')">GALERÍA DE PRODUCTOS</a>
+        <a href="#" onclick="mostrarSeccion('redes')">REDES SOCIALES</a>
+        <a href="#" onclick="mostrarSeccion('novedades')">NOVEDADES</a>
+        <a href="#" onclick="mostrarSeccion('ofer')">OFERTAS</a>
+        <a href="#" onclick="mostrarSeccion('chatbot')">CHAT</a>
+    </nav>
+    <div class="contenido">
+        <div id="inicio" class="seccion activa">
+            <div class="logo">
+                <img src="lindasbazar.jpg" alt="Logo del negocio" alt="Imagen de encabezado" class="imagen-encabezado">
+            </div>  
+            <div class="jumbotron text-center">
+                <h1 class="display-4">Bienvenidos a Linda's Bazar</h1>
+                <h2 class="lead">Tu espacio ideal para productos de belleza de calidad.</h2>
+                <h3>En este espacio encontrarás lo mejor en belleza y accesorios pensados especialmente para ti.<br> 
+                    Sabemos lo importante que es sentirte única y auténtica, <br>
+                    por eso hemos tenemos un lugar lleno de productos que te harán brillar en cada momento.</h3>
+                <br>
+            </div>  
+        </div>
+
+        <div id="creadores" class="seccion">
+            <div class="logo">
+                <img src="lindasbazar.jpg" alt="Logo del Bazar" alt="Imagen de encabezado" class="imagen-encabezado">
+            </div> 
+            <div class="container mt-5">
+                <div class="jumbotron text-center">
+                    <h1 class="display-4">Información de Creadores</h1>
+                    <h3 class="lead">Conoce a los creadores detrás de nuestro Bazar de Belleza.</h3>
+                    <br>
+                </div>
+                <br>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card">
+                            <img src=" " class="card-img-top" alt="Imagen 1">
+                            <div class="card-body">
+                                <h2 class="card-title">Cruz Chavez Alejandro</h2>
+                                <h3 class="card-text"> Encargado de:</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src=" " class="card-img-top" alt="Imagen 2">
+                            <div class="card-body">
+                                <h2 class="card-title">Chavez Lopez Ximena</h2>
+                                <h3 class="card-text"> Encargada de:</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="https://via.placeholder.com/400x200.png?text=Imagen+3" class="card-img-top" alt="Imagen 3">
+                            <div class="card-body">
+                                <h2 class="card-title">Lugo Quintanar Adrian</h2>
+                                <h3 class="card-text"> Encargado de:</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="https://via.placeholder.com/400x200.png?text=Imagen+4" class="card-img-top" alt="Imagen 4">
+                            <div class="card-body">
+                                <h2 class="card-title">Mendoza Reyes Aranza Junuen</h2>
+                                <h3 class="card-text">Encargada de:</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="https://via.placeholder.com/400x200.png?text=Imagen+5" class="card-img-top" alt="Imagen 5">
+                            <div class="card-body">
+                                <h2 class="card-title">Rodriguez Torres Cano Shaddai Estefania</h2>
+                                <h3 class="card-text">Encargada de:</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="misvis" class="seccion">
+            <div class="logo">
+                <img src="lindasbazar.jpg" alt="Logo del Bazar" alt="Imagen de encabezado" class="imagen-encabezado">
+            </div> 
+            <h1 class="display-4">Linda's Bazar</h1>
+        <div class="slogan">""Tu  belleza es nuestra prioridad,  te ofrecemos productos  seleccionados para ti" "
+        </div>
+        <div class="card">
+            <h2>Misión</h2>
+            <h3>Ofrecer productos naturales y artesanales para el cuidado del cuerpo que promuevan el bienestar físico y emocional de nuestros clientes.</h3>
+        </div>
+        <div class="card">
+            <h2>Visión</h2>
+            <h3>Ser un referente en el mercado local de cuidado personal, fomentando hábitos saludables y el consumo consciente.</h3>
+        </div>
+        </div>
+
+        <div id="galeria" class="seccion">
+            <div class="logo">
+                <img src="lindasbazar.jpg" alt="Logo del Bazar" alt="Imagen de encabezado" class="imagen-encabezado">
+            </div> 
+            <h1 style="color: #ada74e;">Galería de Productos</h1>
+
+    <div class="contenedor">
+        <div class="producto">
+            <img src="img/img1.jpg" alt="Producto 1">
+            <h2>Base De Maquillaje</h2>
+            <p>Base de alta cobertura y larga duración de Favor Beauty
+                Es un clásico, de textura cremosa, súper suave, con alta cobertura, hasta 24 horas de duración; por si fuera poco, tiene factor de protección solar 10+ (SPF 10+), es resistente al agua y no deja sensación grasosa!
+                Además de se humectante por lo que al retirarla no sentirás tu piel estirada por la resequedad, que esperas para probarla antes de que se terminen.
+                Contenido: 34ml</p>
+        </div>
+
+        <div class="producto">
+            <img src="img/img2.jpg" alt="Producto 2">
+            <h2>Maquillaje Líquido</h2>
+            <p>El Maquillaje Líquido con Ácido Hialurónico (R6024) ofrece una cobertura ligera a media, hidratando y suavizando la piel gracias al ácido hialurónico. Es ideal para pieles secas o deshidratadas, proporcionando un acabado 
+                luminoso y natural. Su textura líquida facilita una aplicación uniforme y cómoda, mientras que mantiene la piel fresca y suave durante el día.</p>
+        </div>
+
+        <div class="producto">
+            <img src="img/img3.jpg" alt="Producto 3">
+            <h2>Brillo Labial Bissú</h2>
+            <p>Sin sensación pegajosa. Con su aplicador rediseñado, lograrás una cobertura perfecta en cada uso. Desde los nudes más sutiles hasta los audaces vinos y rojos. Este brillo labial no solo es hidratante, sino que también está 
+                diseñado para ofrecer una experiencia de uso cómoda y placentera. Su fórmula vegana garantiza que cada aplicación sea libre de crueldad, ya que no ha sido testeada en animales.</p>
+        </div>
+
+        <div class="producto">
+            <img src="img/img4.jpg" alt="Producto 4">
+            <h2>Labial Matte Bissu</h2>
+            <p>El Labial Matte Bissú es un producto de labios de acabado mate que ofrece una intensa pigmentación y durabilidad. Su fórmula ligera se desliza fácilmente, dejando un acabado suave y sin resecar los labios. Este labial tiene una excelente cobertura, brindando un color intenso que se mantiene intacto durante horas. Además, su textura mate evita la sensación pegajosa, proporcionando comodidad durante todo el día. Es ideal para quienes buscan un look elegante y duradero, con una amplia gama de tonos para elegir..</p>
+        </div>
+
+        <div class="producto">
+            <img src="img/img5.jpg" alt="Producto 5">
+            <h2>Cuidado Completo para tu Cabello </h2>
+            <p>Transforma tu rutina capilar con la línea de productos para el cabello Bisu, diseñados para cuidar, 
+                hidratar y dar forma a tu melena. Desde cremas anti-frizz que mantienen el control del cabello y lo
+                dejan suave, hasta geles para dar definición y fijación, tenemos todo lo que necesitas para lograr
+                un cabello manejable, libre de encrespamiento y lleno de vida. </p>
+        </div>
+
+        <div class="producto">
+            <img src="img/img6.jpg" alt="Producto 6">
+            <h2>Serums </h2>
+            <p>Descubre la línea de Serums, formulados para ofrecerle a tu piel los nutrientes y la hidratación que necesita.
+             Con ingredientes de alta calidad y fórmulas innovadoras, nuestros serums están diseñados para tratar diferentes 
+             necesidades de la piel, desde la hidratación profunda hasta la luminosidad y la firmeza.
+             ¡Transforma tu rutina de cuidado facial con los Serums Bisu y disfruta de una piel radiante y saludable!</p>
+        </div>
+
+        <div class="producto">
+            <img src="img/img7.jpg" alt="Producto 7">
+            <h2>Sombras para ojos</h2>
+            <p>Transforma tus ojos, una selección de tonos altamente pigmentados y
+                 de larga duración que te permiten crear looks desde los más suaves hasta los más intensos. 
+                 Ya sea para un maquillaje de día natural o un look de noche dramático, 
+                nuestras paletas tienen todo lo que necesitas para destacar tu mirada con facilidad y estilo.</p>
+        </div>
+
+        <div class="producto">
+            <img src="img/img8.jpg" alt="Producto 8">
+            <h2>Highlighter</h2>
+            <p>¡Luce un brillo radiante con nuestro Highlighter! Este iluminador está diseñado para darle a tu piel un
+                 resplandor suave y luminoso, creando un acabado radiante y natural. Con su fórmula de alta pigmentación,
+                 se funde perfectamente con tu piel para un look deslumbrante, ideal para cualquier ocasión.</p>
+        </div>
+
+        <div class="producto">
+            <img src="img/img9.jpg" alt="Producto 9">
+            <h2>Esmaltes </h2>
+            <p>Transforma tus manos, la solución perfecta para lucir unas uñas vibrantes y llenas de color.
+               Con una amplia gama de tonos y acabados, nuestros esmaltes ofrecen un acabado profesional de larga
+                duración, manteniendo tus uñas perfectas durante días. Ya sea que prefieras un tono clásico, un acabado 
+                brillante o un efecto mate, tenemos el esmalte ideal para cada estilo.</p>
+        </div>
+
+        <div class="producto">
+            <img src="img/img10.jpg" alt="Producto 10">
+            <h2>Productos para cejas</h2>
+            <p>Define, llena y resalta tus cejas Desde sombras suaves hasta geles de larga duración, henna para un acabado más
+                 intenso y cepillos de precisión, tenemos todo lo que necesitas para lograr unas cejas perfectas. 
+                 ¡Haz que tu mirada sea aún más impactante con nuestros productos!</p>
+        </div>
+
+        <div class="producto">
+            <img src="img/img11.jpg" alt="Producto 11">
+            <h2>Brillo de labios</h2>
+            <p>Añade un toque de glamour y luminosidad a tus labios con el labial de Bissu. 
+                Su fórmula ligera y no pegajosa proporciona un acabado brillante y fresco,
+                 ideal para cualquier ocasión. Con una variedad de tonos irresistibles, este
+                 labial no solo resalta tu belleza, sino que también hidrata tus labios gracias
+                 a sus ingredientes nutritivos.</p>
+        </div>
+
+        <div class="producto">
+            <img src="img/img12.jpg" alt="Producto 12">
+            <h2>Uñas </h2>
+            <p>¡Luce unas uñas perfectas en segundos! Las Uñas Postizas son la solución ideal para quienes buscan un acabado
+               profesional y elegante sin complicaciones, su innovadora tecnología adhesiva te permite aplicarlas fácilmente 
+               sin necesidad de pegamento, garantizando una sujeción segura y duradera.</p>
+        </div>
+        </div>
+        </div>
+        <div id="redes" class="seccion">
+            <div class="logo">
+                <img src="lindasbazar.jpg" alt="Logo del Bazar" alt="Imagen de encabezado" class="imagen-encabezado">
+            </div> 
+            <h1 style="color:#ada74e">Linda's Bazar</h1>
+            <section class="redes">
+                <h2 style="color: #775f1e;">Síguenos en nuestras redes</h2>
+                <a href="https://www.facebook.com/share/1BbJn4CUhs/" class="btn-red social-facebook">Facebook</a>
+                <a href="https://www.instagram.com/lindasbazartorres?igsh=MTd2Z2h0a3N4bjh0MQ==" class="btn-red social-instagram">Instagram</a>
+                <a href="https://www.tiktok.com/@lindasbazartorres1?_t=ZM-8vEz1Cjm9Di&_r=1 " class="btn-red social-tiktok">TikTok</a>
+            </section>
+
+            <section class="cuestionario">
+                <h2 style="color: #775f1e;">Cuestionario sobre Productos de Belleza</h2>
+                <h3>Responde nuestro formulario para conocer mejor tus preferencias.</h3>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeFCP2ng50HH7SlvKdloddo6pM6VEJ0NFX6Nbu7PCDBuAqfEQ/viewform?usp=preview" class="btn-form" target="_blank">Ir al formulario</a>
+            </section>
+        </div>
+    </div>    
+    <div id="novedades" class="seccion">
+        <div class="logo">
+            <img src="lindasbazar.jpg" alt="Logo del Bazar" alt="Imagen de encabezado" class="imagen-encabezado">
+        </div> 
+        <div class="jumbotron text-center">
+            <h1 class="display-4">NOVEDADES</h1>
+            <h3>En este apartado podrás encontrar las novedades de la semana o mes, los productos más vendidos <br>durante estos periodos de tiempo para poder conocer lo más nuevo en calidad de productos</h3>
+            <br>
+        </div> 
+        <br> 
+    <div class="card">
+        <h2>Productos de la semana.</h2>
+        <h3></h3>
+
+        </div>
+    <div class="card">
+        <h2>Productos del mes.</h2>
+        <h3></h3>
+    </div>
+    </div>
+
+    <div id="ofer" class="seccion">
+    <div class="logo">
+        <img src="lindasbazar.jpg" alt="Logo del Bazar" class="imagen-encabezado">
+    </div> 
+    <h1 class="display-4">OFERTAS</h1>
+    <div class="card">
+        <h3>Ofrecer productos en oferta, siguen siendo completamente nuevos, sin embargo por algunas razones de clima <br>se desgasta su pintura o etiqueta, por esta razón, Linda's Bazar decide ponerlos en oferta. También estos pueden ser productos ya un poco pasados de moda.</h3>
+    </div>
+    <br>
+    <div class="contenedor">
+        <div class="producto">
+            <img src="img/img8.jpg" alt="Producto 8">
+            <h2>Highlighter</h2>
+            <p>¡Luce un brillo radiante con nuestro Highlighter! Este iluminador está diseñado para darle a tu piel un
+                resplandor suave y luminoso, creando un acabado radiante y natural. Con su fórmula de alta pigmentación,
+                se funde perfectamente con tu piel para un look deslumbrante, ideal para cualquier ocasión.</p>
+        </div>
+    </div>
+</div>
+
+<div id="chatbot" class="seccion">
+    <div class="chat-header">Chat de Belleza (IA)</div>
+    <div id="chat-box" class="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Hazme una pregunta..." onkeydown="if(event.key === 'Enter') sendMessage()">
+    <button onclick="sendMessage()">Enviar</button>
+</div>
+    <script>
+        function mostrarSeccion(seccionId) {
+            const secciones = document.querySelectorAll('.seccion');
+            secciones.forEach(seccion => {
+                seccion.classList.remove('activa');
+                seccion.style.display = 'none';
+            });
+            const seccionActiva = document.getElementById(seccionId);
+            seccionActiva.style.display = 'block';
+            void seccionActiva.offsetWidth;
+            seccionActiva.classList.add('activa');
+        }
+
+        function abrirModal(texto) {
+            const modal = document.getElementById("modal");
+            const modalText = document.getElementById("modal-text");
+            modalText.textContent = texto;
+            modal.style.display = "flex";
+        }
+
+        function cerrarModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const botones = document.querySelectorAll("button");
+            botones.forEach(boton => {
+                boton.addEventListener("click", () => {
+                    const descripcion = boton.previousElementSibling.textContent;
+                    abrirModal("Más información sobre: " + descripcion);
+                });
+            });
+        });
+            function mostrarSeccion(seccionId) {
+        console.log("Abriendo sección:", seccionId);
+        const secciones = document.querySelectorAll('.seccion');
+        secciones.forEach(seccion => {
+            seccion.classList.remove('activa');
+            seccion.style.display = 'none';
+        });
+        const seccionActiva = document.getElementById(seccionId);
+        if (seccionActiva) {
+            seccionActiva.style.display = 'block';
+            void seccionActiva.offsetWidth;
+            seccionActiva.classList.add('activa');
+        } else {
+            console.warn("No se encontró la sección con id:", seccionId);
+        }
+    }
+
+    function sendMessage() {
+        const input = document.getElementById("user-input");
+        const message = input.value.trim();
+        if (!message) return;
+
+        const chatBox = document.getElementById("chat-box");
+        chatBox.innerHTML += `<div><strong>Tú:</strong> ${message}</div>`;
+        input.value = "";
+
+        fetch("chatbot.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            chatBox.innerHTML += `<div><strong>Bot:</strong> ${data.reply}</div>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        })
+        .catch(error => {
+            chatBox.innerHTML += `<div><strong>Bot:</strong> Error al responder 😓</div>`;
+            console.error("Error:", error);
+        });
+    }
+    </script>
+    <br>
+    <footer>
+        <h5>&copy; Equipo * 403 CECYTEM 2025</h5>
+    </footer>
+</body>
+</html>

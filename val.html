@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valores del Fútbol Americano</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap');
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #9ef9f7; /* Azul oscuro turquesa profundo */
+      font-family: 'Roboto', sans-serif;
+      color: #e0f7fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #00fff7;
+      text-shadow:
+        0 0 8px #00fff7,
+        0 0 15px #00c7c7,
+        0 0 25px #00a6a6;
+      user-select: none;
+    }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #00fff7 0%, #007a8a 100%);
+      border-radius: 20px;
+      box-shadow:
+        0 10px 20px rgba(0, 255, 247, 0.5);
+      padding: 1.8rem 2rem;
+      color: #004d51;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow:
+        0 15px 30px rgba(0, 255, 247, 0.9);
+      color: #e0f7fa;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, #00fff7 30%, transparent 70%);
+      opacity: 0.15;
+      transition: opacity 0.4s ease;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .card:hover::before {
+      opacity: 0.4;
+    }
+
+    .card h3 {
+      margin: 0 0 1rem 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: inherit;
+      user-select: none;
+    }
+
+    .card p {
+      font-size: 1.05rem;
+      line-height: 1.5;
+      user-select: text;
+      color: inherit;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      .cards-container {
+        gap: 1.3rem;
+      }
+      .card {
+        padding: 1.3rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Valores que Promueve el Fútbol Americano</h1>
+
+  <div class="cards-container">
+    <div class="card">
+      <h3>Disciplina</h3>
+      <p>Fomenta la constancia y el compromiso para mejorar habilidades, mantener entrenamientos y respetar reglas dentro y fuera del campo.</p>
+    </div>
+
+    <div class="card">
+      <h3>Trabajo en equipo</h3>
+      <p>El éxito depende de la colaboración y confianza mutua entre compañeros para lograr objetivos comunes.</p>
+    </div>
+
+    <div class="card">
+      <h3>Respeto</h3>
+      <p>Se aprende a respetar a rivales, entrenadores y árbitros, promoviendo el juego limpio y la deportividad.</p>
+    </div>
+
+    <div class="card">
+      <h3>Resiliencia</h3>
+      <p>Enfrentar desafíos y derrotas con actitud positiva para superarse y seguir adelante.</p>
+    </div>
+
+    <div class="card">
+      <h3>Responsabilidad</h3>
+      <p>Cumplir roles dentro del equipo y asumir las consecuencias de acciones, tanto en victorias como en derrotas.</p>
+    </div>
+  </div>
+
+</body>
+</html>
