@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Historia y Evolución de KTM</title>
+
+  <!-- AOS Animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Animate.css -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --orange: #e96112;
+      --orange-dark: #f85c01;
+      --black: #000000;
+      --gray-light: #f9f9f9;
+      --gray-medium: #666666;
+      --gray-dark: #333333;
+      --white: #fff;
+
+      --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --border-radius: 14px;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      --transition-speed: 0.4s;
+    }
+
+    /* Reset */
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background-color: var(--gray-light);
+      color: var(--gray-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition-speed);
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--orange-dark);
+      outline: none;
+    }
+
+    header {
+      width: 100%;
+      max-width: 960px;
+      background: linear-gradient(90deg, var(--orange-dark), var(--black));
+      padding: 3.5rem 2rem;
+      border-radius: var(--border-radius);
+      color: var(--white);
+      box-shadow: var(--shadow);
+      text-align: center;
+      margin-bottom: 3rem;
+      user-select: none;
+    }
+
+    header h1 {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+    }
+
+    main {
+      width: 100%;
+      max-width: 960px;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Tarjetas informativas */
+    .card {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2.5rem 3rem;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      cursor: default;
+    }
+
+    .card:hover,
+    .card:focus-within {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
+    }
+
+    .card h2 {
+      color: var(--orange-dark);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card p {
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--gray-dark);
+    }
+
+    /* Lista con íconos */
+    ul.features-list {
+      max-width: 720px;
+      margin: 1rem auto 1.5rem auto;
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem 2rem;
+    }
+
+    ul.features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 1.1rem;
+      color: var(--gray-dark);
+    }
+
+    ul.features-list li svg {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      fill: var(--orange-dark);
+      margin-top: 4px;
+    }
+
+    /* Timeline simplificado */
+    .timeline {
+      position: relative;
+      max-width: 700px;
+      margin: 3rem auto;
+      padding-left: 24px;
+      border-left: 3px solid var(--orange-dark);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 1rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -11px;
+      top: 0.6rem;
+      width: 20px;
+      height: 20px;
+      background-color: var(--orange-dark);
+      border-radius: 50%;
+      border: 3px solid var(--white);
+      box-shadow: 0 0 10px rgba(232, 97, 18, 0.5);
+    }
+
+    .timeline-item h3 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--orange-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-item p {
+      font-size: 1rem;
+      color: var(--gray-medium);
+    }
+
+    /* Imagenes destacadas */
+    figure {
+      max-width: 700px;
+      margin: 2rem auto;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition-speed);
+      cursor: pointer;
+      outline-offset: 3px;
+    }
+
+    figure:hover,
+    figure:focus-within {
+      transform: scale(1.04);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.24);
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    figcaption {
+      background-color: var(--orange);
+      color: var(--white);
+      padding: 0.85rem 1rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      max-width: 960px;
+      padding: 1.2rem 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--gray-medium);
+      user-select: none;
+      border-top: 1px solid #ddd;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 16px 12px;
+      }
+
+      header {
+        padding: 2.5rem 1.5rem;
+      }
+
+      main {
+        gap: 2rem;
+      }
+
+      .card {
+        padding: 2rem 1.8rem;
+      }
+
+      .card h2 {
+        font-size: 1.6rem;
+      }
+
+      ul.features-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .timeline {
+        max-width: 100%;
+        padding-left: 16px;
+      }
+
+      .timeline-item h3 {
+        font-size: 1.1rem;
+      }
+
+      figure {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <h1
+      class="animate__animated animate__fadeInDown"
+      data-aos="fade-down"
+      tabindex="0"
+    >
+      Historia y Evolución de KTM
+    </h1>
+  </header>
+
+  <main role="main" aria-label="Historia y evolución de la marca KTM">
+    <!-- Tarjeta principal -->
+    <article
+      class="card"
+      data-aos="fade-up"
+      tabindex="0"
+      aria-labelledby="ktm-title"
+    >
+      <h2 id="ktm-title">KTM AG</h2>
+      <p>
+        KTM es una empresa austríaca fundada en <strong>1953</strong> que
+        comenzó como un pequeño taller de reparación de motores y rápidamente
+        se convirtió en un fabricante líder de motocicletas off-road y deportivas.
+      </p>
+      <p>
+        Con una clara visión en innovación y rendimiento, KTM ha revolucionado
+        el mundo del motociclismo con tecnologías exclusivas y un espíritu
+        competitivo único.
+      </p>
+
+      <ul class="features-list" aria-label="Características e innovaciones de KTM">
+        <li>
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          Chasis tubular de acero cromado-molibdeno, ligero y resistente.
+        </li>
+        <li>
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          Sistema de suspensión WP de alto rendimiento que mejora el manejo.
+        </li>
+        <li>
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          Motor LC8 V-twin usado en motos Adventure y deportivas para máxima potencia.
+        </li>
+      </ul>
+
+      <p>
+        KTM no solo ha dominado las competencias de motocross y rally Dakar con
+        más de <strong>18 victorias consecutivas</strong>, sino que también ha
+        integrado exitosamente las marcas Husqvarna y GASGAS para ampliar su
+        liderazgo en el mercado global.
+      </p>
+
+      <figure tabindex="0" aria-label="Motocicleta KTM moderna en acción">
+        <img
+          src="ktm.jpg"
+          alt="Motocicleta KTM naranja sobre terreno off-road"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Motocicleta KTM – Innovación y potencia</figcaption>
+      </figure>
+    </article>
+
+    <!-- Timeline de hitos -->
+    <section
+      class="card"
+      data-aos="fade-up"
+      tabindex="0"
+      aria-labelledby="timeline-title"
+    >
+      <h2 id="timeline-title" style="text-align:center; margin-bottom:2rem;">
+        Línea del Tiempo: Hitos clave de KTM
+      </h2>
+
+      <div class="timeline" role="list">
+        <div class="timeline-item" role="listitem">
+          <h3>1953 – Fundación</h3>
+          <p>Hans Trunkenpolz funda KTM como taller de reparación de motores en Austria.</p>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <h3>1974 – Primer motocicleta propia</h3>
+          <p>Lanzamiento de la primera motocicleta KTM diseñada y fabricada internamente.</p>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <h3>1992 – Dominio en motocross</h3>
+          <p>Comienzan las victorias internacionales, estableciendo a KTM como líder mundial.</p>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <h3>2008 – Rally Dakar</h3>
+          <p>KTM logra más de 10 victorias consecutivas en el Rally Dakar, consolidando su prestigio.</p>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <h3>2013 – Adquisición de Husqvarna</h3>
+          <p>Expansión estratégica con la integración de la histórica marca sueca Husqvarna.</p>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <h3>2020 – GASGAS entra en el grupo</h3>
+          <p>Consolidación del grupo KTM con la compra de la marca española GASGAS.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Imagen histórica -->
+    <figure
+      tabindex="0"
+      data-aos="zoom-in"
+      aria-label="Fotografía histórica de una motocicleta KTM antigua"
+    >
+      <img
+        src="ktms.jpg"
+        alt="Motocicleta KTM antigua en blanco y negro con piloto"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>KTM antigua – Historia y tradición</figcaption>
+    </figure>
+
+    <!-- Resumen y visión -->
+    <article
+      class="card"
+      data-aos="fade-up"
+      tabindex="0"
+      aria-labelledby="vision-title"
+    >
+      <h2 id="vision-title" style="text-align:center; margin-bottom:1rem;">
+        Impacto y Futuro de KTM
+      </h2>
+      <p>
+        KTM continúa marcando la pauta en innovación tecnológica y rendimiento,
+        combinando su herencia en off-road con motos deportivas y urbanas.
+      </p>
+      <p>
+        La empresa mantiene su compromiso con la sostenibilidad y el desarrollo de
+        nuevas tecnologías eléctricas para motos, mirando hacia un futuro más limpio
+        y emocionante.
+      </p>
+      <p>
+        Su espíritu competitivo sigue vivo, inspirando a pilotos y entusiastas en todo el mundo.
+      </p>
+    </article>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2025 Historia de KTM. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 900,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false,
+    });
+  </script>
+</body>
+</html>

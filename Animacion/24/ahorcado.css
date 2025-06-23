@@ -1,0 +1,352 @@
+body {
+    font-family:'Times New Roman', Times, serif ;
+    background-color: #282c34;
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; 
+}
+body {
+    overflow: auto; 
+    margin: 0;
+    padding: 0;
+}
+
+
+.game-container {
+    background-color: #3a404a;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 900px;
+    width: 95%;
+    box-sizing: border-box;
+}
+
+.logo-area {
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 150px;
+    height: auto;
+}
+
+h1 {
+    color: #61dafb;
+    margin-bottom: 25px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.difficulty-selection {
+    margin-bottom: 30px;
+}
+
+.difficulty-selection label {
+    font-size: 1.1em;
+    margin-right: 10px;
+}
+
+.difficulty-selection select,
+.difficulty-selection button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.difficulty-selection select {
+    background-color: #555;
+    color: #f0f0f0;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.difficulty-selection button {
+    background-color: #61dafb;
+    color: #282c34;
+    margin-left: 15px;
+}
+
+.difficulty-selection button:hover {
+    background-color: #4ac1e3;
+    transform: translateY(-2px);
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap; 
+}
+
+.hangman-display {
+    background-color: #2f343d;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#hangmanCanvas {
+    background-color: #fff; 
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.word-display {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #2f343d;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#wordToGuess {
+    font-size: 2.5em;
+    letter-spacing: 10px; 
+    margin-bottom: 20px;
+    color: #a0f0f0;
+    word-break: break-all; 
+}
+
+.hidden-word span {
+    border-bottom: 3px solid #f0f0f0;
+    padding: 0 5px;
+    margin: 0 2px;
+}
+
+#hintButton {
+    background-color: #ff9800;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+#hintButton:hover {
+    background-color: #e68a00;
+    transform: translateY(-2px);
+}
+
+#hintText {
+    margin-top: 15px;
+    font-size: 1em;
+    color: #ccc;
+    font-style: italic;
+}
+
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 8px;
+    background-color: #2f343d;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.keyboard button {
+    background-color: #4a505c;
+    color: #f0f0f0;
+    border: 2px solid #5a606c;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    min-width: 45px;
+}
+
+.keyboard button:hover:not(.disabled) {
+    background-color: #61dafb;
+    color: #282c34;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.keyboard button:active:not(.disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.keyboard button.disabled {
+    background-color: #333;
+    color: #777;
+    cursor: not-allowed;
+    border-color: #444;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden; 
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease;
+}
+
+.overlay.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.message-box {
+    background-color: #3a404a;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.overlay.show .message-box {
+    transform: scale(1);
+}
+
+#gameMessage {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #61dafb;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#correctWord {
+    font-size: 1.5em;
+    color: #ffcc00;
+    margin-bottom: 30px;
+}
+
+#playAgain {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#playAgain:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+
+.confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: currentColor; 
+    border-radius: 50%; 
+    opacity: 0.8;
+}
+#gameContainer {
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+}
+
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .game-area {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hangman-display,
+    .word-display {
+        width: 100%;
+        max-width: 350px; 
+    }
+
+    #wordToGuess {
+        font-size: 1.8em;
+        letter-spacing: 5px;
+    }
+
+    .keyboard {
+        grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+        gap: 5px;
+        padding: 10px;
+    }
+
+    .keyboard button {
+        font-size: 1em;
+        padding: 10px 0;
+    }
+
+    .message-box {
+        padding: 25px;
+    }
+
+    #gameMessage {
+        font-size: 1.5em;
+    }
+
+    #correctWord {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .difficulty-selection button {
+        margin-left: 0;
+        margin-top: 10px;
+        display: block; 
+        width: 100%;
+    }
+}

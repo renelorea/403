@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juego del Ahorcado</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f8f8;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #hangmanCanvas {
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+
+    .word {
+      font-size: 2em;
+      letter-spacing: 10px;
+      margin-bottom: 20px;
+    }
+
+    .keyboard {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .keyboard button {
+      width: 40px;
+      height: 40px;
+      font-size: 1em;
+      cursor: pointer;
+      border: none;
+      background-color: #eee;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+
+    .keyboard button:disabled {
+      background-color: #bbb;
+      color: white;
+      cursor: not-allowed;
+    }
+
+    #message {
+      font-size: 1.2em;
+      margin: 20px 0;
+      color: #333;
+    }
+
+    #resetBtn {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #resetBtn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Juego del Ahorcado</h1>
+    <canvas id="hangmanCanvas" width="200" height="250"></canvas>
+    <p class="word" id="wordDisplay"></p>
+    <div id="keyboard" class="keyboard"></div>
+    <p id="message"></p>
+    <button id="resetBtn">Reiniciar Juego</button>
+  </div>
+
+  <script>
+    const palabras = ["javascript", "programacion", "ahorcado", "desarrollo", "computadora", "inteligencia", "teclado"];
+    let palabraSeleccionada = "";
+    let letrasAdivinadas = [];
+    let errores = 0;
+    const maxErrores = 6;
+
+    const canvas = document.getElementById("hangmanCanvas");
+    const ctx = canvas.getContext("2d");
+    const palabraHTML = document.getElementById("wordDisplay");
+    const tecladoHTML = document.getElementById("keyboard");
+    const mensajeHTML = document.getElementById("message");
+    const resetBtn = document.getElementById("resetBtn");
+
+    function iniciarJuego() {
+      palabraSeleccionada = palabras[Math.floor(Math.random() * palabras.length)].toUpperCase();
+      letrasAdivinadas = [];
+      errores = 0;
+      mensajeHTML.textContent = "";
+      crearTeclado();
+      actualizarPalabra();
+      limpiarCanvas();
+      dibujarBase();
+    }
+
+    function crearTeclado() {
+      tecladoHTML.innerHTML = "";
+      const letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+      for (let letra of letras) {
+        const btn = document.createElement("button");
+        btn.textContent = letra;
+        btn.addEventListener("click", () => manejarIntento(letra));
+        tecladoHTML.appendChild(btn);
+      }
+    }
+
+    function manejarIntento(letra) {
+      document.querySelectorAll(".keyboard button").forEach(btn => {
+        if (btn.textContent === letra) btn.disabled = true;
+      });
+
+      if (palabraSeleccionada.includes(letra)) {
+        letrasAdivinadas.push(letra);
+      } else {
+        errores++;
+        dibujarAhorcado(errores);
+      }
+
+      actualizarPalabra();
+      verificarEstadoJuego();
+    }
+
+    function actualizarPalabra() {
+      palabraHTML.textContent = palabraSeleccionada
+        .split("")
+        .map(letra => (letrasAdivinadas.includes(letra) ? letra : "_"))
+        .join(" ");
+    }
+
+    function verificarEstadoJuego() {
+      if (errores >= maxErrores) {
+        mensajeHTML.textContent = `¡Perdiste! La palabra era: ${palabraSeleccionada}`;
+        deshabilitarTeclado();
+      } else if (palabraSeleccionada.split("").every(letra => letrasAdivinadas.includes(letra))) {
+        mensajeHTML.textContent = "¡Felicidades! ¡Has ganado!";
+        deshabilitarTeclado();
+      }
+    }
+
+    function deshabilitarTeclado() {
+      document.querySelectorAll(".keyboard button").forEach(btn => btn.disabled = true);
+    }
+
+    function limpiarCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function dibujarBase() {
+      ctx.strokeStyle = "#000";
+      ctx.lineWidth = 2;
+
+      // Base
+      ctx.beginPath();
+      ctx.moveTo(10, 240);
+      ctx.lineTo(190, 240);
+      ctx.stroke();
+
+      // Poste vertical
+      ctx.beginPath();
+      ctx.moveTo(50, 240);
+      ctx.lineTo(50, 20);
+      ctx.stroke();
+
+      // Poste horizontal
+      ctx.beginPath();
+      ctx.moveTo(50, 20);
+      ctx.lineTo(150, 20);
+      ctx.stroke();
+
+      // Cuerda
+      ctx.beginPath();
+      ctx.moveTo(150, 20);
+      ctx.lineTo(150, 40);
+      ctx.stroke();
+    }
+
+    function dibujarAhorcado(error) {
+      switch (error) {
+        case 1: // Cabeza
+          ctx.beginPath();
+          ctx.arc(150, 60, 20, 0, Math.PI * 2);
+          ctx.stroke();
+          break;
+        case 2: // Cuerpo
+          ctx.beginPath();
+          ctx.moveTo(150, 80);
+          ctx.lineTo(150, 140);
+          ctx.stroke();
+          break;
+        case 3: // Brazo izquierdo
+          ctx.beginPath();
+          ctx.moveTo(150, 100);
+          ctx.lineTo(120, 120);
+          ctx.stroke();
+          break;
+        case 4: // Brazo derecho
+          ctx.beginPath();
+          ctx.moveTo(150, 100);
+          ctx.lineTo(180, 120);
+          ctx.stroke();
+          break;
+        case 5: // Pierna izquierda
+          ctx.beginPath();
+          ctx.moveTo(150, 140);
+          ctx.lineTo(120, 180);
+          ctx.stroke();
+          break;
+        case 6: // Pierna derecha
+          ctx.beginPath();
+          ctx.moveTo(150, 140);
+          ctx.lineTo(180, 180);
+          ctx.stroke();
+          break;
+      }
+    }
+
+    resetBtn.addEventListener("click", iniciarJuego);
+
+    iniciarJuego();
+  </script>
+</body>
+</html>

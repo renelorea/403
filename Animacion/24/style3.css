@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #D1F1CE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+img{
+    padding: 30px;
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+}
+
+.container {
+    background-color: #9FCE9B;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+}
+
+h1, h2 {
+    color: #053f00;
+}
+
+.score-timer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#question-container {
+    margin-top: 20px;
+}
+
+#question {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #17770E;
+}
+
+#answer-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#submit-answer, #start-game-button, #restart-game-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+#submit-answer:hover, #start-game-button:hover, #restart-game-button:hover {
+    background-color: #0056b3;
+}
+
+.feedback {
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.feedback.correct {
+    color: green;
+}
+
+.feedback.incorrect {
+    color: red;
+}
+
+.feedback.timeout {
+    color: orange;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+#game-screen {
+    display: none; /* Hidden by default, shown when game starts */
+}

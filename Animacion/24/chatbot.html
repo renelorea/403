@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chatbot Boxeador</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #1f1c2c, #928dab);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      color: #f0f0f0;
+    }
+
+    h1 {
+      color: #ffcb05;
+      text-shadow: 2px 2px #000;
+    }
+
+    #chatbox {
+      width: 90%;
+      max-width: 600px;
+      height: 400px;
+      border: 4px solid #ff0000;
+      border-radius: 15px;
+      padding: 10px;
+      overflow-y: scroll;
+      background: #111;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    }
+
+    .user, .bot {
+      margin: 10px 0;
+    }
+
+    .user {
+      text-align: right;
+      color: #00bfff;
+    }
+
+    .bot {
+      text-align: left;
+      color: #f0f0f0;
+    }
+
+    input[type="text"] {
+      width: 70%;
+      padding: 12px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 12px 25px;
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #cc0000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🥊 ChatBot Boxeador</h1>
+  <div id="chatbox"></div>
+
+  <div>
+    <input type="text" id="userInput" placeholder="Hazme una pregunta de boxeo...">
+    <button onclick="responder()">Enviar</button>
+  </div>
+
+  <script>
+    function responder() {
+      let input = document.getElementById("userInput").value.trim();
+      let chatbox = document.getElementById("chatbox");
+
+      if (input === "") return;
+
+      chatbox.innerHTML += `<div class="user"><strong>Tú:</strong> ${input}</div>`;
+
+      let respuesta = obtenerRespuesta(input.toLowerCase());
+
+      setTimeout(() => {
+        chatbox.innerHTML += `<div class="bot"><strong>Bot:</strong> ${respuesta}</div>`;
+        chatbox.scrollTop = chatbox.scrollHeight;
+      }, 400);
+
+      document.getElementById("userInput").value = "";
+    }
+
+    function obtenerRespuesta(pregunta) {
+      if (pregunta.includes("muhammad ali"))
+        return "Ali fue campeón mundial de los pesos pesados 3 veces. Conocido por su frase: 'Flota como mariposa, pica como abeja'.";
+      if (pregunta.includes("mike tyson"))
+        return "Tyson fue el campeón de peso pesado más joven de la historia. ¡Su poder de nocaut era temido!";
+      if (pregunta.includes("nocaut"))
+        return "Un nocaut (KO) ocurre cuando un boxeador no se levanta antes de la cuenta de 10.";
+      if (pregunta.includes("tko") || pregunta.includes("knockout técnico"))
+        return "Un TKO es cuando el árbitro detiene el combate porque un boxeador no puede seguir.";
+      if (pregunta.includes("round"))
+        return "Los combates profesionales suelen durar 12 rounds de 3 minutos cada uno.";
+      if (pregunta.includes("peso pluma"))
+        return "El peso pluma está entre los 55 y 57 kg. Grandes como Manny Pacquiao han peleado ahí.";
+      if (pregunta.includes("floyd mayweather"))
+        return "Mayweather se retiró invicto con récord 50-0. Maestro del estilo defensivo.";
+      if (pregunta.includes("técnicas") || pregunta.includes("movimientos"))
+        return "Existen técnicas como el jab, uppercut, gancho, esquive y contragolpe.";
+      if (pregunta.includes("quién ganó"))
+        return "¡Esa depende de la pelea! ¿A cuál te refieres?";
+      if (pregunta.includes("campeón actual"))
+        return "Eso cambia seguido. Te recomiendo buscar la clasificación WBC, WBA, IBF y WBO actual.";
+      if (pregunta.includes("historia del boxeo"))
+        return "El boxeo moderno nació en Inglaterra en el siglo XVIII. Desde entonces, ¡ha crecido a nivel mundial!";
+      if (pregunta.includes("mejor boxeador"))
+        return "Eso es debatible. Algunos dicen Ali, otros Tyson, Mayweather o Sugar Ray Leonard.";
+      if (pregunta.includes("peso welter"))
+        return "El peso wélter va de 63.5 a 66.7 kg. Muy competitivo e histórico.";
+      if (pregunta.includes("cuántos títulos"))
+        return "Un boxeador puede tener títulos de distintas organizaciones y pesos al mismo tiempo.";
+      if (pregunta.includes("boxeo femenino"))
+        return "El boxeo femenino ha crecido mucho. Destacan Amanda Serrano, Katie Taylor y Claressa Shields.";
+      if (pregunta.includes("cuántos guantes"))
+        return "Los guantes suelen pesar entre 8 y 16 onzas, según el combate y categoría.";
+      if (pregunta.includes("qué es el boxeo"))
+  return "El boxeo es un deporte de combate donde dos personas pelean con guantes sobre un ring.";
+if (pregunta.includes("quién inventó el boxeo"))
+  return "El boxeo moderno se originó en Inglaterra en el siglo XVIII.";
+if (pregunta.includes("cuántos asaltos hay"))
+  return "En peleas profesionales hay hasta 12 asaltos, y en amateurs puede haber 3 o más.";
+if (pregunta.includes("qué se necesita para boxear"))
+  return "Guantes, protector bucal, vendas, casco (en amateurs) y un entrenador.";
+if (pregunta.includes("hay boxeo para niños"))
+  return "Sí, hay boxeo recreativo y amateur para niños con reglas y protección especial.";
+if (pregunta.includes("qué es un gancho"))
+  return "Un gancho es un golpe curvo que se lanza desde el costado hacia la cabeza o cuerpo.";
+if (pregunta.includes("qué es un jab"))
+  return "El jab es un golpe recto con la mano adelantada. Se usa para marcar distancia.";
+if (pregunta.includes("puedo practicar boxeo sin pelear"))
+  return "¡Claro! Muchos practican boxeo por ejercicio, sin necesidad de competir.";
+if (pregunta.includes("el boxeo es peligroso"))
+  return "Puede serlo si no se usa protección y técnica. Pero con reglas es más seguro.";
+if (pregunta.includes("cuánto duran los descansos"))
+  return "Los descansos entre rounds duran 1 minuto.";
+if (pregunta.includes("puede boxear una mujer"))
+  return "¡Por supuesto! Hay boxeo femenino profesional y amateur en todo el mundo.";
+if (pregunta.includes("qué ropa usan los boxeadores"))
+  return "Guantes, pantalones cortos, zapatos especiales, vendas y, a veces, casco.";
+if (pregunta.includes("qué es un peso pesado"))
+  return "Es una categoría para boxeadores que pesan más de 90.7 kg.";
+if (pregunta.includes("cómo se gana una pelea"))
+  return "Puedes ganar por puntos, nocaut (KO) o decisión del árbitro.";
+if (pregunta.includes("dónde se practica el boxeo"))
+  return "En gimnasios con ring, sacos de boxeo y entrenadores capacitados.";
+if (pregunta.includes("qué beneficios tiene el boxeo"))
+  return "Mejora tu condición física, coordinación, disciplina y confianza.";
+if (pregunta.includes("cuántos tipos de boxeo hay"))
+  return "Existe boxeo amateur, profesional, recreativo y adaptado. También variantes como el boxeo sin contacto.";
+if (pregunta.includes("qué edad se necesita para empezar"))
+  return "Muchos comienzan desde los 6 años en categorías infantiles.";
+
+      return "Hmm... esa pregunta aún no la tengo registrada, pero ¡puedo seguir aprendiendo con cada golpe!";
+    }
+  </script>
+
+</body>
+</html>

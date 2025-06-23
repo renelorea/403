@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz de Habilidad Mental - Matemáticas y Más</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .container {
+    background: rgba(24, 40, 72, 0.95);
+    max-width: 480px;
+    width: 100%;
+    border-radius: 15px;
+    padding: 30px 40px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+  }
+
+  #categoria {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #a2b9f7;
+    margin-bottom: 15px;
+    font-style: italic;
+  }
+
+  #pregunta {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    min-height: 70px;
+    line-height: 1.3;
+  }
+
+  #respuestaInput {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  button#submitBtn, button#resetBtn {
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+    width: 48%;
+  }
+
+  #submitBtn {
+    background-color: #5a8dee;
+    color: white;
+  }
+
+  #submitBtn:hover {
+    background-color: #3a6fdc;
+  }
+
+  #resetBtn {
+    background-color: #e04e4e;
+    color: white;
+  }
+
+  #resetBtn:hover {
+    background-color: #b63b3b;
+  }
+
+  #mensaje {
+    margin-top: 18px;
+    font-size: 1.3rem;
+    min-height: 30px;
+    font-weight: 600;
+  }
+
+  #puntaje {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  #tiempo {
+    font-size: 1rem;
+    margin-top: 5px;
+    color: #a2b9f7;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz de Habilidad Mental</h1>
+    <div id="categoria">Categoría: </div>
+    <div id="pregunta">Cargando pregunta...</div>
+    <input type="text" id="respuestaInput" placeholder="Escribe tu respuesta aquí" autocomplete="off" />
+    <div>
+      <button id="submitBtn">Enviar</button>
+      <button id="resetBtn">Reiniciar</button>
+    </div>
+    <div id="mensaje"></div>
+    <div id="puntaje">Puntaje: 0</div>
+    <div id="tiempo">Tiempo restante: 15 s</div>
+  </div>
+
+<script>
+  const preguntas = [
+    // Matemáticas
+    { categoria: "Matemáticas", pregunta: "¿Cuánto es 12 + 7?", respuesta: "19" },
+    { categoria: "Matemáticas", pregunta: "¿Cuál es el resultado de 15 - 9?", respuesta: "6" },
+    { categoria: "Matemáticas", pregunta: "¿Cuánto es 6 x 8?", respuesta: "48" },
+    { categoria: "Matemáticas", pregunta: "¿Qué número es la raíz cuadrada de 81?", respuesta: "9" },
+    { categoria: "Matemáticas", pregunta: "¿Cuánto es 56 dividido entre 7?", respuesta: "8" },
+
+    // Ciencia
+    { categoria: "Ciencia", pregunta: "¿Cuál es el planeta más cercano al Sol?", respuesta: "Mercurio" },
+    { categoria: "Ciencia", pregunta: "¿De qué gas respiramos principalmente?", respuesta: "Oxígeno" },
+    { categoria: "Ciencia", pregunta: "¿Cuál es el símbolo químico del agua?", respuesta: "H2O" },
+    { categoria: "Ciencia", pregunta: "¿Qué fuerza mantiene a los planetas en órbita?", respuesta: "Gravedad" },
+    { categoria: "Ciencia", pregunta: "¿Cuál es el órgano principal del sistema circulatorio?", respuesta: "Corazón" },
+
+    // Historia
+    { categoria: "Historia", pregunta: "¿En qué año llegó Cristóbal Colón a América?", respuesta: "1492" },
+    { categoria: "Historia", pregunta: "¿Quién fue el primer presidente de Estados Unidos?", respuesta: "George Washington" },
+    { categoria: "Historia", pregunta: "¿Qué civilización construyó las pirámides de Egipto?", respuesta: "Egipcia" },
+    { categoria: "Historia", pregunta: "¿En qué año terminó la Segunda Guerra Mundial?", respuesta: "1945" },
+    { categoria: "Historia", pregunta: "¿Quién escribió la 'Ilíada' y la 'Odisea'?", respuesta: "Homero" },
+
+    // Geografía
+    { categoria: "Geografía", pregunta: "¿Cuál es la capital de Francia?", respuesta: "París" },
+    { categoria: "Geografía", pregunta: "¿Cuál es el río más largo del mundo?", respuesta: "Nilo" },
+    { categoria: "Geografía", pregunta: "¿En qué continente está Australia?", respuesta: "Oceanía" },
+    { categoria: "Geografía", pregunta: "¿Qué país tiene la mayor población?", respuesta: "China" },
+    { categoria: "Geografía", pregunta: "¿Dónde están las Montañas Rocosas?", respuesta: "América" },
+  ];
+
+  const categoriaElem = document.getElementById('categoria');
+  const preguntaElem = document.getElementById('pregunta');
+  const respuestaInput = document.getElementById('respuestaInput');
+  const mensajeElem = document.getElementById('mensaje');
+  const puntajeElem = document.getElementById('puntaje');
+  const tiempoElem = document.getElementById('tiempo');
+  const submitBtn = document.getElementById('submitBtn');
+  const resetBtn = document.getElementById('resetBtn');
+
+  let puntaje = 0;
+  let tiempoRestante = 15;
+  let timerId;
+  let preguntaActual;
+
+  function obtenerPreguntaAleatoria() {
+    const indice = Math.floor(Math.random() * preguntas.length);
+    return preguntas[indice];
+  }
+
+  function mostrarPregunta() {
+    preguntaActual = obtenerPreguntaAleatoria();
+    categoriaElem.textContent = `Categoría: ${preguntaActual.categoria}`;
+    preguntaElem.textContent = preguntaActual.pregunta;
+    respuestaInput.value = '';
+    respuestaInput.focus();
+    mensajeElem.textContent = '';
+    tiempoRestante = 15;
+    tiempoElem.textContent = `Tiempo restante: ${tiempoRestante} s`;
+  }
+
+  function iniciarTemporizador() {
+    clearInterval(timerId);
+    timerId = setInterval(() => {
+      tiempoRestante--;
+      tiempoElem.textContent = `Tiempo restante: ${tiempoRestante} s`;
+
+      if (tiempoRestante <= 0) {
+        clearInterval(timerId);
+        mensajeElem.textContent = `¡Se acabó el tiempo! La respuesta era: ${preguntaActual.respuesta}`;
+        setTimeout(() => {
+          siguientePregunta();
+        }, 3000);
+      }
+    }, 1000);
+  }
+
+  function siguientePregunta() {
+    mostrarPregunta();
+    iniciarTemporizador();
+  }
+
+  function normalizarTexto(texto) {
+    return texto.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function verificarRespuesta() {
+    const respuestaUsuario = normalizarTexto(respuestaInput.value);
+    const respuestaCorrecta = normalizarTexto(preguntaActual.respuesta);
+
+    if (!respuestaUsuario) {
+      mensajeElem.textContent = 'Por favor, ingresa una respuesta.';
+      return;
+    }
+
+    clearInterval(timerId);
+
+    if (respuestaUsuario === respuestaCorrecta) {
+      puntaje++;
+      puntajeElem.textContent = `Puntaje: ${puntaje}`;
+      mensajeElem.textContent = '¡Correcto! 🎉';
+    } else {
+      mensajeElem.textContent = `Incorrecto. La respuesta correcta es: ${preguntaActual.respuesta}`;
+    }
+
+    setTimeout(() => {
+      siguientePregunta();
+    }, 2500);
+  }
+
+  submitBtn.addEventListener('click', verificarRespuesta);
+
+  respuestaInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      verificarRespuesta();
+    }
+  });
+
+  resetBtn.addEventListener('click', () => {
+    puntaje = 0;
+    puntajeElem.textContent = `Puntaje: ${puntaje}`;
+    mensajeElem.textContent = '';
+    siguientePregunta();
+  });
+
+  // Inicia el juego
+  siguientePregunta();
+</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Juego de Habilidad Mental - Memoria Visual</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      user-select: none;
+    }
+
+    .container {
+      background: #1e1e2f;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 2.4rem;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+      letter-spacing: 1.2px;
+    }
+
+    #tablero {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 15px;
+    }
+
+    .carta {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* cuadrado */
+      cursor: pointer;
+      perspective: 1000px;
+      border-radius: 12px;
+    }
+
+    .carta-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    .carta.volteada .carta-inner {
+      transform: rotateY(180deg);
+      cursor: default;
+      box-shadow: 0 6px 20px rgba(255,255,255,0.4);
+    }
+
+    .cara {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5rem;
+      user-select: none;
+    }
+
+    .cara.front {
+      background: #fff;
+      color: #1e1e2f;
+      transform: rotateY(180deg);
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.05);
+    }
+
+    .cara.back {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    }
+
+    button#reiniciar {
+      margin-top: 25px;
+      padding: 12px 28px;
+      font-size: 1rem;
+      background: #764ba2;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      box-shadow: 0 4px 14px rgba(118,75,162,0.7);
+      transition: background-color 0.3s ease;
+    }
+
+    button#reiniciar:hover {
+      background: #5e378f;
+    }
+
+    #mensaje {
+      margin-top: 18px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #90ee90;
+      min-height: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Memoria Visual</h1>
+    <div class="stats">
+      <div>Movimientos: <span id="movimientos">0</span></div>
+      <div>Tiempo: <span id="tiempo">0</span> s</div>
+    </div>
+    <div id="tablero"></div>
+    <div id="mensaje"></div>
+    <button id="reiniciar">Reiniciar Juego</button>
+  </div>
+
+  <script>
+    const tablero = document.getElementById('tablero');
+    const movimientosSpan = document.getElementById('movimientos');
+    const tiempoSpan = document.getElementById('tiempo');
+    const mensaje = document.getElementById('mensaje');
+    const reiniciarBtn = document.getElementById('reiniciar');
+
+    const simbolos = ['🍎', '🍌', '🍒', '🍇', '🥝', '🍍', '🍉', '🍓']; // 8 pares
+    let cartasArray = [];
+    let cartaVolteada = false;
+    let primerCarta, segundaCarta;
+    let bloqueado = false;
+    let movimientos = 0;
+    let paresEncontrados = 0;
+    let tiempo = 0;
+    let intervaloTiempo;
+
+    function iniciarJuego() {
+      // Reiniciar variables
+      tablero.innerHTML = '';
+      movimientos = 0;
+      paresEncontrados = 0;
+      cartaVolteada = false;
+      bloqueado = false;
+      primerCarta = null;
+      segundaCarta = null;
+      movimientosSpan.textContent = movimientos;
+      tiempo = 0;
+      tiempoSpan.textContent = tiempo;
+      mensaje.textContent = '';
+
+      // Crear parejas y mezclarlas
+      cartasArray = [...simbolos, ...simbolos];
+      mezclarArray(cartasArray);
+
+      // Crear elementos en el tablero
+      cartasArray.forEach((simbolo, index) => {
+        const carta = document.createElement('div');
+        carta.classList.add('carta');
+        carta.dataset.simbolo = simbolo;
+
+        carta.innerHTML = `
+          <div class="carta-inner">
+            <div class="cara front">${simbolo}</div>
+            <div class="cara back"></div>
+          </div>
+        `;
+
+        carta.addEventListener('click', manejarClickCarta);
+        tablero.appendChild(carta);
+      });
+
+      // Iniciar cronómetro
+      clearInterval(intervaloTiempo);
+      intervaloTiempo = setInterval(() => {
+        tiempo++;
+        tiempoSpan.textContent = tiempo;
+      }, 1000);
+    }
+
+    function mezclarArray(array) {
+      for (let i = array.length -1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i +1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function manejarClickCarta(e) {
+      if (bloqueado) return;
+
+      const carta = e.currentTarget;
+
+      // Prevenir que se voltee la misma carta dos veces
+      if (carta === primerCarta) return;
+
+      voltearCarta(carta);
+
+      if (!cartaVolteada) {
+        // Primer clic
+        cartaVolteada = true;
+        primerCarta = carta;
+      } else {
+        // Segundo clic
+        segundaCarta = carta;
+        movimientos++;
+        movimientosSpan.textContent = movimientos;
+
+        // Comparar
+        if (primerCarta.dataset.simbolo === segundaCarta.dataset.simbolo) {
+          // Emparejadas
+          primerCarta.removeEventListener('click', manejarClickCarta);
+          segundaCarta.removeEventListener('click', manejarClickCarta);
+          paresEncontrados++;
+          resetearTurno();
+
+          if (paresEncontrados === simbolos.length) {
+            // Juego ganado
+            clearInterval(intervaloTiempo);
+            mensaje.textContent = `¡Felicidades! Ganaste en ${movimientos} movimientos y ${tiempo} segundos.`;
+          }
+        } else {
+          // No coinciden
+          bloqueado = true;
+          setTimeout(() => {
+            voltearCarta(primerCarta);
+            voltearCarta(segundaCarta);
+            resetearTurno();
+          }, 1000);
+        }
+      }
+    }
+
+    function voltearCarta(carta) {
+      carta.classList.toggle('volteada');
+    }
+
+    function resetearTurno() {
+      cartaVolteada = false;
+      bloqueado = false;
+      primerCarta = null;
+      segundaCarta = null;
+    }
+
+    reiniciarBtn.addEventListener('click', iniciarJuego);
+
+    iniciarJuego();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia de Kawasaki - Legado de Innovación</title>
+    <meta name="description" content="Descubre la fascinante historia de Kawasaki, desde sus inicios como astillero en 1896 hasta convertirse en el líder mundial en motocicletas deportivas.">
+    <style>
+        /* Reset y Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --kawasaki-green: #00A651;
+            --dark-green: #008A44;
+            --light-green: #33B86A;
+            --black: #1a1a1a;
+            --gray-900: #111827;
+            --gray-800: #1f2937;
+            --gray-700: #374151;
+            --gray-600: #4b5563;
+            --gray-500: #6b7280;
+            --gray-400: #9ca3af;
+            --gray-300: #d1d5db;
+            --gray-200: #e5e7eb;
+            --gray-100: #f3f4f6;
+            --gray-50: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+            background-color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo {
+            width: 2rem;
+            height: 2rem;
+            background: var(--kawasaki-green);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+
+        .brand-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .header.scrolled .brand-name {
+            color: var(--gray-900);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .header.scrolled .nav-link {
+            color: var(--gray-700);
+        }
+
+        .nav-link:hover {
+            color: var(--kawasaki-green);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--kawasaki-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--kawasaki-green) 0%, var(--gray-900) 50%, var(--black) 100%);
+        }
+
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.pexels.com/photos/163210/motorcycles-race-helmets-pilots-163210.jpeg') center/cover;
+            opacity: 0.2;
+        }
+
+        .hero-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 64rem;
+            padding: 0 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-highlight {
+            display: block;
+            background: linear-gradient(135deg, var(--kawasaki-green), var(--light-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 3vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 48rem;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--kawasaki-green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 166, 81, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--gray-900);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            animation: bounce 2s infinite;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-gray {
+            background: var(--gray-50);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: bold;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+        }
+
+        .text-green {
+            color: var(--kawasaki-green);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        /* Facts Grid */
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .fact-card {
+            background: var(--gray-50);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fact-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fact-card:hover {
+            background: var(--kawasaki-green);
+            color: white;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 166, 81, 0.2);
+        }
+
+        .fact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .fact-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .fact-description {
+            color: var(--gray-600);
+        }
+
+        .fact-card:hover .fact-description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Featured Story */
+        .featured-story {
+            background: linear-gradient(135deg, var(--gray-900), var(--kawasaki-green));
+            border-radius: 2rem;
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            color: white;
+        }
+
+        .story-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-text {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 16rem;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--kawasaki-green), var(--gray-300));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 50%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: 50%;
+            text-align: left;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            background: var(--kawasaki-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--kawasaki-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: var(--gray-600);
+        }
+
+        /* Innovations Grid */
+        .innovations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .innovation-card {
+            background: var(--gray-50);
+            padding: 2rem;
+            border-radius: 2rem;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .innovation-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .innovation-card:hover {
+            background: linear-gradient(135deg, var(--kawasaki-green), var(--dark-green));
+            color: white;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 166, 81, 0.3);
+        }
+
+        .innovation-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .innovation-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .innovation-description {
+            margin-bottom: 1.5rem;
+            color: var(--gray-600);
+        }
+
+        .innovation-card:hover .innovation-description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .innovation-features {
+            list-style: none;
+        }
+
+        .innovation-features li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+        }
+
+        .innovation-card:hover .innovation-features li {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .innovation-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--kawasaki-green);
+            font-weight: bold;
+        }
+
+        .innovation-card:hover .innovation-features li::before {
+            color: white;
+        }
+
+        /* Tech Highlight */
+        .tech-highlight {
+            background: linear-gradient(135deg, var(--kawasaki-green), var(--dark-green));
+            border-radius: 2rem;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .highlight-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-description {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 64rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Models Grid */
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .model-card {
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .model-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .model-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .model-image {
+            position: relative;
+            height: 16rem;
+            overflow: hidden;
+        }
+
+        .model-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .model-card:hover .model-image img {
+            transform: scale(1.1);
+        }
+
+        .model-year {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--kawasaki-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: bold;
+        }
+
+        .model-content {
+            padding: 2rem;
+        }
+
+        .model-badge {
+            display: inline-block;
+            background: rgba(0, 166, 81, 0.1);
+            color: var(--kawasaki-green);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .model-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .model-description {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .model-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .spec {
+            text-align: center;
+        }
+
+        .spec-label {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-value {
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        /* Championship Banner */
+        .championship-banner {
+            background: linear-gradient(135deg, var(--gray-900), var(--kawasaki-green));
+            border-radius: 2rem;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .banner-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .banner-description {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .championship-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .championship-stat {
+            text-align: center;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 16rem;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .gallery-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-description {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--gray-800);
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--kawasaki-green);
+            transform: translateY(-2px);
+        }
+
+        .footer-title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--kawasaki-green);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-icon {
+            color: var(--kawasaki-green);
+            font-size: 1.25rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .copyright {
+            color: var(--gray-400);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-legal a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--kawasaki-green);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .featured-story {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .timeline::before {
+                left: 2rem;
+            }
+
+            .timeline-item {
+                padding-left: 4rem;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) {
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-year {
+                left: 2rem;
+                transform: translateX(-50%);
+            }
+
+            .models-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .model-specs {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .spec {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 3rem 0;
+            }
+
+            .facts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .innovations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .championship-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <div class="logo">K</div>
+                <span class="brand-name">Kawasaki</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#historia" class="nav-link">Historia</a>
+                <a href="#cronologia" class="nav-link">Cronología</a>
+                <a href="#innovaciones" class="nav-link">Innovaciones</a>
+                <a href="#modelos" class="nav-link">Modelos</a>
+                <a href="#galeria" class="nav-link">Galería</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                La Historia de
+                <span class="hero-highlight">Kawasaki</span>
+            </h1>
+            <p class="hero-subtitle">
+                Desde 1896, forjando el futuro de la ingeniería pesada y las motocicletas más icónicas del mundo
+            </p>
+            <div class="hero-buttons">
+                <a href="#historia" class="btn btn-primary">Descubre la Historia</a>
+                <a href="#modelos" class="btn btn-secondary">Ver Modelos Icónicos</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- Historia Section -->
+    <section id="historia" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Un Legado de <span class="text-green">Innovación</span>
+                </h2>
+                <p class="section-subtitle">
+                    Kawasaki Heavy Industries comenzó como un astillero y se transformó en una de las 
+                    corporaciones industriales más diversificadas del mundo, pionera en tecnología y diseño.
+                </p>
+            </div>
+
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <div class="fact-icon">🏭</div>
+                    <h3 class="fact-title">Fundación Industrial</h3>
+                    <p class="fact-description">
+                        Establecida en 1896 por Shozo Kawasaki como astillero en Tokio, 
+                        expandiéndose a la construcción naval y ferroviaria.
+                    </p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🔧</div>
+                    <h3 class="fact-title">Diversificación</h3>
+                    <p class="fact-description">
+                        Evolución hacia múltiples sectores: aviación, trenes bala, turbinas de gas 
+                        y finalmente motocicletas en 1954.
+                    </p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🏆</div>
+                    <h3 class="fact-title">Excelencia Técnica</h3>
+                    <p class="fact-description">
+                        Reconocida mundialmente por su ingeniería de precisión y tecnología 
+                        de vanguardia en todos sus productos.
+                    </p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🌍</div>
+                    <h3 class="fact-title">Alcance Global</h3>
+                    <p class="fact-description">
+                        Presencia internacional con plantas de producción y centros de I+D 
+                        en América, Europa y Asia.
+                    </p>
+                </div>
+            </div>
+
+            <div class="featured-story">
+                <div class="story-content">
+                    <h3 class="story-title">De Astilleros a Motocicletas</h3>
+                    <p class="story-text">
+                        La transición de Kawasaki hacia las motocicletas comenzó en 1954, aplicando 
+                        décadas de experiencia en ingeniería pesada para crear máquinas que redefinirían 
+                        el concepto de velocidad y rendimiento.
+                    </p>
+                    <p class="story-text">
+                        Esta diversificación no fue casualidad, sino el resultado natural de una empresa 
+                        que siempre había estado a la vanguardia de la innovación tecnológica.
+                    </p>
+                </div>
+                <div class="story-image">
+                    <img src="https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg" alt="Kawasaki Factory">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="cronologia" class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Cronología de la <span class="text-green">Excelencia</span>
+                </h2>
+                <p class="section-subtitle">
+                    Los momentos clave que definieron la historia de Kawasaki y transformaron 
+                    la industria de las motocicletas.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1896</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Fundación de Kawasaki</h3>
+                        <p class="timeline-description">
+                            Shozo Kawasaki establece el astillero Kawasaki en Tokio, comenzando 
+                            una era de innovación industrial.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1954</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Primera Motocicleta</h3>
+                        <p class="timeline-description">
+                            Lanzamiento de la primera motocicleta Kawasaki, marcando el inicio 
+                            de una nueva división.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1972</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">La Legendaria Z1</h3>
+                        <p class="timeline-description">
+                            Introducción de la Kawasaki Z1, la primera superbike de 900cc que 
+                            cambió la industria para siempre.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1984</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Nace la Serie Ninja</h3>
+                        <p class="timeline-description">
+                            Lanzamiento de la primera Kawasaki Ninja, estableciendo el estándar 
+                            para las motocicletas deportivas.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2015</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Era del Supercargador</h3>
+                        <p class="timeline-description">
+                            Introducción de la Ninja H2 y H2R, las primeras motos de producción 
+                            con supercargador.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovaciones Section -->
+    <section id="innovaciones" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Innovaciones <span class="text-green">Tecnológicas</span>
+                </h2>
+                <p class="section-subtitle">
+                    Kawasaki lidera la industria con tecnologías revolucionarias que redefinen 
+                    la experiencia de conducción y establecen nuevos estándares de seguridad.
+                </p>
+            </div>
+
+            <div class="innovations-grid">
+                <div class="innovation-card">
+                    <div class="innovation-icon">🧠</div>
+                    <h3 class="innovation-title">KTRC - Control de Tracción</h3>
+                    <p class="innovation-description">
+                        Sistema inteligente que monitorea y ajusta la potencia en tiempo real 
+                        para máxima tracción y seguridad.
+                    </p>
+                    <ul class="innovation-features">
+                        <li>Sensores de alta precisión</li>
+                        <li>Ajuste automático</li>
+                        <li>Múltiples modos de conducción</li>
+                    </ul>
+                </div>
+                <div class="innovation-card">
+                    <div class="innovation-icon">🛡️</div>
+                    <h3 class="innovation-title">KIBS - Frenos Inteligentes</h3>
+                    <p class="innovation-description">
+                        Sistema avanzado de frenado que optimiza la distribución de fuerza 
+                        entre ruedas delanteras y traseras.
+                    </p>
+                    <ul class="innovation-features">
+                        <li>Anti-bloqueo ABS</li>
+                        <li>Distribución inteligente</li>
+                        <li>Frenado de emergencia</li>
+                    </ul>
+                </div>
+                <div class="innovation-card">
+                    <div class="innovation-icon">⚡</div>
+                    <h3 class="innovation-title">Supercargadores</h3>
+                    <p class="innovation-description">
+                        Tecnología de supercarga que maximiza la potencia sin comprometer 
+                        la eficiencia del motor.
+                    </p>
+                    <ul class="innovation-features">
+                        <li>Compresión forzada</li>
+                        <li>Mayor potencia</li>
+                        <li>Eficiencia optimizada</li>
+                    </ul>
+                </div>
+                <div class="innovation-card">
+                    <div class="innovation-icon">📱</div>
+                    <h3 class="innovation-title">Sistemas Electrónicos</h3>
+                    <p class="innovation-description">
+                        Instrumentación digital avanzada con conectividad y telemetría 
+                        en tiempo real.
+                    </p>
+                    <ul class="innovation-features">
+                        <li>Display TFT</li>
+                        <li>Conectividad móvil</li>
+                        <li>Telemetría avanzada</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tech-highlight">
+                <h3 class="highlight-title">Supercargador: La Revolución de la Potencia</h3>
+                <p class="highlight-description">
+                    La tecnología de supercarga de Kawasaki, implementada en modelos como la Ninja H2R, 
+                    representa un salto cuántico en ingeniería motorcilista. Con más de 300 HP, estas 
+                    máquinas redefinen los límites de lo posible en dos ruedas.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-number">310+</div>
+                        <div class="stat-label">Caballos de Fuerza</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">400+</div>
+                        <div class="stat-label">km/h Velocidad Máxima</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">2.5s</div>
+                        <div class="stat-label">0-100 km/h</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modelos Section -->
+    <section id="modelos" class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Modelos <span class="text-green">Icónicos</span>
+                </h2>
+                <p class="section-subtitle">
+                    Las motocicletas que no solo definieron épocas, sino que escribieron 
+                    la historia del motociclismo mundial.
+                </p>
+            </div>
+
+            <div class="models-grid">
+                <div class="model-card">
+                    <div class="model-image">
+                        <img src="https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg" alt="Kawasaki Z1">
+                        <div class="model-year">1972</div>
+                    </div>
+                    <div class="model-content">
+                        <div class="model-badge">Pionera de las Superbikes</div>
+                        <h3 class="model-name">Kawasaki Z1</h3>
+                        <p class="model-description">
+                            La primera superbike de 900cc que estableció a Kawasaki como líder 
+                            en motocicletas de alto rendimiento.
+                        </p>
+                        <div class="model-specs">
+                            <div class="spec">
+                                <div class="spec-label">Motor</div>
+                                <div class="spec-value">903cc 4-cilindros</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Potencia</div>
+                                <div class="spec-value">82 HP</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Velocidad</div>
+                                <div class="spec-value">200 km/h</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-image">
+                        <img src="https://images.pexels.com/photos/163210/motorcycles-race-helmets-pilots-163210.jpeg" alt="Ninja GPZ900R">
+                        <div class="model-year">1984</div>
+                    </div>
+                    <div class="model-content">
+                        <div class="model-badge">Icono Cultural</div>
+                        <h3 class="model-name">Ninja GPZ900R</h3>
+                        <p class="model-description">
+                            La primera de la legendaria serie Ninja, protagonista de la película Top Gun.
+                        </p>
+                        <div class="model-specs">
+                            <div class="spec">
+                                <div class="spec-label">Motor</div>
+                                <div class="spec-value">908cc 4-cilindros</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Potencia</div>
+                                <div class="spec-value">115 HP</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Velocidad</div>
+                                <div class="spec-value">249 km/h</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-image">
+                        <img src="https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg" alt="Ninja ZX-10R">
+                        <div class="model-year">2004-presente</div>
+                    </div>
+                    <div class="model-content">
+                        <div class="model-badge">Campeona de Pista</div>
+                        <h3 class="model-name">Ninja ZX-10R</h3>
+                        <p class="model-description">
+                            Dominadora en WorldSBK con múltiples campeonatos, representa la excelencia en pista.
+                        </p>
+                        <div class="model-specs">
+                            <div class="spec">
+                                <div class="spec-label">Motor</div>
+                                <div class="spec-value">998cc 4-cilindros</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Potencia</div>
+                                <div class="spec-value">200+ HP</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Velocidad</div>
+                                <div class="spec-value">300+ km/h</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-image">
+                        <img src="https://images.pexels.com/photos/163210/motorcycles-race-helmets-pilots-163210.jpeg" alt="Ninja H2R">
+                        <div class="model-year">2015-presente</div>
+                    </div>
+                    <div class="model-content">
+                        <div class="model-badge">Límite de la Ingeniería</div>
+                        <h3 class="model-name">Ninja H2R</h3>
+                        <p class="model-description">
+                            La motocicleta más potente del mundo con supercargador, diseñada exclusivamente para pista.
+                        </p>
+                        <div class="model-specs">
+                            <div class="spec">
+                                <div class="spec-label">Motor</div>
+                                <div class="spec-value">998cc Supercargado</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Potencia</div>
+                                <div class="spec-value">310+ HP</div>
+                            </div>
+                            <div class="spec">
+                                <div class="spec-label">Velocidad</div>
+                                <div class="spec-value">400+ km/h</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="championship-banner">
+                <h3 class="banner-title">Dominancia en WorldSBK</h3>
+                <p class="banner-description">
+                    Con más de 15 títulos mundiales en Superbikes, Kawasaki ha demostrado que la 
+                    excelencia en pista se traduce directamente en sus motocicletas de calle.
+                </p>
+                <div class="championship-stats">
+                    <div class="championship-stat">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Títulos Mundiales</div>
+                    </div>
+                    <div class="championship-stat">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Victorias en Carrera</div>
+                    </div>
+                    <div class="championship-stat">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Títulos Consecutivos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería Section -->
+    <section id="galeria" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Galería de <span class="text-green">Leyendas</span>
+                </h2>
+                <p class="section-subtitle">
+                    Una colección visual que captura la esencia, la potencia y la belleza 
+                    de las motocicletas Kawasaki a través de los años.
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/163210/motorcycles-race-helmets-pilots-163210.jpeg" alt="Kawasaki Racing">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Kawasaki Racing</h3>
+                        <p class="gallery-description">La pasión por la velocidad en pista</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg" alt="Ninja H2R">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Ninja H2R</h3>
+                        <p class="gallery-description">El límite de la ingeniería</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/163210/motorcycles-race-helmets-pilots-163210.jpeg" alt="Z Series">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Z Series</h3>
+                        <p class="gallery-description">Naked bikes con personalidad</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg" alt="Versys Adventure">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Versys Adventure</h3>
+                        <p class="gallery-description">Conquistando cualquier terreno</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/163210/motorcycles-race-helmets-pilots-163210.jpeg" alt="Vulcan Cruiser">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Vulcan Cruiser</h3>
+                        <p class="gallery-description">Elegancia y potencia americana</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg" alt="Electric Future">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Electric Future</h3>
+                        <p class="gallery-description">El futuro eléctrico de Kawasaki</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <div class="logo">K</div>
+                        <span class="brand-name">Kawasaki</span>
+                    </div>
+                    <p class="footer-description">
+                        Más de 125 años de innovación e ingeniería de precisión, 
+                        creando las motocicletas más icónicas del mundo.
+                    </p>
+             
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#historia">Historia</a></li>
+                        <li><a href="#cronologia">Cronología</a></li>
+                        <li><a href="#innovaciones">Innovaciones</a></li>
+                        <li><a href="#modelos">Modelos</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Líneas de Producto</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Ninja Sport</a></li>
+                        <li><a href="#">Z Naked</a></li>
+                        <li><a href="#">Versys Adventure</a></li>
+                        <li><a href="#">Vulcan Cruiser</a></li>
+                        <li><a href="#">KLX Off-Road</a></li>
+                    </ul>
+                </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animatable elements
+        document.querySelectorAll('.fact-card, .timeline-item, .innovation-card, .model-card, .gallery-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add staggered animation delays
+        document.querySelectorAll('.fact-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.2}s`;
+        });
+
+        document.querySelectorAll('.innovation-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.15}s`;
+        });
+
+        document.querySelectorAll('.model-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.2}s`;
+        });
+
+        document.querySelectorAll('.gallery-item').forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
