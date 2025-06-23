@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagina Principal - Aprende y desarrolla tu conocimiento!S</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Animated Background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: linear-gradient(45deg, #00fcfc, #2653e7, #a112e4, #e7eb05, #ffeaa7, #dda0dd);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating Geometric Shapes */
+    .geometric-shape {
+      position: absolute;
+      opacity: 0.1;
+      animation: floatGeometric 20s infinite linear;
+    }
+
+    .shape-1 {
+      top: 10%;
+      left: 10%;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      border-radius: 50%;
+      animation-delay: 0s;
+    }
+
+    .shape-2 {
+      top: 20%;
+      right: 15%;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(45deg, #45b7d1, #96ceb4);
+      transform: rotate(45deg);
+      animation-delay: 5s;
+    }
+
+    .shape-3 {
+      bottom: 30%;
+      left: 20%;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, #ffeaa7, #dda0dd);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation-delay: 10s;
+    }
+
+    .shape-4 {
+      top: 60%;
+      right: 25%;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #a8e6cf, #ff8a80);
+      border-radius: 10px;
+      animation-delay: 15s;
+    }
+
+    @keyframes floatGeometric {
+      0% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-20px) rotate(90deg); }
+      50% { transform: translateY(0px) rotate(180deg); }
+      75% { transform: translateY(-15px) rotate(270deg); }
+      100% { transform: translateY(0px) rotate(360deg); }
+    }
+
+    /* Enhanced Bubbles */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      animation: floatUp 15s infinite ease-in-out;
+    }
+
+    .bubble::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 30%;
+      height: 30%;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) scale(1.2) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Header Styles */
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo-container {
+      display: inline-block;
+      margin-bottom: 30px;
+      animation: logoFloat 3s ease-in-out infinite;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #fff, #f0f0f0, #e0e0e0);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: textShimmer 3s ease-in-out infinite, fadeInDown 1s ease-out;
+    }
+
+    @keyframes textShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      font-weight: 300;
+      opacity: 0.9;
+      margin-bottom: 40px;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Button Container */
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    /* Enhanced Buttons */
+    .btn {
+      position: relative;
+      padding: 20px 30px;
+      border: none;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: white;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .btn:active {
+      transform: translateY(-2px) scale(0.98);
+    }
+
+    /* Button Specific Styles */
+    .btn-motos {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      animation: slideInLeft 0.8s ease-out 0.8s both;
+    }
+
+    .btn-chatbot {
+      background: linear-gradient(135deg, #4ecdc4, #44a08d);
+      animation: slideInLeft 0.8s ease-out 1s both;
+    }
+
+    .btn-ahorcado {
+      background: linear-gradient(135deg, #45b7d1, #2980b9);
+      animation: slideInLeft 0.8s ease-out 1.2s both;
+    }
+
+    .btn-proyecto {
+      background: linear-gradient(135deg, #96ceb4, #27ae60);
+      animation: slideInLeft 0.8s ease-out 1.4s both;
+    }
+
+    .btn-portfolio {
+      background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+      animation: slideInLeft 0.8s ease-out 1.6s both;
+    }
+
+    .btn-games {
+      background: linear-gradient(135deg, #dda0dd, #9b59b6);
+      animation: slideInLeft 0.8s ease-out 1.8s both;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Icon Styles */
+    .btn-icon {
+      font-size: 1.4rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    /* Particle System */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%;
+      animation: particleFloat 8s infinite linear;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) translateX(100px);
+        opacity: 0;
+      }
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      background: rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      z-index: 100;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .button-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 15px;
+      }
+      
+      .btn {
+        padding: 18px 25px;
+        font-size: 1rem;
+      }
+      
+      header {
+        padding: 60px 15px 30px;
+      }
+    }
+
+    /* Loading Animation */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      animation: fadeOut 1s ease-out 2s forwards;
+    }
+
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-overlay">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Animated Background -->
+  <div class="animated-bg"></div>
+
+  <!-- Geometric Shapes -->
+  <div class="geometric-shape shape-1"></div>
+  <div class="geometric-shape shape-2"></div>
+  <div class="geometric-shape shape-3"></div>
+  <div class="geometric-shape shape-4"></div>
+
+  <!-- Enhanced Bubbles -->
+  <div class="bubble" style="left: 5%; width: 60px; height: 60px; animation-delay: 0s;"></div>
+  <div class="bubble" style="left: 15%; width: 40px; height: 40px; animation-delay: 2s;"></div>
+  <div class="bubble" style="left: 25%; width: 80px; height: 80px; animation-delay: 4s;"></div>
+  <div class="bubble" style="left: 35%; width: 50px; height: 50px; animation-delay: 1s;"></div>
+  <div class="bubble" style="left: 45%; width: 70px; height: 70px; animation-delay: 6s;"></div>
+  <div class="bubble" style="left: 55%; width: 45px; height: 45px; animation-delay: 3s;"></div>
+  <div class="bubble" style="left: 65%; width: 65px; height: 65px; animation-delay: 8s;"></div>
+  <div class="bubble" style="left: 75%; width: 55px; height: 55px; animation-delay: 5s;"></div>
+  <div class="bubble" style="left: 85%; width: 75px; height: 75px; animation-delay: 7s;"></div>
+  <div class="bubble" style="left: 95%; width: 35px; height: 35px; animation-delay: 9s;"></div>
+
+  <!-- Particle System -->
+  <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+  <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+  <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+  <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+  <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+  <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+  <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+  <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <div class="logo">✨</div>
+    </div>
+    <h1>Portal Único</h1>
+    <p class="subtitle">Tu puerta de entrada a experiencias digitales extraordinarias</p>
+  </header>
+
+  <!-- Button Container -->
+  <div class="button-container">
+    <button class="btn btn-motos" onclick="window.location.href='index.html'">
+      <span class="btn-icon">🏍️💨</span>
+      <span>Motos Premium</span>
+    </button>
+    
+    <button class="btn btn-chatbot" onclick="window.location.href='chatbot.html'">
+      <span class="btn-icon">👾</span>
+      <span>ChatBot IA</span>
+    </button>
+    
+    <button class="btn btn-ahorcado" onclick="window.location.href='ahorcado.html'">
+      <span class="btn-icon">🪢</span>
+      <span>Juego Ahorcado</span>
+    </button>
+    
+    <button class="btn btn-proyecto" onclick="window.open('habilidad.html')">
+      <span class="btn-icon">🧠</span>
+      <span>Juego Memorama</span>
+    </button>
+    
+    <button class="btn btn-chatbot" onclick="window.location.href='juego.html'">
+      <span class="btn-icon">🫡</span>
+      <span>Juego De Habilidad Mental</span>
+    </button>
+   
+    <button class="btn btn-proyecto" onclick="window.open('https://pancharly.infinityfreeapp.com', '_blank.html')">
+      <span class="btn-icon">😈👆</span>
+      <span>Proyecto Final</span>
+    </button>
+  </div>
+
+
+  <script>
+    // Enhanced interactions and effects
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add click ripple effect
+      const buttons = document.querySelectorAll('.btn');
+      
+      buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          const ripple = document.createElement('span');
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+          
+          ripple.style.width = ripple.style.height = size + 'px';
+          ripple.style.left = x + 'px';
+          ripple.style.top = y + 'px';
+          ripple.style.position = 'absolute';
+          ripple.style.borderRadius = '50%';
+          ripple.style.background = 'rgba(255,255,255,0.3)';
+          ripple.style.transform = 'scale(0)';
+          ripple.style.animation = 'ripple 0.6s linear';
+          ripple.style.pointerEvents = 'none';
+          
+          this.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+        });
+      });
+      
+      // Add CSS for ripple animation
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes ripple {
+          to {
+            transform: scale(2);
+            opacity: 0;
+          }
+        }
+        .btn {
+          position: relative;
+          overflow: hidden;
+        }
+      `;
+      document.head.appendChild(style);
+      
+      // Parallax effect for geometric shapes
+      document.addEventListener('mousemove', function(e) {
+        const shapes = document.querySelectorAll('.geometric-shape');
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        
+        shapes.forEach((shape, index) => {
+          const speed = (index + 1) * 0.5;
+          const xPos = (x - 0.5) * speed * 50;
+          const yPos = (y - 0.5) * speed * 50;
+          shape.style.transform = `translate(${xPos}px, ${yPos}px) rotate(${xPos}deg)`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
