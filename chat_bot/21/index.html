@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatBot  de Sasha </title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', 'Arial', sans-serif;
+      background: linear-gradient(to right, #fce4ec, #f8bbd0);
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .chat-container {
+      width: 100%;
+      max-width: 500px;
+      background-color: #fff0f5;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+      border: 3px solid #f48fb1;
+      display: flex;
+      flex-direction: column;
+      height: 90vh;
+    }
+
+    .chat-header {
+      background-color: #f8bbd0;
+      color: #6a1b9a;
+      padding: 15px;
+      font-size: 1.4em;
+      font-weight: bold;
+      text-align: center;
+      border-bottom: 2px dashed #ce93d8;
+    }
+
+    .questions {
+      background-color: #fdeef4;
+      padding: 10px 15px;
+      font-size: 0.9em;
+      color: #6a1b9a;
+      border-bottom: 2px dashed #f48fb1;
+    }
+
+    .questions ul {
+      padding-left: 20px;
+      margin: 5px 0;
+    }
+
+    .questions li {
+      margin: 4px 0;
+    }
+
+    .chat-box {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px;
+      background-color: #fce4ec;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message {
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 20px;
+      max-width: 80%;
+      font-size: 0.95em;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background-color: #ffe0f0;
+      align-self: flex-end;
+      margin-left: auto;
+      color: #880e4f;
+    }
+
+    .bot {
+      background-color: #e1bee7;
+      align-self: flex-start;
+      color: #4a148c;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      background-color: #f8bbd0;
+      border-top: 2px dashed #ce93d8;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #f48fb1;
+      border-radius: 10px;
+      font-size: 1em;
+      background-color: #fff;
+    }
+
+    .chat-input button {
+      padding: 12px 15px;
+      margin-left: 10px;
+      background-color: #f06292;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .chat-input button:hover {
+      background-color: #ec407a;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      💖 ChatBot de Sasha
+    </div>
+    <div class="questions">
+      🌸 <strong>Puedes preguntarme:</strong>
+      <ul>
+        <li>¿Qué es el maquillaje?</li>
+        <li>¿Cuál es la función de una base?</li>
+        <li>¿Qué es el primer?</li>
+        <li>¿Cómo se usan los correctores?</li>
+        <li>¿Qué tipos de delineador existen?</li>
+        <li>¿Para qué sirve el iluminador?</li>
+        <li>¿Cuál es la diferencia entre maquillaje de día y de noche?</li>
+        <li>¿Cómo elegir la base correcta?</li>
+        <li>¿Qué es el contouring?</li>
+        <li>¿Cómo cuidar la piel después del maquillaje?</li>
+      </ul>
+    </div>
+    <div class="chat-box" id="chatBox"></div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Hazme una pregunta bonita " />
+      <button onclick="sendMessage()">💌 Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    const responses = {
+      "¿qué es el maquillaje?": "El maquillaje es una forma hermosa de expresar tu estilo usando productos cosméticos en el rostro 💋✨",
+      "¿cuál es la función de una base?": "La base unifica tu tono de piel y hace que todo se vea lisito como un pastelito 🎂",
+      "¿qué es el primer?": "El primer es como una varita mágica ✨ que prepara tu carita para que el maquillaje dure más y más.",
+      "¿cómo se usan los correctores?": "Los correctores sirven para esconder ojeritas, granitos y manchas 🧚‍♀️ ¡con magia de colores!",
+      "¿qué tipos de delineador existen?": "Lápiz 🖊️, líquido 💧, gel y plumón ✒️. Cada uno da un look diferente a tus ojitos.",
+      "¿para qué sirve el iluminador?": "Para brillar como una estrella 🌟 en pómulos, nariz y cejas. ¡Glow time!",
+      "¿cuál es la diferencia entre maquillaje de día y de noche?": "El de día es suavecito 🌸 y el de noche más glam 💃 y atrevido.",
+      "¿cómo elegir la base correcta?": "Debe combinar con tu tono de piel 💖 y ser adecuada para tu tipo de piel (seca, grasa o mixta).",
+      "¿qué es el contouring?": "Una técnica para definir tu carita con sombras suaves 🖌️ y luces brillantes.",
+      "¿cómo cuidar la piel después del maquillaje?": "Desmaquíllate siempre 🧼, lava tu rostro y aplica cremita hidratante 💧💆‍♀️"
+    };
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const chatBox = document.getElementById("chatBox");
+      const userText = input.value.toLowerCase().trim();
+
+      if (userText === "") return;
+
+      addMessage(userText, "user");
+
+      const response = responses[userText] || "Lo siento, aún no tengo una respuesta cute para esa pregunta 💔.";
+      setTimeout(() => {
+        addMessage(response, "bot");
+      }, 600);
+
+      input.value = "";
+    }
+
+    function addMessage(text, sender) {
+      const chatBox = document.getElementById("chatBox");
+      const messageDiv = document.createElement("div");
+      messageDiv.classList.add("message", sender);
+      messageDiv.innerText = text;
+      chatBox.appendChild(messageDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+</body>
+</html>
