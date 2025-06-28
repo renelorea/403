@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatBot GYM</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #232526, #414345);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .chat-container {
+      width: 400px;
+      background-color: #2c2f33;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      padding: 20px;
+    }
+    .chat-box {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #444;
+      padding: 10px;
+      background-color: #1e2124;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .user, .bot {
+      margin: 5px 0;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .user {
+      background-color: #7289da;
+      text-align: right;
+    }
+    .bot {
+      background-color: #99aab5;
+      text-align: left;
+      color: black;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-box" id="chatBox">
+      <div class="bot">Hola, soy tu entrenador virtual. Pregúntame sobre GYM 💪</div>
+    </div>
+    <input type="text" id="userInput" placeholder="Escribe tu pregunta y presiona Enter..."/>
+  </div>
+
+  <script>
+    const respuestas = {
+      "¿cuántas veces a la semana debo entrenar?": "Lo ideal es entrenar de 3 a 5 veces por semana, dependiendo de tus objetivos.",
+      "¿qué es mejor, cardio o pesas?": "Ambos son importantes. Cardio mejora tu corazón y pesas tu fuerza.",
+      "¿qué debo comer antes de entrenar?": "Una comida ligera con carbohidratos y proteína 1 hora antes es ideal.",
+      "¿y después del entrenamiento?": "Debes consumir proteína y algo de carbohidratos para recuperar los músculos.",
+      "¿cuánto tiempo debo entrenar?": "Entre 45 minutos y 1 hora es suficiente si lo haces con intensidad.",
+      "¿cómo gano masa muscular?": "Entrena con pesas, aumenta progresivamente el peso y consume suficiente proteína.",
+      "¿cómo pierdo grasa?": "Haz déficit calórico, cardio regular y entrena con pesas.",
+      "¿puedo entrenar todos los días?": "Sí, si haces diferentes grupos musculares y escuchas a tu cuerpo.",
+      "¿qué suplementos debo tomar?": "Los más comunes son proteína en polvo, creatina y multivitamínicos.",
+      "¿cuál es la mejor hora para entrenar?": "La mejor hora es cuando tú te sientas con más energía y constancia."
+    };
+
+    document.getElementById("userInput").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const input = this.value.toLowerCase().trim();
+        const chatBox = document.getElementById("chatBox");
+
+        const userMsg = document.createElement("div");
+        userMsg.className = "user";
+        userMsg.textContent = this.value;
+        chatBox.appendChild(userMsg);
+
+        const respuesta = respuestas[input] || "Lo siento, no tengo una respuesta para eso. Pregunta sobre temas de GYM.";
+        const botMsg = document.createElement("div");
+        botMsg.className = "bot";
+        botMsg.textContent = respuesta;
+        chatBox.appendChild(botMsg);
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+        this.value = "";
+      }
+    });
+  </script>
+</body>
+</html>
